@@ -1,6 +1,7 @@
 'use client'
-import { Input } from "@nextui-org/react"
 import { useState } from "react"
+import { Input } from "@nextui-org/react"
+import { Eye, EyeOff } from "lucide-react"
 
 export const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -8,9 +9,9 @@ export const LoginForm = () => {
     password: '',
   })
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+  const toggleVisibility = () => setIsPasswordVisible(!isPasswordVisible);
 
   const handleChange = e => {
     setFormData({
@@ -36,19 +37,17 @@ export const LoginForm = () => {
         onChange={handleChange}
       />
       <Input
-        type={isVisible ? "text" : "password"}
+        type={isPasswordVisible ? "text" : "password"}
         label="Contraseña"
         placeholder="********"
         variant="bordered"
         isRequired
         endContent={
           <button className="focus:outline-none" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
-            {isVisible ? (
-              // <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-              'y'
+            {isPasswordVisible ? (
+              <EyeOff className="text-2xl text-default-400 pointer-events-none" />
             ) : (
-              // <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
-              'x'
+              <Eye className="text-2xl text-default-400 pointer-events-none" />
             )}
           </button>
         }

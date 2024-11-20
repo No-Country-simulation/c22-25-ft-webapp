@@ -1,4 +1,4 @@
-import { LoginForm } from "@/app/components/organisms/forms/LoginForm";
+import { LoginForm } from "@/components/organisms/forms/LoginForm";
 
 export default function LoginPage() {
   return (
