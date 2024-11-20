@@ -1,4 +1,4 @@
-package com.webapp.backend.components.token;
+package com.webapp.backend.components.jwt;
 
 public record Token(String token) {
 }
