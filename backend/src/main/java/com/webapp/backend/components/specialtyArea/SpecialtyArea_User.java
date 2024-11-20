@@ -10,11 +10,11 @@ public class SpecialtyArea_User {
     @Column(name = "specialist_id")
     private Long specialistId;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne (targetEntity = SpecialtyArea.class)
     @JoinColumn(name = "specialty_id")
     private SpecialtyArea specialtyArea;
 

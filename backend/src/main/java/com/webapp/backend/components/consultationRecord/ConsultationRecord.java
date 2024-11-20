@@ -13,51 +13,51 @@ public class ConsultationRecord {
     private ClinicalRecord clinicalRecord;
 
     @Lob
-    @Column(name= "reason", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "reason", nullable = false, columnDefinition = "TEXT")
     private String reason;
 
     @Lob
-    @Column(name= "current_illness", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "current_illness", nullable = false, columnDefinition = "TEXT")
     private String currentIllness;
 
     @Lob
-    @Column(name= "personal_background", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "personal_background", nullable = false, columnDefinition = "TEXT")
     private String personalBackground;
 
     @Lob
-    @Column(name= "Familiar_backgroundt", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "Familiar_backgroundt", nullable = false, columnDefinition = "TEXT")
     private String FamiliarBackgroundt;
 
     @Lob
-    @Column(name= "physical_exam", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "physical_exam", nullable = false, columnDefinition = "TEXT")
     private String physicalExam;
 
     @Lob
-    @Column(name= "dx", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "dx", nullable = false, columnDefinition = "TEXT")
     private String dx;
 
     @Lob
-    @Column(name= "treatment", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "treatment", nullable = false, columnDefinition = "TEXT")
     private String treatment;
 
     @Lob
-    @Column(name= "evolution", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "evolution", nullable = false, columnDefinition = "TEXT")
     private String evolution;
 
     @Lob
-    @Column(name= "diagnostic_tests", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "diagnostic_tests", nullable = false, columnDefinition = "TEXT")
     private String diagnosticTests;
 
     @Lob
-    @Column(name= "med_procedures", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "med_procedures", nullable = false, columnDefinition = "TEXT")
     private String medProcedures;
 
     @Lob
-    @Column(name= "informed_consent", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "informed_consent", nullable = false, columnDefinition = "TEXT")
     private String informedConsent;
 
     @Lob
-    @Column(name= "aditional_information", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name= "aditional_information", nullable = false, columnDefinition = "TEXT")
     private String aditionalInformation;
 
     public ConsultationRecord() {

@@ -15,7 +15,7 @@ public class SpecialtyArea {
     private String name;
 
     @Lob
-    @Column(name = "description", nullable = false, columnDefinition = "LONGTEXT")
+    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @OneToMany(targetEntity = SpecialtyArea_User.class, fetch = FetchType.EAGER, mappedBy = "specialtyArea")
