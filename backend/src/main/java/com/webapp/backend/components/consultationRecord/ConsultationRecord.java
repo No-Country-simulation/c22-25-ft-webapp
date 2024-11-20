@@ -12,40 +12,52 @@ public class ConsultationRecord {
     @JoinColumn(name = "record_id", referencedColumnName = "recordId")
     private ClinicalRecord clinicalRecord;
 
-    @Column(name= "reason", nullable = false)
+    @Lob
+    @Column(name= "reason", nullable = false, columnDefinition = "LONGTEXT")
     private String reason;
 
-    @Column(name= "current_illness", nullable = false)
+    @Lob
+    @Column(name= "current_illness", nullable = false, columnDefinition = "LONGTEXT")
     private String currentIllness;
 
-    @Column(name= "personal_background", nullable = false)
+    @Lob
+    @Column(name= "personal_background", nullable = false, columnDefinition = "LONGTEXT")
     private String personalBackground;
 
-    @Column(name= "Familiar_backgroundt", nullable = false)
+    @Lob
+    @Column(name= "Familiar_backgroundt", nullable = false, columnDefinition = "LONGTEXT")
     private String FamiliarBackgroundt;
 
-    @Column(name= "physical_exam", nullable = false)
+    @Lob
+    @Column(name= "physical_exam", nullable = false, columnDefinition = "LONGTEXT")
     private String physicalExam;
 
-    @Column(name= "dx", nullable = false)
+    @Lob
+    @Column(name= "dx", nullable = false, columnDefinition = "LONGTEXT")
     private String dx;
 
-    @Column(name= "treatment", nullable = false)
+    @Lob
+    @Column(name= "treatment", nullable = false, columnDefinition = "LONGTEXT")
     private String treatment;
 
-    @Column(name= "evolution", nullable = false)
+    @Lob
+    @Column(name= "evolution", nullable = false, columnDefinition = "LONGTEXT")
     private String evolution;
 
-    @Column(name= "diagnostic_tests", nullable = false)
+    @Lob
+    @Column(name= "diagnostic_tests", nullable = false, columnDefinition = "LONGTEXT")
     private String diagnosticTests;
 
-    @Column(name= "med_procedures", nullable = false)
+    @Lob
+    @Column(name= "med_procedures", nullable = false, columnDefinition = "LONGTEXT")
     private String medProcedures;
 
-    @Column(name= "informed_consent", nullable = false)
+    @Lob
+    @Column(name= "informed_consent", nullable = false, columnDefinition = "LONGTEXT")
     private String informedConsent;
 
-    @Column(name= "aditional_information", nullable = false)
+    @Lob
+    @Column(name= "aditional_information", nullable = false, columnDefinition = "LONGTEXT")
     private String aditionalInformation;
 
     public ConsultationRecord() {

@@ -1,7 +1,6 @@
 package com.webapp.backend.components.specialtyArea;
 
 import jakarta.persistence.*;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -15,7 +14,8 @@ public class SpecialtyArea {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description", nullable = false)
+    @Lob
+    @Column(name = "description", nullable = false, columnDefinition = "LONGTEXT")
     private String description;
 
     @OneToMany(targetEntity = SpecialtyArea_User.class, fetch = FetchType.EAGER, mappedBy = "specialtyArea")
