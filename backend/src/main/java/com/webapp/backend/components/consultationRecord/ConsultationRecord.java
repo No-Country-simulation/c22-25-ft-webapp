@@ -8,6 +8,8 @@ import jakarta.persistence.*;
 public class ConsultationRecord {
 
     @Id
+    private int consultationRecordId;
+
     @OneToOne
     @JoinColumn(name = "record_id", referencedColumnName = "recordId")
     private ClinicalRecord clinicalRecord;
@@ -25,8 +27,8 @@ public class ConsultationRecord {
     private String personalBackground;
 
     @Lob
-    @Column(name= "Familiar_backgroundt", nullable = false, columnDefinition = "TEXT")
-    private String FamiliarBackgroundt;
+    @Column(name= "Familiar_background", nullable = false, columnDefinition = "TEXT")
+    private String familiarBackground;
 
     @Lob
     @Column(name= "physical_exam", nullable = false, columnDefinition = "TEXT")
@@ -63,12 +65,13 @@ public class ConsultationRecord {
     public ConsultationRecord() {
     }
 
-    public ConsultationRecord(ClinicalRecord clinicalRecord, String reason, String currentIllness, String personalBackground, String familiarBackgroundt, String physicalExam, String dx, String treatment, String evolution, String diagnosticTests, String medProcedures, String informedConsent, String aditionalInformation) {
+    public ConsultationRecord(int consultationRecordId, ClinicalRecord clinicalRecord, String reason, String currentIllness, String personalBackground, String familiarBackground, String physicalExam, String dx, String treatment, String evolution, String diagnosticTests, String medProcedures, String informedConsent, String aditionalInformation) {
+        this.consultationRecordId = consultationRecordId;
         this.clinicalRecord = clinicalRecord;
         this.reason = reason;
         this.currentIllness = currentIllness;
         this.personalBackground = personalBackground;
-        FamiliarBackgroundt = familiarBackgroundt;
+        this.familiarBackground = familiarBackground;
         this.physicalExam = physicalExam;
         this.dx = dx;
         this.treatment = treatment;
@@ -77,6 +80,14 @@ public class ConsultationRecord {
         this.medProcedures = medProcedures;
         this.informedConsent = informedConsent;
         this.aditionalInformation = aditionalInformation;
+    }
+
+    public int getConsultationRecordId() {
+        return consultationRecordId;
+    }
+
+    public void setConsultationRecordId(int consultationRecordId) {
+        this.consultationRecordId = consultationRecordId;
     }
 
     public ClinicalRecord getClinicalRecord() {
@@ -111,12 +122,12 @@ public class ConsultationRecord {
         this.personalBackground = personalBackground;
     }
 
-    public String getFamiliarBackgroundt() {
-        return FamiliarBackgroundt;
+    public String getFamiliarBackground() {
+        return familiarBackground;
     }
 
-    public void setFamiliarBackgroundt(String familiarBackgroundt) {
-        FamiliarBackgroundt = familiarBackgroundt;
+    public void setFamiliarBackground(String familiarBackground) {
+        familiarBackground = familiarBackground;
     }
 
     public String getPhysicalExam() {
@@ -186,11 +197,12 @@ public class ConsultationRecord {
     @Override
     public String toString() {
         return "ConsultationRecord{" +
-                "clinicalRecord=" + clinicalRecord +
+                "consultationRecordId=" + consultationRecordId +
+                ", clinicalRecord=" + clinicalRecord +
                 ", reason='" + reason + '\'' +
                 ", currentIllness='" + currentIllness + '\'' +
                 ", personalBackground='" + personalBackground + '\'' +
-                ", FamiliarBackgroundt='" + FamiliarBackgroundt + '\'' +
+                ", familiarBackground='" + familiarBackground + '\'' +
                 ", physicalExam='" + physicalExam + '\'' +
                 ", dx='" + dx + '\'' +
                 ", treatment='" + treatment + '\'' +
