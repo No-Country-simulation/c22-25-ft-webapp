@@ -2,7 +2,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <>
-      <div>HomePage</div>
+      <div>HomePage 👋</div>
       <nav>
         <ul className="flex gap-4 underline">
           <li>
