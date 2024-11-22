@@ -1,11 +1,21 @@
-import { Button } from "@nextui-org/react";
+import Link from "next/link";
 export default function HomePage() {
   return (
     <>
       <div>HomePage</div>
-      <Button color="primary">
-        Button
-      </Button>
+      <nav>
+        <ul className="flex gap-4 underline">
+          <li>
+            <Link href={"/login"}>Login</Link>
+          </li>
+          <li>
+            <Link href={"/register"}>Register</Link>
+          </li>
+          <li>
+            <Link href={"/dashboard"}>Dashboard</Link>
+          </li>
+        </ul>
+      </nav>
     </>
   )
 }
