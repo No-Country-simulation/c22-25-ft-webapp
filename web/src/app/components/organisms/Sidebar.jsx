@@ -151,7 +151,7 @@ export const Sidebar = () => {
           ${isCollapsed ? 'justify-center' : ''}
         `}>
           <Avatar
-            src="/placeholder.svg"
+            src="/isotipo.svg"
             className="w-8 h-8"
             alt="User avatar"
             radius="sm"

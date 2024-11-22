@@ -77,7 +77,6 @@ export const LoginForm = () => {
       >
         {isLoading ? "Iniciando sesión..." : "Iniciar sesión"}
       </Button>
-
     </form>
   )
 }
