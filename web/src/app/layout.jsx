@@ -13,15 +13,15 @@ export const metadata = {
   },
   authors: [
     { name: '(Redu) - Eduardo R.', url: 'https://github.com/MrRedu' },
-    { name: '(Agus) María C.', url: '' },
-    { name: '(Franco) Franco A.', url: '' },
-    { name: '(Walter) Walter M.', url: '' },
-    { name: '(Juani) Juan T.', url: '' },
-    { name: '(Fer) Fernando V.', url: '' },
+    { name: '(Agus) María C.', url: 'https://github.com/ChichiCuello' },
+    { name: '(Franco) Franco A.', url: 'https://github.com/JSuggu' },
+    { name: '(Walter) Walter M.', url: 'https://github.com/WalterDanielMachacaChoque' },
+    { name: '(Juani) Juan T.', url: 'https://github.com/juani1987' },
+    { name: '(Fer) Fernando V.', url: 'https://github.com/juani1987' },
   ],
   creator: 'Equipo c22-25-ft-webapp - NoCountry',
   description: '',
-  keywords: ['', '', ''],
+  keywords: ['SALUS', '', ''],
 }
 
 export default function RootLayout({ children }) {
