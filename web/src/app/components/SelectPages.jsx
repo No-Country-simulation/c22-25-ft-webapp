@@ -11,6 +11,7 @@ const paginas = [
   { key: 'unauthorized', label: 'Unauthorized', href: '/unauthorized' },
   { key: 'notfound', label: 'Not Found', href: '/notfound' },
   { key: 'patients', label: 'Patients', href: '/patients' },
+  { key: 'new-patient', label: 'New Patient', href: '/patients/new' },
 ];
 
 export const SelectPages = () => {

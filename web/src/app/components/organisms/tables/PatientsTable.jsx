@@ -19,6 +19,7 @@ import {
   Pagination,
 } from "@nextui-org/react";
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from "lucide-react";
+import Link from 'next/link';
 // import { columns, users, statusOptions } from "./data";
 // import { capitalize } from "./utils";
 
@@ -244,7 +245,11 @@ export const PatientsTable = ({ users }) => {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" startContent={<PlusCircle />} className='bg-cloud-300'>
+            <Button
+              startContent={<PlusCircle />} className='bg-cloud-300 text-white'
+              href="/patients/new"
+              as={Link}
+            >
               Nuevo
             </Button>
           </div>
@@ -332,7 +337,7 @@ export const PatientsTable = ({ users }) => {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={"No users found"} items={sortedItems}>
+      <TableBody emptyContent={"No se ha encontrado ningún paciente"} items={sortedItems}>
         {(item) => (
           <TableRow key={item.id}>
             {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
