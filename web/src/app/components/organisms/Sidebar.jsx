@@ -45,7 +45,7 @@ export const Sidebar = () => {
       flex flex-col
       fixed left-0 top-0 
       bg-cloud-300 text-white
-      h-fit md:h-screen
+      h-fit md:h-screen z-50
       ${isCollapsed ? 'w-full md:w-16' : 'w-full md:w-72'}
     `}>
       {/* Header */}
