@@ -17,8 +17,8 @@ export default function NotFoundPage() {
       <Section className="flex flex-col justify-center items-center gap-4 max-w-[600px] mx-auto text-center
       h-[calc(100vh-5rem)]
       ">
-        <h1 className="text-9xl font-bold mb-10">#404</h1>
-        <h2 className="text-4xl font-bold text-wrap">¡Ups! No podemos encontrar esta página.</h2>
+        <h1 className="text-7xl lg:text-9xl font-bold lg:mb-10">#404</h1>
+        <h2 className="text-3xl lg:text-4xl font-bold text-wrap">¡Ups! No podemos encontrar esta página.</h2>
         <p className="">Parece que la información que buscas no está disponible. Si llegaste aquí por error, vuelve al Inicio para continuar tu trabajo.</p>
         <Button
           href="/"
