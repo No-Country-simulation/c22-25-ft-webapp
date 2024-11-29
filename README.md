@@ -56,60 +56,74 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 
 <table style="margin: auto; text-align: center;">
   <tr>
-    <td>
-    <img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100" >
-    </td>
-    <td><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100" ></td>
-    <td><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100" ></td>
-    <td><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100" ></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100"></td>
   </tr>
   <tr>
     <td align="center"><strong>Eduardo R.</strong></td>
-    <td><strong>María C.</strong></td>
-    <td><strong>Franco A.</strong></td>
-    <td><strong>Cynthia S.</strong></td>
+    <td align="center"><strong>María C.</strong></td>
+    <td align="center"><strong>Franco A.</strong></td>
+    <td align="center"><strong>Cynthia S.</strong></td>
   </tr>
   <tr>
-    <td>Front-End</td>
-    <td>UX/UI</td>
-    <td>Back-End</td>
-    <td>Team Leader</td>
+    <td align="center">Front-End</td>
+    <td align="center">UX/UI</td>
+    <td align="center">Back-End</td>
+    <td align="center">Team Leader</td>
   </tr>
   <tr>
-    <td style="text-align: center;">
-      <a href="https://www.linkedin.com/in/mrredu/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
-      <a href="https://www.linkedin.com/in/mrredu/"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/mrredu/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
+      </a>
+      <a href="https://www.linkedin.com/in/mrredu/">
+        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
+      </a>
     </td>
-    <td style="text-align: center;">
-      <a href="https://www.linkedin.com/in/maria-agustina-cuello/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
-      <a href="https://github.com/ChichiCuello"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/maria-agustina-cuello/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/ChichiCuello">
+        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
+      </a>
     </td>
-    <td style="text-align: center;">
-      <a href="https://www.linkedin.com/in/franco-azame/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
-      <a href="https://github.com/JSuggu"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/franco-azame/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/JSuggu">
+        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
+      </a>
     </td>
-    <td style="text-align: center;">
-      <a href="https://www.linkedin.com/in/cynthiasotelo/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
-      <a href="https://github.com/Cynthiavcp"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/cynthiasotelo/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/Cynthiavcp">
+        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
+      </a>
     </td>
   </tr>
   <tr>
-    <td><img src="https://avatars.githubusercontent.com/u/93456862?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/139728494?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/174650105?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/93456862?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/139728494?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/174650105?v=4" width="100"></td>
   </tr>
   <tr>
-    <td><strong>Walter M.</strong></td>
-    <td><strong>Fernando V.</strong></td>
-    <td><strong>Juan I.</strong></td>
+    <td align="center"><strong>Walter M.</strong></td>
+    <td align="center"><strong>Fernando V.</strong></td>
+    <td align="center"><strong>Juan I.</strong></td>
   </tr>
   <tr>
-    <td>Back-End</td>
-    <td>Back-End</td>
-    <td></td>
+    <td align="center">Back-End</td>
+    <td align="center">Back-End</td>
+    <td align="center"></td>
   </tr>
   <tr>
-    <td style="text-align: center;">
+    <td align="center">
       <a href="https://www.linkedin.com/in/walter-daniel-machaca-choque-885531209/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
       </a>
@@ -117,13 +131,13 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
         <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
       </a>
     </td>
-    <td style="text-align: center;">
+    <td align="center">
       <a href="https://www.linkedin.com/in/fernando-villafa%C3%B1e-arias-30044b2ab/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
       </a>
       <a href="https://github.com/fervifane12"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td style="text-align: center;">
+    <td align="center">
       <a href="#">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
       </a>
