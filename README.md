@@ -3,20 +3,19 @@
   <details align="left">
     <summary>Tabla de contenidos</summary>
     <ul>
-      <li><a href="#caracteristicas">Características</a></li>
-      <li><a href="#video-explicativo">Video explicativo</a></li>
-      <li><a href="#pruebalo-ahora-mismo">Demo</a></li>
-      <li><a href="#imagenes">Imágenes</a></li>
-      <li><a href="#tecnologias">Tecnologías</a></li>
-      <li><a href="#contribucion">¿Cómo contribuir?</a></li>
-      <li><a href="#licencia">Licencia</a></li>
-      <li><a href="#feedback">Feedback</a></li>
-      <li><a href="#equipo">Integrantes</a></li>
+      <li><a href="#-características">Características</a></li>
+      <li><a href="#-video-explicativo">Video explicativo</a></li>
+      <li><a href="#-pruébalo-ahora-mismo">Demo</a></li>
+      <li><a href="#%EF%B8%8F-imágenes">Imágenes</a></li>
+      <li><a href="#-tecnologías">Tecnologías</a></li>
+      <li><a href="#-contribución">¿Cómo contribuir?</a></li>
+      <li><a href="#%EF%B8%8F-licencia">Licencia</a></li>
+      <li><a href="#-feedback">Feedback</a></li>
       <!-- Equipo -->
       <li>
-        <a href="#equipo">Integrantes</a>
+        <a href="#equipo">Equipo</a>
         <ul>
-          <li><a href="#integrantes-del-equipo">Integrantes del equipo</a></li>
+          <li><a href="#%EF%B8%8F-integrantes-del-equipo-%EF%B8%8F">Integrantes del equipo</a></li>
           <!-- <li><a href="#contribuyentes">Contribuyentes</a></li> -->
         </ul>
     </li>
