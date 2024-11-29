@@ -16,7 +16,10 @@ _**Salus**_ es una plataforma orientada a [[entidades médicas]], diseñada para
 Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 [![Ver en Vídeo](https://img.shields.io/badge/Ver-Vídeo-pink?style=for-the-badge&logo=github)](./wiki/media/video-explicativo.mp4)
 
-## 👩🏻‍💻 **Prueba la aplicación en vivo**
+## 👩🏻‍💻 **¡Pruébalo ahora mismo!**
+
+<!-- TODO: Texto de ejemplo -->
+<!-- Visita la demostración en vivo y explora el sistema utilizando la barra de herramientas. Para personalizar el contenedor flexible, vaya a la pestaña Editar. Selecciona cualquier elemento del playground para modificar sus propiedades flex individuales. Una vez satisfecho con tu diseño, haz clic en el botón de código de la pestaña para obtener el código HTML y CSS generado. -->
 
 ¡Descubre <em>Salus</em> en este momento! <br>
 [![Ver Salus](https://img.shields.io/badge/Ver-Salus-0d3b66?style=for-the-badge&logo=vercel)](https://google.com)
@@ -42,10 +45,30 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 
 ![Next.js][Next.js]![React.js][React.js]![TailwindCSS][TailwindCSS]![NextUI][NextUI]![ReactHookForm][ReactHookForm]![ESLint][ESLint]![Prettier][Prettier]
 
+<!-- TODO: Texto de ejemplo -->
 <!-- ![Axios][Axios] -->
 <!-- ![Zustand][Zustand] -->
 
-<br>
+## 💪🏻 **Contribución**
+
+¡Eres bienvenido a contribuir en Salus! Si quieres contribuir, sigue estos pasos:
+
+1. Hazle fork al repositorio
+2. Crea una nueva rama: `git checkout -b feature/new-feature`
+3. Haz tus cambios y envíalos: `git commit -m 'Add new feature'`
+4. Empuja a la rama: `git push origin feature/new-feature`
+5. Envía un pull request con los cambios realizados.
+6. Espera a que revisemos y le hagamos merge a tu pull request.
+
+## ⚖️ **Licencia**
+
+Salus está bajo la [Licencia MIT](LICENSE).
+
+## 😺 **Feedback**
+
+Si tiene algún comentario, sugerencia o problema, [abra un issue](https://github.com/No-Country-simulation/c22-25-ft-webapp/issues). Agradecemos sus comentarios.
+
+<br><br>
 
 <div align="center">
   <p style="font-size: 48px">Equipo</p>
@@ -54,7 +77,7 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 
 <h2 align="center">🛡️ <strong>Integrantes del equipo</strong> ⚔️</h2>
 
-<table style="margin: auto; text-align: center;">
+<table align="center">
   <tr>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100"></td>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100"></td>
@@ -148,6 +171,7 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
   </tr>
 </table>
 
+<!-- TODO: Texto de ejemplo -->
 <!-- Esto solo podrá ser visible cuando el repositorio esté en "Público" -->
 <!-- <a href="https://github.com/No-Country-simulation/c22-25-ft-webapp/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=No-Country-simulation/c22-25-ft-webapp" />
@@ -159,16 +183,20 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
   <img src="./wiki/media/logo-nocountry.png" width="120px" />
 </div>
 
+<!-- -->
 <!--  -->
+<!--   -->
+<!--    -->
 <!--     -->
-<!--        -->
+<!--      -->
+
 <!-- MARKDOWN LINKS-->
 
-<!-- UX/UI - Skills -->
+<!-- UX/UI - Badges -->
 
 [Figma]: https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white
 
-<!-- Front-End - Skills -->
+<!-- Front-End - Badges -->
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
@@ -180,7 +208,7 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 [ESLint]: https://img.shields.io/badge/eslint-4b32c3?style=for-the-badge&logo=eslint&logoColor=white
 [Prettier]: https://img.shields.io/badge/prettier-f7b93e?style=for-the-badge&logo=prettier&logoColor=white
 
-<!-- Back-End - Skills -->
+<!-- Back-End - Badges -->
 
 [Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=Java&logoColor=white
 [SpringBoot]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
