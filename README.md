@@ -50,8 +50,6 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 [![ESLint][ESLint]][ESLint-url]
 [![Prettier][Prettier]][Prettier-url]
 
-
-
 <!-- [![Axios][Axios]][Axios-url] -->
 <!-- [![Zustand][Zustand]][Zustand-url] -->
 
@@ -66,10 +64,10 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 
 <table style="margin: auto; text-align: center;">
   <tr>
-    <td><img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100" style="display: block; margin: auto;"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100" style="display: block; margin: auto;"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100" style="display: block; margin: auto;"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100" style="display: block; margin: auto;"></td>
   </tr>
   <tr>
     <td><strong>Eduardo R.</strong></td>
@@ -84,27 +82,27 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
     <td>Team Leader</td>
   </tr>
   <tr>
-    <td>
+    <td style="text-align: center;">
       <a href="https://www.linkedin.com/in/mrredu/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://www.linkedin.com/in/mrredu/"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td>
-      <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
+    <td style="text-align: center;">
+      <a href="https://www.linkedin.com/in/maria-agustina-cuello/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/ChichiCuello"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td>
-      <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
+    <td style="text-align: center;">
+      <a href="https://www.linkedin.com/in/franco-azame/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/JSuggu"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td>
+    <td style="text-align: center;">
       <a href="https://www.linkedin.com/in/cynthiasotelo/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/Cynthiavcp"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
   </tr>
   <tr>
-    <td><img src="https://avatars.githubusercontent.com/u/93456862?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/139728494?v=4" width="100"></td>
-    <td><img src="https://avatars.githubusercontent.com/u/174650105?v=4" width="100"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/93456862?v=4" width="100" style="display: block; margin: auto;"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/139728494?v=4" width="100" style="display: block; margin: auto;"></td>
+    <td><img src="https://avatars.githubusercontent.com/u/174650105?v=4" width="100" style="display: block; margin: auto;"></td>
   </tr>
   <tr>
     <td><strong>Walter M.</strong></td>
@@ -117,21 +115,20 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
     <td></td>
   </tr>
   <tr>
-    <td>
-      <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
+    <td style="text-align: center;">
+      <a href="https://www.linkedin.com/in/walter-daniel-machaca-choque-885531209/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/WalterDanielMachacaChoque"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td>
-      <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
+    <td style="text-align: center;">
+      <a href="https://www.linkedin.com/in/fernando-villafa%C3%B1e-arias-30044b2ab/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/fervifane12"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td>
+    <td style="text-align: center;">
       <a href="#"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a> 
       <a href="https://github.com/juani1987"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
   </tr>
 </table>
-
 <br><br>
 
 <div align="center">
@@ -142,33 +139,6 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 <!--     -->
 <!--        -->
 <!-- MARKDOWN LINKS-->
-
-<!-- Profiles -->
-
-[EduardoGH-url]: https://www.linkedin.com/in/mrredu/
-[EduardoLK-url]: https://www.linkedin.com/in/mrredu/
-[ChichiGH-url]: https://github.com/ChichiCuello
-
-<!-- [ChichiLK-url]:  -->
-
-[FrancoGH-url]: https://github.com/JSuggu
-
-<!-- [FrancoLK-url]: -->
-
-[WalterGH-url]: https://github.com/WalterDanielMachacaChoque
-
-<!-- [WalterLK-url]: -->
-
-[FernandoGH-url]: https://github.com/fervifane12
-
-<!-- [FernandoLK-url]: -->
-
-[JuanGH-url]: https://github.com/juani1987
-
-<!-- [JuanLK-url]: -->
-
-[CynthiaGH-url]: https://github.com/Cynthiavcp
-[CynthiaLK-url]: https://www.linkedin.com/in/cynthiasotelo/
 
 <!-- Front-End - Skills -->
 
@@ -199,8 +169,3 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [PostgreSQL]: https://img.shields.io/badge/PostgreSQL-4169e1?style=for-the-badge&logo=PostgreSQL&logoColor=white
 [PostgreSQL-url]: https://spring.io/projects/spring-boot
-
-<!-- Badges - Links -->
-
-[LinkedIn]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white
-[GitHub]: https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white
