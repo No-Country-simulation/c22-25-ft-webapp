@@ -1,5 +1,27 @@
 <div align="center">
-  <img src="./wiki/media/banner.png" width="800px" alt="Banner">
+  <img src="./wiki/media/banner.png" alt="Banner">
+  <details align="left">
+    <summary>Tabla de contenidos</summary>
+    <ul>
+      <li><a href="#caracteristicas">Características</a></li>
+      <li><a href="#video-explicativo">Video explicativo</a></li>
+      <li><a href="#pruebalo-ahora-mismo">Demo</a></li>
+      <li><a href="#imagenes">Imágenes</a></li>
+      <li><a href="#tecnologias">Tecnologías</a></li>
+      <li><a href="#contribucion">¿Cómo contribuir?</a></li>
+      <li><a href="#licencia">Licencia</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+      <li><a href="#equipo">Integrantes</a></li>
+      <!-- Equipo -->
+      <li>
+        <a href="#equipo">Integrantes</a>
+        <ul>
+          <li><a href="#integrantes-del-equipo">Integrantes del equipo</a></li>
+          <!-- <li><a href="#contribuyentes">Contribuyentes</a></li> -->
+        </ul>
+    </li>
+    </ul>
+</details>
 </div>
 <h3 align="center">Equipo <strong>c22-25-ft-webapp</strong> 🐐</h3>
 
@@ -71,7 +93,7 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
 <br><br>
 
 <div align="center">
-  <p style="font-size: 48px">Equipo</p>
+  <h3 style="font-size: 48px">Equipo</h3>
   <img src="./web/public/logo.svg" width="800px" alt="Logo">
 </div>
 
