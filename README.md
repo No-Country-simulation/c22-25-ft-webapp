@@ -122,7 +122,7 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
       <a href="https://www.linkedin.com/in/mrredu/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
       </a>
-      <a href="https://www.linkedin.com/in/mrredu/">
+      <a href="https://github.com/MrRedu">
         <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
       </a>
     </td>
