@@ -15,7 +15,7 @@
       <li>
         <a href="#equipo">Equipo</a>
         <ul>
-          <li><a href="#%EF%B8%8F-integrantes-del-equipo-%EF%B8%8F">Integrantes del equipo</a></li>
+          <li><a href="#%EF%B8%8F-integrantes-core-%EF%B8%8F">Integrantes core</a></li>
           <!-- <li><a href="#contribuyentes">Contribuyentes</a></li> -->
         </ul>
     </li>
@@ -92,11 +92,11 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
 <br><br>
 
 <div align="center">
-  <h3 style="font-size: 48px">Equipo</h3>
+  <h2 style="font-size: 48px;">Equipo</h2>
   <img src="./web/public/logo.svg" width="800px" alt="Logo">
 </div>
 
-<h2 align="center">🛡️ <strong>Integrantes del equipo</strong> ⚔️</h2>
+<h3 align="center">🛡️ <strong>Integrantes core</strong> ⚔️</h3>
 
 <table align="center">
   <tr>
