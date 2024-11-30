@@ -1,6 +1,6 @@
 package com.webapp.backend.components.specialtyArea;
 
-import com.webapp.backend.components.user.User;
+import com.webapp.backend.user.User;
 import jakarta.persistence.*;
 
 @Entity
