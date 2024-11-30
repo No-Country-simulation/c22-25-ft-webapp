@@ -1,0 +1,140 @@
+package com.webapp.backend.user;
+
+import com.webapp.backend.components.clinicalRecord.ClinicalRecord;
+import com.webapp.backend.role.Role;
+import com.webapp.backend.components.specialtyArea.SpecialtyArea_User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static jakarta.persistence.FetchType.EAGER;
+
+@Entity
+@Getter
+@Setter
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
+public class User implements UserDetails, Principal {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int userId;
+
+  @Column(name = "first_name", nullable = false)
+  private String firstName;
+
+  @Column(name = "last_name", nullable = false)
+  private String lastName;
+
+  @Column(name = "password", nullable = false)
+  private String password;
+
+  @Column(name = "email", nullable = false, unique = true)
+  private String email;
+
+  private boolean accountLocked;
+  private boolean enabled;
+
+  @ManyToMany(fetch = EAGER)
+  //@JoinColumn(name = "role_id")
+  private List<Role> role;
+
+  @OneToMany(targetEntity = ClinicalRecord.class, fetch = EAGER, mappedBy = "user")
+  private List<ClinicalRecord> clinicalRecord;
+
+  @OneToMany(targetEntity = SpecialtyArea_User.class, fetch = EAGER, mappedBy = "user")
+  private List<SpecialtyArea_User> specialtyAreaUsers;
+
+  @CreatedDate
+  @Column(nullable = false, updatable = false)
+  private LocalDateTime createdDate;
+
+  @LastModifiedDate
+  @Column(insertable = false)
+  private LocalDateTime lastModifiedDate;
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+
+    return this.role
+            .stream()
+            .map(r -> new SimpleGrantedAuthority(r.getName()))
+            .collect(Collectors.toList());
+  }
+
+  @Override
+  public String getPassword() {
+    return password;
+  }
+
+  @Override
+  public String getUsername() {
+    return email;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return enabled;
+  }
+
+  public String fullName() {
+    return getFirstName() + " " + getLastName();
+  }
+
+  @Override
+  public String getName() {
+    return email;
+  }
+
+  public String getFullName() {
+    return firstName + " " + lastName;
+  }
+
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "userId=" + userId +
+            ", name='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", password='" + password + '\'' +
+            ", email='" + email + '\'' +
+            ", role=" + role +
+            '}';
+  }
+}
