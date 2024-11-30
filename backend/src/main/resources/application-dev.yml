@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/healtech
     username: postgres
-    password: Thestrongest12
+    password: you-password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
