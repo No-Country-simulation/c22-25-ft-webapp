@@ -2,7 +2,7 @@ package com.webapp.backend.components.clinicalRecord;
 
 import com.webapp.backend.components.consultationRecord.ConsultationRecord;
 import com.webapp.backend.components.patient.Patient;
-import com.webapp.backend.components.user.User;
+import com.webapp.backend.user.User;
 import jakarta.persistence.*;
 
 import java.util.Date;
