@@ -18,7 +18,6 @@ export const CardDashboard = ({
   quantity,
   icon,
 }) => {
-  console.log((Number(quantity) / Number(fullQuantity)) * 100)
   return (
     <Card className="w-full shadow p-4">
       <CardHeader>
