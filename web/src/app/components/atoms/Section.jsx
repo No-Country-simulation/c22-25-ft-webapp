@@ -5,8 +5,8 @@ export const Section = ({ children, className }) => {
       {children}
     </section>
   )
-};
+}
 Section.propTypes = {
   children: propTypes.node,
-  className: propTypes.string
+  className: propTypes.string,
 }

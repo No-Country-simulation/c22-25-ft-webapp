@@ -4,4 +4,4 @@ export default function SupportPage() {
       <h2>{`</SupportPage>`}</h2>
     </>
   )
-};
+}

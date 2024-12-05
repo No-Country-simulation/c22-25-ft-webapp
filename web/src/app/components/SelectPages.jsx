@@ -1,7 +1,7 @@
 'use client'
-//  Este componente es momentáneo; para observar las páginas disponibles, 
-import { Select, SelectItem } from "@nextui-org/react";
-import Link from "next/link";
+//  Este componente es momentáneo; para observar las páginas disponibles,
+import { Select, SelectItem } from '@nextui-org/react'
+import Link from 'next/link'
 
 const paginas = [
   { key: 'inicio', label: 'Inicio', href: '/' },
@@ -12,7 +12,7 @@ const paginas = [
   { key: 'notfound', label: 'Not Found', href: '/notfound' },
   { key: 'patients', label: 'Patients', href: '/patients' },
   { key: 'new-patient', label: 'New Patient', href: '/patients/new' },
-];
+]
 
 export const SelectPages = () => {
   return (
@@ -30,4 +30,4 @@ export const SelectPages = () => {
       ))}
     </Select>
   )
-};
+}
