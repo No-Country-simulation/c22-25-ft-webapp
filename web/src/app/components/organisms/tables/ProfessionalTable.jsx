@@ -56,6 +56,7 @@ const INITIAL_VISIBLE_COLUMNS = ['professional', 'role', 'status', 'actions']
 
 export const ProfessionalTable = ({ users }) => {
   const modalToEditProfessional = useDisclosure()
+  const modalToDeleteProfessional = useDisclosure()
   // const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
@@ -121,9 +122,9 @@ export const ProfessionalTable = ({ users }) => {
 
   const [userSelected, setUserSelected] = useState(null)
 
-  const handleRowSelection = user => {
+  const handleRowSelection = (user, modal) => {
     setUserSelected(user)
-    modalToEditProfessional.onOpen()
+    modal.onOpen()
   }
 
   const renderCell = useCallback((user, columnKey) => {
@@ -173,11 +174,22 @@ export const ProfessionalTable = ({ users }) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu>
-                <DropdownItem>Ver</DropdownItem>
-                <DropdownItem onPress={() => handleRowSelection(user)}>
+                {/* <DropdownItem>Ver</DropdownItem> */}
+                <DropdownItem
+                  onPress={() =>
+                    handleRowSelection(user, modalToEditProfessional)
+                  }
+                >
                   Editar
                 </DropdownItem>
-                <DropdownItem>Eliminar</DropdownItem>
+                <DropdownItem
+                  color="danger"
+                  onPress={() =>
+                    handleRowSelection(user, modalToDeleteProfessional)
+                  }
+                >
+                  Eliminar
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
@@ -425,6 +437,43 @@ export const ProfessionalTable = ({ users }) => {
                 </Button>
                 <Button color="primary" onPress={onClose}>
                   Guardar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+      {/* Modal to delete professional */}
+      <Modal
+        isOpen={modalToDeleteProfessional.isOpen}
+        onOpenChange={modalToDeleteProfessional.onOpenChange}
+        isDismissable={false}
+        isKeyboardDismissDisabled={true}
+      >
+        <ModalContent>
+          {onClose => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Información de profesional
+              </ModalHeader>
+              <ModalBody>
+                {/* <EditProfessional user={userSelected} /> */}
+                Estás seguro de eliminar al profesional
+                <pre>{JSON.stringify(userSelected, null, 2)}</pre>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cerrar
+                </Button>
+                <Button
+                  color="danger"
+                  onPress={() => {
+                    // Lógica acá
+                    alert('Profesional eliminado')
+                    onClose()
+                  }}
+                >
+                  Eliminar
                 </Button>
               </ModalFooter>
             </>
