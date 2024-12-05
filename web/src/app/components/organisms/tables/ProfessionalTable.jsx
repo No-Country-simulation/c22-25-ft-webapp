@@ -457,7 +457,6 @@ export const ProfessionalTable = ({ users }) => {
                 Información de profesional
               </ModalHeader>
               <ModalBody>
-                {/* <EditProfessional user={userSelected} /> */}
                 Estás seguro de eliminar al profesional
                 <pre>{JSON.stringify(userSelected, null, 2)}</pre>
               </ModalBody>
