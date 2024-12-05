@@ -38,6 +38,9 @@ public class User implements UserDetails, Principal {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int userId;
 
+  @Column(nullable = false)
+  private int dni;
+
   @Column(name = "first_name", nullable = false)
   private String firstName;
 
@@ -54,7 +57,6 @@ public class User implements UserDetails, Principal {
   private boolean enabled;
 
   @ManyToMany(fetch = EAGER)
-  //@JoinColumn(name = "role_id")
   private List<Role> role;
 
   @OneToMany(targetEntity = ClinicalRecord.class, fetch = EAGER, mappedBy = "user")
@@ -76,7 +78,7 @@ public class User implements UserDetails, Principal {
 
     return this.role
             .stream()
-            .map(r -> new SimpleGrantedAuthority(r.getName()))
+            .map(r -> new SimpleGrantedAuthority("ROLE_" + r.getName()))
             .collect(Collectors.toList());
   }
 

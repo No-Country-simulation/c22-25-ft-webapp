@@ -1,5 +1,6 @@
 package com.webapp.backend.auth;
 
+import com.webapp.backend.user.User;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -9,23 +10,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("")
 @RequiredArgsConstructor
 @Tag(name="Authentication")
 public class AuthenticationController {
 
     private final AuthenticationService service;
 
-    @PostMapping("/register")
+    @PostMapping("/checkin")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<?> register(
-            @RequestBody @Valid RegistrationRequest request
-    ) throws MessagingException {
-        service.register(request);
-        return ResponseEntity.accepted().build();
+    public ResponseEntity<User> register(@RequestBody @Valid RegistrationRequest request) throws MessagingException {
+        var savedUser = service.register(request);
+        return ResponseEntity.status(201).body(savedUser);
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody @Valid AuthenticationRequest request
     ) {

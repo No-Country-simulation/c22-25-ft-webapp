@@ -2,9 +2,11 @@ package com.webapp.backend.components.specialtyArea;
 
 import com.webapp.backend.user.User;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "specialty_area_user")
+@Getter
 public class SpecialtyArea_User {
     @Id
     @Column(name = "specialist_id")
@@ -23,14 +25,6 @@ public class SpecialtyArea_User {
     }
 
     public SpecialtyArea_User() {
-    }
-
-    public Long getSpecialistId() {
-        return specialistId;
-    }
-
-    public void setSpecialistId(Long specialistId) {
-        this.specialistId = specialistId;
     }
 
     @Override
