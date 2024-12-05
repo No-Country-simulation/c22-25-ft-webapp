@@ -25,7 +25,7 @@ import {
   ModalFooter,
 } from '@nextui-org/react'
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import { EditProfessional } from '../forms/EditProfessional'
 // import { columns, users, statusOptions } from "./data";
 
@@ -284,8 +284,8 @@ export const ProfessionalTable = ({ users }) => {
             <Button
               startContent={<PlusCircle />}
               className="bg-cloud-300 text-white"
-              // href="/patients/new"
-              // as={Link}
+              href="/professionals/new"
+              as={Link}
             >
               Nuevo
             </Button>

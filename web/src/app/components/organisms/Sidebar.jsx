@@ -1,30 +1,25 @@
 'use client'
 import { Button, Link, Avatar, Divider, Tooltip } from '@nextui-org/react'
-import { Plus, Book, FolderGit2, MessageSquare, PanelRight } from 'lucide-react'
+import { UserCheck, Users, LayoutDashboard, PanelRight } from 'lucide-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 const mainNavItems = [
   {
-    icon: <Plus className="h-5 w-5" />,
-    label: 'Inicio de sesión',
-    href: '/login',
-  },
-  {
-    icon: <Book className="h-5 w-5" />,
-    label: 'Registrarse',
-    href: '/register',
-  },
-  {
-    icon: <FolderGit2 className="h-5 w-5" />,
+    icon: <LayoutDashboard className="h-5 w-5" />,
     label: 'Dashboard',
     href: '/dashboard',
   },
   {
-    icon: <MessageSquare className="h-5 w-5" />,
-    label: 'Pantalla con lista',
-    href: '/',
+    icon: <UserCheck className="h-5 w-5" />,
+    label: 'Profesionales',
+    href: '/professionals',
+  },
+  {
+    icon: <Users className="h-5 w-5" />,
+    label: 'Pacientes',
+    href: '/patients',
   },
 ]
 

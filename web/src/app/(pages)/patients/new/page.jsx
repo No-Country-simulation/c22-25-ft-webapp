@@ -413,7 +413,7 @@ export default function NewPatientPage() {
             type="button"
             variant="bordered"
             color="danger"
-            onClick={reset}
+            onClick={() => reset()}
           >
             Limpiar
           </Button>
