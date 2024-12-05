@@ -1,6 +1,6 @@
 'use client'
 import propTypes from 'prop-types'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
   Table,
   TableHeader,
