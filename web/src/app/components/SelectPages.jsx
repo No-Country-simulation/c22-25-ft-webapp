@@ -12,6 +12,7 @@ const paginas = [
   { key: 'notfound', label: 'Not Found', href: '/notfound' },
   { key: 'patients', label: 'Patients', href: '/patients' },
   { key: 'new-patient', label: 'New Patient', href: '/patients/new' },
+  { key: 'professionals', label: 'Professionals', href: '/professionals' },
 ]
 
 export const SelectPages = () => {
