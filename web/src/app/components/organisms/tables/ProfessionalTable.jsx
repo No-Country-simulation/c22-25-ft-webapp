@@ -1,6 +1,6 @@
 'use client'
 import propTypes from 'prop-types'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Table,
   TableHeader,
@@ -17,9 +17,16 @@ import {
   Chip,
   User,
   Pagination,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from '@nextui-org/react'
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
-import Link from 'next/link'
+// import Link from 'next/link'
+import { EditProfessional } from '../forms/EditProfessional'
 // import { columns, users, statusOptions } from "./data";
 
 const columns = [
@@ -48,6 +55,8 @@ const statusColorMap = {
 const INITIAL_VISIBLE_COLUMNS = ['professional', 'role', 'status', 'actions']
 
 export const ProfessionalTable = ({ users }) => {
+  const modalToEditProfessional = useDisclosure()
+  // const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(
@@ -110,6 +119,13 @@ export const ProfessionalTable = ({ users }) => {
     })
   }, [sortDescriptor, items])
 
+  const [userSelected, setUserSelected] = useState(null)
+
+  const handleRowSelection = user => {
+    setUserSelected(user)
+    modalToEditProfessional.onOpen()
+  }
+
   const renderCell = useCallback((user, columnKey) => {
     const cellValue = user[columnKey]
 
@@ -158,7 +174,9 @@ export const ProfessionalTable = ({ users }) => {
               </DropdownTrigger>
               <DropdownMenu>
                 <DropdownItem>Ver</DropdownItem>
-                <DropdownItem>Editar</DropdownItem>
+                <DropdownItem onPress={() => handleRowSelection(user)}>
+                  Editar
+                </DropdownItem>
                 <DropdownItem>Eliminar</DropdownItem>
               </DropdownMenu>
             </Dropdown>
@@ -200,6 +218,7 @@ export const ProfessionalTable = ({ users }) => {
     setPage(1)
   }, [])
 
+  // Header
   const topContent = useMemo(() => {
     return (
       <div className="flex flex-col gap-4">
@@ -265,8 +284,8 @@ export const ProfessionalTable = ({ users }) => {
             <Button
               startContent={<PlusCircle />}
               className="bg-cloud-300 text-white"
-              href="/patients/new"
-              as={Link}
+              // href="/patients/new"
+              // as={Link}
             >
               Nuevo
             </Button>
@@ -300,12 +319,13 @@ export const ProfessionalTable = ({ users }) => {
     hasSearchFilter,
   ])
 
+  // Footer
   const bottomContent = useMemo(() => {
     return (
       <div className="py-2 px-2 flex justify-between items-center">
         <span className="w-[30%] text-small text-default-400">
           {selectedKeys === 'all'
-            ? 'Todos los pacientes seleccionados'
+            ? 'Todos los profesionales seleccionados'
             : `${selectedKeys.size} de ${filteredItems.length} seleccionados`}
         </span>
         <Pagination
@@ -339,45 +359,79 @@ export const ProfessionalTable = ({ users }) => {
     )
   }, [selectedKeys, items.length, page, pages, hasSearchFilter])
 
+  // Table
   return (
-    <Table
-      aria-label="Tabla de profesionales registrados"
-      isHeaderSticky
-      bottomContent={bottomContent}
-      bottomContentPlacement="outside"
-      classNames={{
-        wrapper: 'max-h-[382px]',
-      }}
-      selectedKeys={selectedKeys}
-      selectionMode="single"
-      sortDescriptor={sortDescriptor}
-      topContent={topContent}
-      topContentPlacement="outside"
-      onSelectionChange={setSelectedKeys}
-      onSortChange={setSortDescriptor}
-    >
-      <TableHeader columns={headerColumns}>
-        {column => (
-          <TableColumn
-            key={column.uid}
-            align={column.uid === 'actions' ? 'center' : 'start'}
-            allowsSorting={column.sortable}
-          >
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody
-        emptyContent={'No se ha encontrado ningún profesional'}
-        items={sortedItems}
+    <>
+      <Table
+        aria-label="Tabla de profesionales registrados"
+        isHeaderSticky
+        bottomContent={bottomContent}
+        bottomContentPlacement="outside"
+        classNames={{
+          wrapper: 'max-h-[382px]',
+        }}
+        selectedKeys={selectedKeys}
+        selectionMode="single"
+        sortDescriptor={sortDescriptor}
+        topContent={topContent}
+        topContentPlacement="outside"
+        onSelectionChange={setSelectedKeys}
+        onSortChange={setSortDescriptor}
       >
-        {item => (
-          <TableRow key={item.license}>
-            {columnKey => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+        <TableHeader columns={headerColumns}>
+          {column => (
+            <TableColumn
+              key={column.uid}
+              align={column.uid === 'actions' ? 'center' : 'start'}
+              allowsSorting={column.sortable}
+            >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody
+          emptyContent={'No se ha encontrado ningún profesional'}
+          items={sortedItems}
+        >
+          {item => (
+            <TableRow key={item.license}>
+              {columnKey => (
+                <TableCell>{renderCell(item, columnKey)}</TableCell>
+              )}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+
+      {/* Modal to edit professional */}
+      <Modal
+        isOpen={modalToEditProfessional.isOpen}
+        onOpenChange={modalToEditProfessional.onOpenChange}
+        isDismissable={false}
+        isKeyboardDismissDisabled={true}
+      >
+        <ModalContent>
+          {onClose => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Información de profesional
+              </ModalHeader>
+              <ModalBody>
+                <EditProfessional user={userSelected} />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Cerrar
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Guardar
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
   )
 }
 
