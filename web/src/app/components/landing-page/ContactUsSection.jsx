@@ -1,10 +1,13 @@
-import { ContactUsForm } from '../organisms/forms/ContactUsForm'
 import Image from 'next/image'
-import { Section } from '../atoms/Section'
+import { ContactUsForm } from '@/components/organisms/forms/ContactUsForm'
+import { Section } from '@/components/atoms/Section'
 
 export const ContactUsSection = () => {
   return (
-    <Section className="lg:grid lg:grid-cols-2 md:min-h-[680px] lg:p-0 my-10">
+    <Section
+      id={'contact-us'}
+      className="lg:grid lg:grid-cols-2 lg:min-h-[680px] lg:p-0 my-10"
+    >
       <div className="hidden lg:grid place-items-center bg-pink-300 w-full h-full rounded-r-[200px]">
         <Image
           width={320}

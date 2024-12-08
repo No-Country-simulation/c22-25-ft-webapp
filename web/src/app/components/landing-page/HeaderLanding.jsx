@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import {
   Navbar,
   NavbarBrand,
@@ -9,10 +10,8 @@ import {
   NavbarItem,
   Button,
 } from '@nextui-org/react'
-import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-// import { usePathname } from 'next/navigation'
 
 const menuItems = [
   { label: 'Nuestro servicio', href: '#' },
@@ -21,9 +20,7 @@ const menuItems = [
 ]
 
 export const HeaderLanding = () => {
-  // const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  // console.log(pathname)
   return (
     <Navbar
       isBordered
@@ -39,26 +36,39 @@ export const HeaderLanding = () => {
 
       <NavbarContent className="sm:hidden px-3" justify="center">
         <NavbarBrand>
-          <Image src="/logo.svg" alt="Logo" width={200} height={200} />
+          <Image
+            src="/logo.svg"
+            priority
+            alt="SALUS Logo"
+            width={200}
+            height={200}
+          />
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4 w-full" justify="center">
         <NavbarBrand>
-          {/* <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p> */}
-          <Image src="/logo.svg" alt="Logo" width={200} height={200} />
+          <Image
+            src="/logo.svg"
+            priority
+            alt="SALUS Logo"
+            width={200}
+            height={200}
+          />
         </NavbarBrand>
         <NavbarItem className="ml-auto text-sm md:text-base">
-          <Link href="#">Nuestro servicios</Link>
+          <Link href="#features">Nuestro servicios</Link>
         </NavbarItem>
-        <NavbarItem isActive className="text-sm md:text-base">
-          <Link aria-current="page" href="#">
+        <NavbarItem
+          // isActive
+          className="text-sm md:text-base"
+        >
+          <Link aria-current="page" href="#about-us">
             Sobre nosotros
           </Link>
         </NavbarItem>
-        <NavbarItem className="text-sm md:text-base">
-          <Link href="#">Contáctanos</Link>
+        <NavbarItem className="text-sm md:text-base" isActive={false}>
+          <Link href="#contact-us">Contáctanos</Link>
         </NavbarItem>
       </NavbarContent>
 
@@ -66,7 +76,7 @@ export const HeaderLanding = () => {
         <NavbarItem className="hidden lg:flex">
           <Button
             as={Link}
-            href="/login"
+            href="/register"
             variant="solid"
             className="bg-pink-300 text-cloud-300"
           >

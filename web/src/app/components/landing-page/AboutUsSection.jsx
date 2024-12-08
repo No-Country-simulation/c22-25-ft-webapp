@@ -4,6 +4,7 @@ import Image from 'next/image'
 export const AboutUsSection = () => {
   return (
     <Section
+      id={'about-us'}
       className={
         'grid grid-cols-1 md:grid-cols-2 gap-8 items-center lg:p-12 my-10'
       }

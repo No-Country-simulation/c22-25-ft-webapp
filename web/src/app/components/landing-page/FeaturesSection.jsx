@@ -39,7 +39,7 @@ const features = [
 
 export const FeaturesSection = () => {
   return (
-    <Section className="flex flex-col gap-10 lg:p-12 my-10">
+    <Section id={'features'} className="flex flex-col gap-10 lg:p-12 my-10">
       <div className="flex flex-col items-center gap-4 mb-8">
         <h2 className="text-3xl md:text-4xl font-bold text-cloud-300">{`Funcionalidades`}</h2>
         <p className="text-cloud-300 max-w-md text-pretty text-center">{`Optimiza la atención y gestión de tus profesionales con nuestra plataforma integral, diseñada para hacer más eficiente cada paso del proceso médico.`}</p>
