@@ -1,7 +1,11 @@
-import { HeaderLanding } from '@/components/landing-page/HeaderLanding'
-import { HeroSection } from '@/components/landing-page/HeroSection'
-import { FeaturesSection } from '@/components/landing-page/FeaturesSection'
-import { MetricsSection } from '@/components/landing-page/MetricsSection'
+import {
+  HeaderLanding,
+  HeroSection,
+  FeaturesSection,
+  MetricsSection,
+  AboutUsSection,
+  ContactUsSection,
+} from '@/components/landing-page'
 
 export default function HomePage() {
   return (
@@ -10,6 +14,8 @@ export default function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <MetricsSection />
+      <AboutUsSection />
+      <ContactUsSection />
     </>
   )
 }
