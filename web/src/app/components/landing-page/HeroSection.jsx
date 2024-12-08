@@ -12,7 +12,12 @@ export const HeroSection = () => {
     >
       <div className="mt-12 md:mt-0">
         <h2 className="text-3xl lg:text-5xl font-black mb-8 text-cloud-300">{`Historia clínica ambulatoria`}</h2>
-        <p className="text-cloud-300 leading-relaxed">{`Una solución integral que permite a las instituciones y a los profesionales de la salud registrar, gestionar y hacer un seguimiento completo de la historia clínica de sus pacientes, todo en un solo lugar.`}</p>
+        <p className="text-cloud-300 leading-relaxed">
+          {`Una `}
+          <strong>solución integral </strong>
+          {`que permite a las instituciones y a los profesionales de la salud registrar, gestionar y hacer un seguimiento completo de la historia clínica de sus pacientes,`}{' '}
+          <strong>todo en un solo lugar.</strong>
+        </p>
         <Button
           href="/"
           as={Link}
@@ -28,10 +33,9 @@ export const HeroSection = () => {
           width={1000}
           height={800}
           priority
-          // placeholder="blur"
           quality={100}
           src="/hero-section.webp"
-          alt=""
+          alt="Sección del listado de pacientes dentro del sistema; donde se pueden ver los pacientes y sus datos"
           className="w-full h-full "
         />
       </div>
