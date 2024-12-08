@@ -5,6 +5,7 @@ import {
   MetricsSection,
   AboutUsSection,
   ContactUsSection,
+  TestimonialsSection,
 } from '@/components/landing-page'
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
       <MetricsSection />
       <AboutUsSection />
       <ContactUsSection />
+      <TestimonialsSection />
     </>
   )
 }
