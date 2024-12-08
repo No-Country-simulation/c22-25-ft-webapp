@@ -7,7 +7,7 @@ export const HeroSection = () => {
   return (
     <Section
       className={
-        'grid grid-cols-1 md:grid-cols-[40%_60%] gap-8 min-h-[calc(100svh-64px)] items-center lg:p-12'
+        'grid grid-cols-1 md:grid-cols-[40%_60%] gap-8  items-center lg:p-12'
       }
     >
       <div className="mt-12 md:mt-0">

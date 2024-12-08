@@ -21,7 +21,7 @@ const metricsData = [
 
 export const MetricsSection = () => {
   return (
-    <Section className={'bg-pink-300 py-12 lg:py-16'}>
+    <Section className={'bg-pink-300 py-12 lg:py-16 my-10'}>
       <h2 className="hidden">Métricas de impacto</h2>
       <ul className="grid grid-cols-2 grid-rows-3 md:grid-cols-4 md:grid-rows-1 gap-12 md:gap-4">
         {metricsData.map((metric, index) => (
