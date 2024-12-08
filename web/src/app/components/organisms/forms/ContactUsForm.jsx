@@ -7,11 +7,13 @@ export const ContactUsForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
 
   const onSubmit = handleSubmit(data => {
     console.log(data)
     alert('Enviando mensaje...')
+    reset()
   })
 
   return (
