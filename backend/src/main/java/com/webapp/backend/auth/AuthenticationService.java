@@ -2,6 +2,7 @@ package com.webapp.backend.auth;
 
 import com.webapp.backend.email.EmailService;
 import com.webapp.backend.email.EmailTemplateName;
+import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
 import com.webapp.backend.security.JwtService;
 import com.webapp.backend.user.Token;
@@ -12,6 +13,7 @@ import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +24,7 @@ import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,21 +41,26 @@ public class AuthenticationService {
     @Value("${application.mailing.frontend.activation-url}")
     private String activationUrl;
 
-    public void register(RegistrationRequest request) throws MessagingException {
-        var userRole = roleRepository.findByName("USER")
-                // todo - better exception handling
-                .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
+    public User register(RegistrationRequest request) throws MessagingException {
+        List<Role> roles = request.getRoles().stream().map(role -> {
+            return roleRepository.findByName(role.toLowerCase())
+                    // todo - better exception handling
+                    .orElseThrow(() -> new IllegalStateException("ROLE " + role +  " was not initiated"));
+        }).collect(Collectors.toList());
+
         var user = User.builder()
+                .dni(request.getDni())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
                 .enabled(false)
-                .role(List.of(userRole))
+                .role(roles)
                 .build();
-        userRepository.save(user);
-        sendValidationEmail(user);
+
+        return userRepository.save(user);
+        //sendValidationEmail(user)
     }
 
 
@@ -84,7 +92,7 @@ public class AuthenticationService {
             throw new RuntimeException("Activation token has expired. A new token has been send to the same email address");
         }
 
-        var user = userRepository.findById(savedToken.getUser().getUserId())
+        var user = userRepository.findByDni(savedToken.getUser().getUserId())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         user.setEnabled(true);
         userRepository.save(user);
