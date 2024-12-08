@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function LoginPage() {
   return (
-    <Section className="lg:grid lg:grid-cols-2 min-h-screen lg:p-0">
+    <Section className="lg:grid lg:grid-cols-2 items-center min-h-screen lg:p-0">
       <Image
         width={200}
         height={200}
@@ -20,10 +20,10 @@ export default function LoginPage() {
           height={200}
           src="/logo-negative.svg"
           alt="Logo"
-          className=""
+          className="Logo en negativo de SALUS"
         />
       </div>
-      <WrapperForm title="Inicio de sesión" className="mt-32">
+      <WrapperForm title="Inicio de sesión">
         <LoginForm />
         <div className="text-center flex flex-col gap-2 text-sm">
           <Link
