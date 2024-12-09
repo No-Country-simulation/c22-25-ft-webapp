@@ -31,7 +31,4 @@ public class RegistrationRequest {
     @NotNull(message = "Password is mandatory")
     @Size(min = 8, message = "Password should be 8 characters long minimum")
     private String password;
-    @NotEmpty(message = "Rol is mandatory")
-    @NotNull(message = "Rol is mandatory")
-    private List<String> roles;
 }

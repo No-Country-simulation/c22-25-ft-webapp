@@ -24,6 +24,8 @@ public class ClinicalRecordDTOForPatient {
         this.recordId = clinicalRecord.getRecordId();
         this.date = clinicalRecord.getDate();
         this.status = clinicalRecord.getStatus().name();
-        this.consultationRecord = new ConsultationRecordDTO(clinicalRecord.getConsultationRecord());
+        this.consultationRecord = clinicalRecord.getConsultationRecord() == null ?
+                new ConsultationRecordDTO() :
+                new ConsultationRecordDTO(clinicalRecord.getConsultationRecord());
     }
 }

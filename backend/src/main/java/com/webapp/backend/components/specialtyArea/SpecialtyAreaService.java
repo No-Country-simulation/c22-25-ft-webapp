@@ -3,6 +3,7 @@ package com.webapp.backend.components.specialtyArea;
 import com.webapp.backend.user.UserDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class SpecialtyAreaService {
         return dbSpecialtyAreas.stream().map(SpecialtyAreaDTO::new).toList();
     }
 
+    @Transactional
     public SpecialtyAreaDTO saveSpecialtyArea(SpecialtyAreaDTO specialtyAreaData){
         SpecialtyArea newSpecialtyArea = SpecialtyArea.builder()
                 .name(specialtyAreaData.getName())
@@ -24,6 +26,7 @@ public class SpecialtyAreaService {
         return new SpecialtyAreaDTO(specialtyAreaRepository.save(newSpecialtyArea));
     }
 
+    @Transactional
     public SpecialtyAreaDTO updateSpecialtyArea(SpecialtyAreaDTO specialtyAreaData, Integer id){
         SpecialtyArea dbSpecialtyArea = specialtyAreaRepository.findById(id).orElseThrow(()-> new RuntimeException("Specialty area not found"));
 
@@ -33,6 +36,7 @@ public class SpecialtyAreaService {
         return new SpecialtyAreaDTO(specialtyAreaRepository.save(dbSpecialtyArea));
     }
 
+    @Transactional
     public void deleteSpecialtyArea(Integer id){
         specialtyAreaRepository.deleteById(id);
     }

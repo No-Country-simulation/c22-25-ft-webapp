@@ -30,7 +30,7 @@ public class Role {
     @ManyToMany(mappedBy = "role", fetch = FetchType.EAGER)
     @JsonIgnore
     private List<User> user;
-    /*
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
@@ -39,5 +39,4 @@ public class Role {
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
 
-     */
 }

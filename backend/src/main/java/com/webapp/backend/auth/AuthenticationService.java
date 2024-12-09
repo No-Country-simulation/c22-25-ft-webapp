@@ -42,11 +42,7 @@ public class AuthenticationService {
     private String activationUrl;
 
     public User register(RegistrationRequest request) throws MessagingException {
-        List<Role> roles = request.getRoles().stream().map(role -> {
-            return roleRepository.findByName(role.toLowerCase())
-                    // todo - better exception handling
-                    .orElseThrow(() -> new IllegalStateException("ROLE " + role +  " was not initiated"));
-        }).collect(Collectors.toList());
+        Role role = roleRepository.findByName("admin").orElseThrow(() -> new IllegalStateException("ROLE 'admin' was not initiated"));
 
         var user = User.builder()
                 .dni(request.getDni())
@@ -55,12 +51,13 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
-                .enabled(false)
-                .role(roles)
+                .enabled(false) //Cambiar esto a 'true' si no se necesita probar la verificacion por email, junto con el cambio de abajo.
+                .role(List.of(role))
                 .build();
 
+        sendValidationEmail(user); //Comentar esta linea junto con el cambio de arriba para saltearse la verificacion por email.
         return userRepository.save(user);
-        //sendValidationEmail(user)
+
     }
 
 

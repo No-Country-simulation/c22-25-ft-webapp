@@ -1,5 +1,6 @@
 package com.webapp.backend.components.specialtyArea;
 
+import com.webapp.backend.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,8 +24,8 @@ public class SpecialtyArea {
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(targetEntity = SpecialtyArea_User.class, fetch = FetchType.EAGER, mappedBy = "specialtyArea")
-    private List<SpecialtyArea_User> specialtyAreaUser;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "specialtyArea")
+    private List<User> user;
 
     @Override
     public String toString() {
