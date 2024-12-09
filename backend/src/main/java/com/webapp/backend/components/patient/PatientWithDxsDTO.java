@@ -1,19 +1,18 @@
 package com.webapp.backend.components.patient;
 
 import com.webapp.backend.components.clinicalRecord.ClinicalRecord;
-import com.webapp.backend.components.clinicalRecord.ClinicalRecordDTOForDoctor;
+import com.webapp.backend.components.clinicalRecord.ClinicalRecordDTOForPatient;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
-public class PatientWithDx {
+public class PatientWithDxsDTO {
     private final PatientDTO patient;
-    private final List<ClinicalRecordDTOForDoctor> clinicalRecordList;
+    private final List<ClinicalRecordDTOForPatient> clinicalRecordList;
 
-    public PatientWithDx(Patient patient, List<ClinicalRecord> clinicalRecord){
+    public PatientWithDxsDTO(Patient patient, List<ClinicalRecord> clinicalRecord){
         this.patient = new PatientDTO(patient);
-        this.clinicalRecordList = clinicalRecord.stream().map(ClinicalRecordDTOForDoctor::new).toList();
+        this.clinicalRecordList = clinicalRecord.stream().map(ClinicalRecordDTOForPatient::new).toList();
     }
 }

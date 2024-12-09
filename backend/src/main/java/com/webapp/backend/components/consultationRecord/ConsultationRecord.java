@@ -14,6 +14,7 @@ import lombok.*;
 public class ConsultationRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int consultationRecordId;
 
     @OneToOne

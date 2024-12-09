@@ -35,7 +35,7 @@ public class ClinicalRecord {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToOne(mappedBy = "clinicalRecord", cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
+    @OneToOne(mappedBy = "clinicalRecord", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private ConsultationRecord consultationRecord;
 
     @Override

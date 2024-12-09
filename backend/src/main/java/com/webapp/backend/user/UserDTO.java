@@ -1,26 +1,37 @@
 package com.webapp.backend.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.webapp.backend.components.specialtyArea.SpecialtyAreaDTO;
-import com.webapp.backend.components.specialtyArea.SpecialtyArea_User;
 import com.webapp.backend.role.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
+import com.webapp.backend.role.RoleDTO;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-
-import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class UserDTO {
+    @NotNull(message = "dni is mandatory")
     private int dni;
+    @NotEmpty(message = "firstName is mandatory")
     private String firstName;
+    @NotEmpty(message = "lastName is mandatory")
     private String lastName;
     private String password;
+    @NotEmpty(message = "email is mandatory")
+    @Email
     private String email;
-    private List<String> roles;
+    @NotNull(message = "birthday is mandatory")
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthday;
+    private List<RoleDTO> roles;
     private List<SpecialtyAreaDTO> specialtyArea;
 
     public UserDTO(User user){
@@ -29,9 +40,8 @@ public class UserDTO {
         this.lastName = user.getLastName();
         this.password = user.getPassword();
         this.email = user.getEmail();
-        this.roles = user.getRole().stream().map(Role::getName).toList();
-        this.specialtyArea = user.getSpecialtyAreaUsers().stream().map(specialtyAreaUser -> {
-            return new SpecialtyAreaDTO(specialtyAreaUser.getSpecialtyArea());
-        }).toList();
+        this.birthday = user.getBirthday();
+        this.roles = user.getRole().stream().map(RoleDTO::new).toList();
+        this.specialtyArea = user.getSpecialtyArea().stream().map(SpecialtyAreaDTO::new).toList();
     }
 }

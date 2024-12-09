@@ -1,8 +1,9 @@
 package com.webapp.backend.user;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.webapp.backend.components.clinicalRecord.ClinicalRecord;
+import com.webapp.backend.components.specialtyArea.SpecialtyArea;
 import com.webapp.backend.role.Role;
-import com.webapp.backend.components.specialtyArea.SpecialtyArea_User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -53,6 +55,10 @@ public class User implements UserDetails, Principal {
   @Column(name = "email", nullable = false, unique = true)
   private String email;
 
+  @Column(name = "birthday", nullable = false)
+  @JsonFormat(pattern = "dd-MM-yyyy")
+  private LocalDate birthday;
+
   private boolean accountLocked;
   private boolean enabled;
 
@@ -62,8 +68,8 @@ public class User implements UserDetails, Principal {
   @OneToMany(targetEntity = ClinicalRecord.class, fetch = EAGER, mappedBy = "user")
   private List<ClinicalRecord> clinicalRecord;
 
-  @OneToMany(targetEntity = SpecialtyArea_User.class, fetch = EAGER, mappedBy = "user")
-  private List<SpecialtyArea_User> specialtyAreaUsers;
+  @ManyToMany(fetch = EAGER)
+  private List<SpecialtyArea> specialtyArea;
 
   @CreatedDate
   @Column(nullable = false, updatable = false)

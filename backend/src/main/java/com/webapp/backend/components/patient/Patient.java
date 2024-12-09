@@ -1,9 +1,11 @@
 package com.webapp.backend.components.patient;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.webapp.backend.components.clinicalRecord.ClinicalRecord;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -15,7 +17,7 @@ import java.util.List;
 @Builder
 public class Patient {
     @Id
-    @Column(name = "patient_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patientId;
 
     @Column(nullable = false)
@@ -29,6 +31,10 @@ public class Patient {
 
     @Column(name = "gender", nullable = false)
     private String gender;
+
+    @Column(name = "birthday", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthday;
 
     @Column(name = "address", nullable = false)
     private String address;

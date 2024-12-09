@@ -5,7 +5,10 @@ import com.webapp.backend.components.specialtyArea.SpecialtyAreaRepository;
 import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import static org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 import java.util.ArrayList;
@@ -17,17 +20,37 @@ public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final SpecialtyAreaRepository specialtyAreaRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    @Transactional
+    public void updatePassword(PasswordDTO passwordData, Integer doctorDni){
+        User dbUser = userRepository.findByDni(doctorDni).orElseThrow(() -> new RuntimeException("User not found"));
+
+        if(passwordEncoder.matches(passwordData.currentPassword, dbUser.getPassword())){
+            dbUser.setPassword(passwordEncoder.encode(passwordData.newPassword));
+            userRepository.save(dbUser);
+        } else {
+            throw new RuntimeException("Current password is not the same that password database");
+        }
+    }
 
     public List<UserDTO> getAllUsers(){
         List<User> dbUser = userRepository.findAll();
         return dbUser.stream().map(UserDTO::new).toList();
     }
 
+    public UserDTO getAdmin(Integer dni){
+        User dbUser = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return new UserDTO(dbUser);
+    }
+
+    @Transactional
     public UserDTO saveUser(UserDTO userData){
         List<Role> roles = new ArrayList<>();
         if(!userData.getRoles().isEmpty()){
             userData.getRoles().forEach(role -> {
-                roles.add(roleRepository.findByName(role)
+                roles.add(roleRepository.findByName(role.getName())
                         .orElseThrow(() -> new RuntimeException("Role " + role + "not found", new NotFoundException()))
                 );
             });
@@ -50,8 +73,10 @@ public class UserService {
                 .dni(userData.getDni())
                 .firstName(userData.getFirstName())
                 .lastName(userData.getLastName())
-                .password(userData.getPassword())
+                .password(passwordEncoder.encode(String.valueOf(userData.getDni())))
                 .email(userData.getEmail())
+                .birthday(userData.getBirthday())
+                .enabled(true)
                 .role(roles)
                 .specialtyArea(specialtyAreas)
                 .build();
@@ -61,12 +86,13 @@ public class UserService {
         return new UserDTO(savedUser);
     }
 
+    @Transactional
     public UserDTO updateUser(UserDTO userData, Integer dni){
         User dbUser = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
 
         List<Role> roles = new ArrayList<>();
         userData.getRoles().forEach(role -> {
-            roles.add(roleRepository.findByName(role)
+            roles.add(roleRepository.findByName(role.getName())
                     .orElseThrow(() -> new RuntimeException("Role " + role + "not found", new NotFoundException()))
             );
         });
@@ -81,8 +107,8 @@ public class UserService {
         dbUser.setDni(userData.getDni());
         dbUser.setFirstName(userData.getFirstName());
         dbUser.setLastName(userData.getLastName());
-        dbUser.setPassword(userData.getPassword());
         dbUser.setEmail(userData.getEmail());
+        dbUser.setBirthday(userData.getBirthday());
         dbUser.setRole(roles);
         dbUser.setSpecialtyArea(specialtyAreas);
 
@@ -91,9 +117,43 @@ public class UserService {
         return new UserDTO(savedUser);
     }
 
+    @Transactional
     public void deleteUser(Integer dni){
-        userRepository.deleteById(dni);
+        userRepository.deleteByDni(dni);
     }
 
+
+    //Funciones para que un doctor pueda alterar solo su propia información
+    public UserDTO getDoctor(Integer dni){
+        User dbUser = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
+
+        return new UserDTO(dbUser);
+    }
+
+    @Transactional
+    public UserDTO updateDoctor(UserDTO doctorData, Integer dni){
+        User dbUser = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
+
+        List<SpecialtyArea> specialtyAreas = new ArrayList<>();
+        if(!doctorData.getSpecialtyArea().isEmpty()){
+            doctorData.getSpecialtyArea().forEach(specialty -> {
+                specialtyAreas.add(specialtyAreaRepository.findByName(specialty.getName())
+                        .orElseThrow(() -> new RuntimeException("Specialty " + specialty.getName() + "not found", new NotFoundException()))
+                );
+            });
+        }
+
+        dbUser.setFirstName(doctorData.getFirstName());
+        dbUser.setLastName(doctorData.getLastName());
+        dbUser.setEmail(doctorData.getEmail());
+        dbUser.setSpecialtyArea(specialtyAreas);
+
+        return new UserDTO(dbUser);
+    }
+
+    @Transactional
+    public void deleteDoctor(Integer dni){
+        userRepository.deleteByDni(dni);
+    }
 
 }
