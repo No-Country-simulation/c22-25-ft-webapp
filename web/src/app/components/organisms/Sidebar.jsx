@@ -35,8 +35,6 @@ export const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const openSidebar = () => setIsCollapsed(!isCollapsed)
   const { data: session } = useSession()
-  console.log(session?.user)
-
   return (
     <aside
       className={`
