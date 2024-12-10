@@ -5,10 +5,7 @@ import com.webapp.backend.email.EmailTemplateName;
 import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
 import com.webapp.backend.security.JwtService;
-import com.webapp.backend.user.Token;
-import com.webapp.backend.user.TokenRepository;
-import com.webapp.backend.user.User;
-import com.webapp.backend.user.UserRepository;
+import com.webapp.backend.user.*;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -74,8 +71,12 @@ public class AuthenticationService {
         claims.put("fullName", user.getFullName());
 
         var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
+
+        var dbUser = userRepository.findByEmail(request.getEmail()).orElseThrow(() -> new RuntimeException("Usuario no existe"));
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .user(new UserDTO(dbUser))
                 .build();
     }
 

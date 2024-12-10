@@ -36,8 +36,6 @@ public class UserController {
         return  ResponseEntity.status(201).body("Password update");
     }
 
-
-
     /***** RUTAS PARA ADMINISTRADORES *****/
     @GetMapping("/admin/users")
     public ResponseEntity<List<UserDTO>> getAllUsers(){
@@ -46,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/admin/users/{dni}")
-    public ResponseEntity<UserDTO> getAdmin(@PathVariable(name = "dni") Integer dni){
-        UserDTO result =  userService.getDoctor(dni);
+    public ResponseEntity<UserDTO> getUser(@PathVariable(name = "dni") Integer dni){
+        UserDTO result =  userService.getUser(dni);
         return ResponseEntity.status(200).body(result);
     }
 
