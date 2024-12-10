@@ -10,6 +10,7 @@ export default function ProfessionalsPage() {
         Profesionales
       </h1>
       <ProfessionalTable users={professionalMockup} />
+      {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
     </Section>
   )
 }

@@ -19,15 +19,19 @@ export const metadata = {
       name: '(Walter) - Walter M.',
       url: 'https://github.com/WalterDanielMachacaChoque',
     },
-    { name: '(Juani) - Juan T.', url: 'https://github.com/juani1987' },
-    { name: '(Fer) - Fernando V.', url: 'https://github.com/juani1987' },
   ],
   creator: 'Equipo c22-25-ft-webapp - NoCountry',
   description: '',
   keywords: ['SALUS', '', ''],
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+  params: {
+    session,
+    // ...params
+  },
+}) {
   return (
     <html lang="en">
       <body
@@ -36,7 +40,7 @@ export default function RootLayout({ children }) {
       min-h-screen300 w-full max-w-[1600px] mx-auto
       `}
       >
-        <Providers>{children}</Providers>
+        <Providers session={session}>{children}</Providers>
       </body>
     </html>
   )
@@ -44,4 +48,5 @@ export default function RootLayout({ children }) {
 
 RootLayout.propTypes = {
   children: propTypes.node,
+  params: propTypes.object,
 }

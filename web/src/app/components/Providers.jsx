@@ -2,14 +2,18 @@
 import propTypes from 'prop-types'
 import { NextUIProvider } from '@nextui-org/system'
 import { SelectPages } from './SelectPages'
-export const Providers = ({ children }) => {
+import { SessionProvider } from 'next-auth/react'
+export const Providers = ({ children, session }) => {
   return (
-    <NextUIProvider>
-      {children}
-      <SelectPages />
-    </NextUIProvider>
+    <SessionProvider session={session}>
+      <NextUIProvider>
+        {children}
+        <SelectPages />
+      </NextUIProvider>
+    </SessionProvider>
   )
 }
 Providers.propTypes = {
   children: propTypes.node,
+  session: propTypes.object,
 }
