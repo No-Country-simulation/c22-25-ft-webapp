@@ -30,11 +30,11 @@ import { EditProfessional } from '../forms/EditProfessional'
 // import { columns, users, statusOptions } from "./data";
 
 const columns = [
-  { name: 'Licencia', uid: 'license', sortable: true },
+  { name: 'Cédula', uid: 'dni', sortable: true },
   { name: 'Profesional', uid: 'professional', sortable: true },
   { name: 'Edad', uid: 'age', sortable: true },
-  { name: 'ROLE', uid: 'role', sortable: true },
-  { name: 'TEAM', uid: 'team' },
+  { name: 'Rol', uid: 'role', sortable: true },
+  { name: 'Especialidad', uid: 'specialtyArea' },
   { name: 'Correo', uid: 'email' },
   { name: 'Status', uid: 'status', sortable: true },
   { name: 'Acciones', uid: 'actions' },
@@ -52,12 +52,18 @@ const statusColorMap = {
   vacaciones: 'warning',
 }
 
-const INITIAL_VISIBLE_COLUMNS = ['professional', 'role', 'status', 'actions']
+const INITIAL_VISIBLE_COLUMNS = [
+  'professional',
+  'role',
+  'specialtyArea',
+  'status',
+  'actions',
+]
 
 export const ProfessionalTable = ({ users }) => {
   const modalToEditProfessional = useDisclosure()
   const modalToDeleteProfessional = useDisclosure()
-  // const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  // const {isOpen, onOpen, onOpenChange} = useDisclosure(); // Example of how to use useDisclosure
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(
@@ -148,9 +154,6 @@ export const ProfessionalTable = ({ users }) => {
         return (
           <div className="flex flex-col">
             <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
           </div>
         )
       case 'status':
@@ -406,7 +409,7 @@ export const ProfessionalTable = ({ users }) => {
           items={sortedItems}
         >
           {item => (
-            <TableRow key={item.license}>
+            <TableRow key={item.dni}>
               {columnKey => (
                 <TableCell>{renderCell(item, columnKey)}</TableCell>
               )}
