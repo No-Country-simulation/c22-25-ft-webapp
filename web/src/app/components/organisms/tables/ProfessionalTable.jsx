@@ -27,7 +27,6 @@ import {
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { EditProfessional } from '../forms/EditProfessional'
-// import { columns, users, statusOptions } from "./data";
 
 const columns = [
   { name: 'Cédula', uid: 'dni', sortable: true },
