@@ -39,9 +39,8 @@ public class UserService {
         return dbUser.stream().map(UserDTO::new).toList();
     }
 
-    public UserDTO getAdmin(Integer dni){
+    public UserDTO getUser(Integer dni){
         User dbUser = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
-
         return new UserDTO(dbUser);
     }
 
