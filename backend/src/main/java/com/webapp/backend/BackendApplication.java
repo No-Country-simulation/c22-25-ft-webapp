@@ -15,16 +15,20 @@ import org.springframework.scheduling.annotation.EnableAsync;
 public class BackendApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner runner(RoleRepository roleRepository) {
+	public CommandLineRunner runner(RoleRepository roleRepository) throws Exception {
 		return args -> {
-			if (roleRepository.findByName("USER").isEmpty()) {
-				roleRepository.save(Role.builder().name("USER").build());
+			if (roleRepository.findByName("admin").isEmpty()) {
+				roleRepository.save(Role.builder().name("admin").build());
+			}
+
+			if (roleRepository.findByName("doctor").isEmpty()) {
+				roleRepository.save(Role.builder().name("doctor").build());
 			}
 		};
 	}
+
 }

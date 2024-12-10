@@ -1,10 +1,36 @@
-import { Section } from "@/components/atoms/Section";
+import { Section } from '@/components/atoms/Section'
+import { CardDashboard } from '@/components/molecules/ui/CardDashboard'
+import { ClipboardPlus, Users } from 'lucide-react'
 
 export default function DashboardPage() {
   return (
     <Section>
-      <h2>{`</DashboardPage>`}</h2>
-      <p className="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa odio adipisci minima doloribus cum. Consectetur sunt nisi laudantium ut ratione. Quis sint autem accusantium vitae enim, non reprehenderit? Voluptatibus ea, voluptatem dicta tempora aut veniam, at exercitationem optio voluptatum veritatis quia libero placeat. Illum nisi expedita, vitae aliquid qui, voluptates nesciunt, deleniti recusandae iusto id aperiam ab labore maxime saepe.</p>
+      <h1 className="text-2xl md:text-3xl font-bold mb-8 text-cloud-300">
+        Panel de control
+      </h1>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <CardDashboard
+          title="Profesionales activos"
+          href="/professionals"
+          object="profesionales"
+          quantity="50"
+          fullQuantity="100"
+        />
+        <CardDashboard
+          title="Pacientes"
+          href="/patients"
+          object="pacientes"
+          fullQuantity="25"
+          icon={<Users />}
+        />
+        <CardDashboard
+          title="Consultas en la semana"
+          href="/consults"
+          object="consultas"
+          fullQuantity="5"
+          icon={<ClipboardPlus />}
+        />
+      </div>
     </Section>
   )
-};
+}

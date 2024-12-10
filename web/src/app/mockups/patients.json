@@ -4,7 +4,7 @@
     "name": "Tony Reichert",
     "role": "CEO",
     "team": "Management",
-    "status": "active",
+    "status": "activo",
     "age": "29",
     "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026024d",
     "email": "tony.reichert@example.com"
@@ -14,7 +14,7 @@
     "name": "Zoey Lang",
     "role": "Tech Lead",
     "team": "Development",
-    "status": "paused",
+    "status": "pausado",
     "age": "25",
     "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026704d",
     "email": "zoey.lang@example.com"
@@ -24,7 +24,7 @@
     "name": "Jane Fisher",
     "role": "Sr. Dev",
     "team": "Development",
-    "status": "active",
+    "status": "activo",
     "age": "22",
     "avatar": "https://i.pravatar.cc/150?u=a04258114e29026702d",
     "email": "jane.fisher@example.com"
@@ -34,7 +34,7 @@
     "name": "William Howard",
     "role": "C.M.",
     "team": "Marketing",
-    "status": "vacation",
+    "status": "vacaciones",
     "age": "28",
     "avatar": "https://i.pravatar.cc/150?u=a048581f4e29026701d",
     "email": "william.howard@example.com"
@@ -44,7 +44,7 @@
     "name": "Kristen Copper",
     "role": "S. Manager",
     "team": "Sales",
-    "status": "active",
+    "status": "activo",
     "age": "24",
     "avatar": "https://i.pravatar.cc/150?u=a092581d4ef9026700d",
     "email": "kristen.cooper@example.com"
@@ -57,14 +57,14 @@
     "age": "29",
     "avatar": "https://i.pravatar.cc/150?u=a042581f4e29026024d",
     "email": "brian.kim@example.com",
-    "status": "active"
+    "status": "activo"
   },
   {
     "id": 7,
     "name": "Michael Hunt",
     "role": "Designer",
     "team": "Design",
-    "status": "paused",
+    "status": "pausado",
     "age": "27",
     "avatar": "https://i.pravatar.cc/150?u=a042581f4e29027007d",
     "email": "michael.hunt@example.com"
@@ -74,7 +74,7 @@
     "name": "Samantha Brooks",
     "role": "HR Manager",
     "team": "HR",
-    "status": "active",
+    "status": "activo",
     "age": "31",
     "avatar": "https://i.pravatar.cc/150?u=a042581f4e27027008d",
     "email": "samantha.brooks@example.com"
@@ -84,7 +84,7 @@
     "name": "Frank Harrison",
     "role": "F. Manager",
     "team": "Finance",
-    "status": "vacation",
+    "status": "vacaciones",
     "age": "33",
     "avatar": "https://i.pravatar.cc/150?img=4",
     "email": "frank.harrison@example.com"
@@ -94,7 +94,7 @@
     "name": "Emma Adams",
     "role": "Ops Manager",
     "team": "Operations",
-    "status": "active",
+    "status": "activo",
     "age": "35",
     "avatar": "https://i.pravatar.cc/150?img=5",
     "email": "emma.adams@example.com"
@@ -104,7 +104,7 @@
     "name": "Brandon Stevens",
     "role": "Jr. Dev",
     "team": "Development",
-    "status": "active",
+    "status": "activo",
     "age": "22",
     "avatar": "https://i.pravatar.cc/150?img=8",
     "email": "brandon.stevens@example.com"
@@ -114,7 +114,7 @@
     "name": "Megan Richards",
     "role": "P. Manager",
     "team": "Product",
-    "status": "paused",
+    "status": "pausado",
     "age": "28",
     "avatar": "https://i.pravatar.cc/150?img=10",
     "email": "megan.richards@example.com"
@@ -124,7 +124,7 @@
     "name": "Oliver Scott",
     "role": "S. Manager",
     "team": "Security",
-    "status": "active",
+    "status": "activo",
     "age": "37",
     "avatar": "https://i.pravatar.cc/150?img=12",
     "email": "oliver.scott@example.com"
@@ -134,7 +134,7 @@
     "name": "Grace Allen",
     "role": "M. Specialist",
     "team": "Marketing",
-    "status": "active",
+    "status": "activo",
     "age": "30",
     "avatar": "https://i.pravatar.cc/150?img=16",
     "email": "grace.allen@example.com"
@@ -144,7 +144,7 @@
     "name": "Noah Carter",
     "role": "IT Specialist",
     "team": "I. Technology",
-    "status": "paused",
+    "status": "pausado",
     "age": "31",
     "avatar": "https://i.pravatar.cc/150?img=15",
     "email": "noah.carter@example.com"
@@ -154,7 +154,7 @@
     "name": "Ava Perez",
     "role": "Manager",
     "team": "Sales",
-    "status": "active",
+    "status": "activo",
     "age": "29",
     "avatar": "https://i.pravatar.cc/150?img=20",
     "email": "ava.perez@example.com"
@@ -164,7 +164,7 @@
     "name": "Liam Johnson",
     "role": "Data Analyst",
     "team": "Analysis",
-    "status": "active",
+    "status": "activo",
     "age": "28",
     "avatar": "https://i.pravatar.cc/150?img=33",
     "email": "liam.johnson@example.com"
@@ -174,7 +174,7 @@
     "name": "Sophia Taylor",
     "role": "QA Analyst",
     "team": "Testing",
-    "status": "active",
+    "status": "activo",
     "age": "27",
     "avatar": "https://i.pravatar.cc/150?img=29",
     "email": "sophia.taylor@example.com"
@@ -184,7 +184,7 @@
     "name": "Lucas Harris",
     "role": "Administrator",
     "team": "Information Technology",
-    "status": "paused",
+    "status": "pausado",
     "age": "32",
     "avatar": "https://i.pravatar.cc/150?img=50",
     "email": "lucas.harris@example.com"
@@ -194,7 +194,7 @@
     "name": "Mia Robinson",
     "role": "Coordinator",
     "team": "Operations",
-    "status": "active",
+    "status": "activo",
     "age": "26",
     "avatar": "https://i.pravatar.cc/150?img=45",
     "email": "mia.robinson@example.com"

@@ -1,16 +1,27 @@
 package com.webapp.backend.components.patient;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.webapp.backend.components.clinicalRecord.ClinicalRecord;
 import jakarta.persistence.*;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "patient")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Patient {
     @Id
-    @Column(name = "patient_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patientId;
+
+    @Column(nullable = false)
+    private int dni;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -20,6 +31,10 @@ public class Patient {
 
     @Column(name = "gender", nullable = false)
     private String gender;
+
+    @Column(name = "birthday", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthday;
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -32,75 +47,6 @@ public class Patient {
 
     @OneToMany(targetEntity = ClinicalRecord.class, mappedBy = "patient", fetch = FetchType.EAGER)
     private List<ClinicalRecord> clinicalRecord;
-
-    public Patient() {
-    }
-
-    public Patient(int patientId, String firstName, String lastName, String gender, String address, String cellphone, String email) {
-        this.patientId = patientId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.address = address;
-        this.cellphone = cellphone;
-        this.email = email;
-    }
-
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Override
     public String toString() {

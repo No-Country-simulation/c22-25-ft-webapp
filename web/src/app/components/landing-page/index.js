@@ -1,0 +1,7 @@
+export { HeaderLanding } from './HeaderLanding'
+export { HeroSection } from './HeroSection'
+export { FeaturesSection } from './FeaturesSection'
+export { MetricsSection } from './MetricsSection'
+export { AboutUsSection } from './AboutUsSection'
+export { ContactUsSection } from './ContactUsSection'
+export { TestimonialsSection } from './TestimonialsSection'

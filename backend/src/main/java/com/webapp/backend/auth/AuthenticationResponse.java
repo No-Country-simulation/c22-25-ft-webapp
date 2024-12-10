@@ -1,5 +1,6 @@
 package com.webapp.backend.auth;
 
+import com.webapp.backend.user.UserDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,4 +11,5 @@ import lombok.Setter;
 public class AuthenticationResponse {
 
     private String token;
+    private UserDTO user;
 }

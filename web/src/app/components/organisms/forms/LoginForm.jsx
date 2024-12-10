@@ -1,21 +1,21 @@
 'use client'
-import { useState } from "react"
-import { Button, Input } from "@nextui-org/react";
-import { Eye, EyeOff } from "lucide-react"
-import { useForm } from "react-hook-form";
+import { useState } from 'react'
+import { Button, Input } from '@nextui-org/react'
+import { Eye, EyeOff } from 'lucide-react'
+import { useForm } from 'react-hook-form'
 
 export const LoginForm = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit
+    handleSubmit,
   } = useForm()
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const toggleVisibility = () => setIsPasswordVisible(!isPasswordVisible);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const toggleVisibility = () => setIsPasswordVisible(!isPasswordVisible)
   const isLoading = false
 
-  const onSubmit = handleSubmit((data) => {
-    alert("Iniciando sesión...")
+  const onSubmit = handleSubmit(data => {
+    alert('Iniciando sesión...')
     console.log(data)
   })
 
@@ -35,15 +35,15 @@ export const LoginForm = () => {
           required: 'El correo es requerido',
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: 'El correo no es válido'
-          }
+            message: 'El correo no es válido',
+          },
         })}
         isInvalid={!!errors.email}
         errorMessage={errors.email?.message}
         className="w-full"
       />
       <Input
-        type={isPasswordVisible ? "text" : "password"}
+        type={isPasswordVisible ? 'text' : 'password'}
         id="password"
         name="password"
         label="Contraseña"
@@ -55,13 +55,18 @@ export const LoginForm = () => {
           required: 'La contraseña es requerida',
           minLength: {
             value: 8,
-            message: 'La contraseña debe tener al menos 8 caracteres'
-          }
+            message: 'La contraseña debe tener al menos 8 caracteres',
+          },
         })}
         isInvalid={!!errors.password}
         errorMessage={errors.password?.message}
         endContent={
-          <button className="focus:outline-none" type="button" onClick={toggleVisibility} aria-label="toggle password visibility">
+          <button
+            className="focus:outline-none"
+            type="button"
+            onClick={toggleVisibility}
+            aria-label="toggle password visibility"
+          >
             {isPasswordVisible ? (
               <EyeOff className="text-xl pointer-events-none text-sand-500" />
             ) : (
@@ -75,7 +80,7 @@ export const LoginForm = () => {
         disabled={isLoading}
         className="bg-cloud-300 text-sand-50"
       >
-        {isLoading ? "Iniciando sesión..." : "Iniciar sesión"}
+        {isLoading ? 'Iniciando sesión...' : 'Iniciar sesión'}
       </Button>
     </form>
   )

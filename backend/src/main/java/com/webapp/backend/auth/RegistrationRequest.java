@@ -8,11 +8,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
 public class RegistrationRequest {
 
+    @NotNull(message = "Dni is mandatory")
+    private Integer dni;
     @NotEmpty(message = "Firstname is mandatory")
     @NotNull(message = "Firstname is mandatory")
     private String firstName;

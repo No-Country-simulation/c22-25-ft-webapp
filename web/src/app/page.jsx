@@ -1,3 +1,23 @@
+import {
+  HeaderLanding,
+  HeroSection,
+  FeaturesSection,
+  MetricsSection,
+  AboutUsSection,
+  ContactUsSection,
+  TestimonialsSection,
+} from '@/components/landing-page'
+
 export default function HomePage() {
-  return <h1>En teoría acá va una Landing-Page</h1>
+  return (
+    <>
+      <HeaderLanding />
+      <HeroSection />
+      <FeaturesSection />
+      <MetricsSection />
+      <AboutUsSection />
+      <ContactUsSection />
+      <TestimonialsSection />
+    </>
+  )
 }

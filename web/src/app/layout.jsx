@@ -15,7 +15,10 @@ export const metadata = {
     { name: '(Redu) - Eduardo R.', url: 'https://github.com/MrRedu' },
     { name: '(Agus) - María C.', url: 'https://github.com/ChichiCuello' },
     { name: '(Franco) - Franco A.', url: 'https://github.com/JSuggu' },
-    { name: '(Walter) - Walter M.', url: 'https://github.com/WalterDanielMachacaChoque' },
+    {
+      name: '(Walter) - Walter M.',
+      url: 'https://github.com/WalterDanielMachacaChoque',
+    },
     { name: '(Juani) - Juan T.', url: 'https://github.com/juani1987' },
     { name: '(Fer) - Fernando V.', url: 'https://github.com/juani1987' },
   ],
@@ -27,13 +30,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`
+      <body
+        className={`
       ${inter.className} antialiased
       min-h-screen300 w-full max-w-[1600px] mx-auto
-      `}>
-        <Providers>
-          {children}
-        </Providers>
+      `}
+      >
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
