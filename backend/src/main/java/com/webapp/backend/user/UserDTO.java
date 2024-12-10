@@ -31,6 +31,7 @@ public class UserDTO {
     @NotNull(message = "birthday is mandatory")
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthday;
+    private Boolean enabled;
     private List<RoleDTO> roles;
     private List<SpecialtyAreaDTO> specialtyArea;
 
@@ -41,6 +42,7 @@ public class UserDTO {
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.birthday = user.getBirthday();
+        this.enabled = user.isEnabled();
         this.roles = user.getRole().stream().map(RoleDTO::new).toList();
         this.specialtyArea = user.getSpecialtyArea().stream().map(SpecialtyAreaDTO::new).toList();
     }

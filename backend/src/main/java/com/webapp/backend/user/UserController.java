@@ -55,6 +55,12 @@ public class UserController {
         return ResponseEntity.status(201).body(result);
     }
 
+    @PutMapping("/admin/users/{dni}/activeAccount")
+    public ResponseEntity<String> activeAccount( @PathVariable(name = "dni") Integer dni){
+        userService.activeAccount(dni);
+        return ResponseEntity.status(201).body("Cuenta activada");
+    }
+
     @PutMapping("/admin/users/{dni}/update")
     public ResponseEntity<UserDTO> updateUser(@RequestBody @Valid UserDTO updatedUserData, @PathVariable(name = "dni") Integer dni){
         UserDTO result = userService.updateUser(updatedUserData, dni);
