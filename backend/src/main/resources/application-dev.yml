@@ -1,18 +1,36 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/healtech
-    username: postgres
-    password: 41100
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-    properties:
+  application:
+    name: mini-project
+    datasource:
+      url: jdbc:h2:mem:testdb
+      username: sa
+      password: password
+      driver-class-name: org.h2.Driver
+    jpa:
       hibernate:
-        format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+      show-sql: false
+      properties:
+        hibernate:
+          format_sql: true
+      database-platform: org.hibernate.dialect.H2Dialect
+    h2:
+      console:
+        enabled: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/healtech
+#    username: postgres
+#    password: Thestrongest12
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: false
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
   mail:
     host: localhost
     port: 1025

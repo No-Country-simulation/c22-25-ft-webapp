@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 @Tag(name="Authentication")
 public class AuthenticationController {
@@ -21,7 +21,7 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<User> register(@RequestBody @Valid RegistrationRequest request) throws MessagingException {
         var savedUser = service.register(request);
-        return ResponseEntity.status(201).body(savedUser);
+        return ResponseEntity.accepted().build().status(201).body(savedUser);
     }
 
     @PostMapping("/login")
