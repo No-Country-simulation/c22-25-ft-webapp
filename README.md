@@ -11,6 +11,7 @@
       <li><a href="#-contribución">¿Cómo contribuir?</a></li>
       <li><a href="#%EF%B8%8F-licencia">Licencia</a></li>
       <li><a href="#-feedback">Feedback</a></li>
+      <li><a href="#-mejoras-futuras">Mejoras Futuras</a></li>
       <!-- Equipo -->
       <li>
         <a href="#equipo">Equipo</a>
@@ -24,13 +25,22 @@
 </div>
 <h3 align="center">Equipo <strong>c22-25-ft-webapp</strong> 🐐</h3>
 
-_**Salus**_ es una plataforma orientada a [[entidades médicas]], diseñada para administrar a sus profesionales, pacientes y consultas médicas; todo en el mismo lugar. Accesible desde cualquier celular móvil, computadora o aparato electrónico.
+_**Salus**_ es una plataforma integral que simplifica la gestión de consultas médicas y pacientes para profesionales de la salud y entidades médicas. Con Salus, buscamos optimizar el tiempo de los profesionales, mejorar la experiencia del paciente y garantizar una atención médica más eficiente. Con un diseño accesible y fácil de usar, la plataforma es perfecta para hospitales, clínicas y consultorios que buscan modernizar su gestión administrativa.
 
 ## 📝 **Características**
 
 - **👁‍🗨 Gestionar consultas médicas:** Como [[entidad médica]] podrás observar todas las consultas que ocurren en tu [[entidad médica]],
-- **🏆 Gestionar pacientes:** Como profesional podrás administrar tus consultas médicas, revisar el historial médico de tus pacientes [[algo más acá]]
-- **🎀 MÁS:** lorem ipsum
+- **🏆 Gestionar pacientes:** Como profesional de la salud, tendrás acceso a herramientas para administrar las consultas médicas de tus pacientes. Esto incluye: 
+    <ul>
+    <li>Revisión del historial médico: Consulta rápida de todos los antecedentes médicos, tratamientos y diagnósticos previos.</li>
+    <li>Agendar nuevas consultas: Proceso simplificado para agendar citas con tus pacientes y mantener tu agenda organizada.</li>
+    <li>Seguimiento del progreso del paciente: Monitoreo continuo de la salud del paciente y la evolución de su tratamiento.</li>
+    </ul>
+- **🎀 MÁS:** 
+  <ul>
+    <li>Interfaz intuitiva y fácil de usar: Diseñada para facilitar el acceso a la información médica y administrativa.</li>
+    <li>Accesibilidad: Disponible en múltiples dispositivos para facilitar el acceso en cualquier momento y desde cualquier lugar.</li>
+  </ul>
 
 ## 🎥 **Video explicativo**
 
@@ -55,6 +65,8 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 ## 🔨 **Tecnologías**
 
 ### Diseño UX/UI
+- [Figma (Design)](https://www.figma.com/design/eLxhsqTFWoxAhORYaGiiEG/Main-c22-25-ft?node-id=4632-10746&t=KWpKwyhXJqpGe1zz-1)
+- [FigJam (User Research)](https://www.figma.com/board/etdplwylutDrAjQc2n90nJ/c22-25-ft-webapp?node-id=0-1&t=mKISuGfMHz3K8Ep2-1)
 
 ![Figma][Figma]
 
@@ -89,6 +101,15 @@ Salus está bajo la [Licencia MIT](LICENSE).
 
 Si tiene algún comentario, sugerencia o problema, [abra un issue](https://github.com/No-Country-simulation/c22-25-ft-webapp/issues). Agradecemos sus comentarios.
 
+## 🛠️ **Mejoras futuras**
+
+Estamos comprometidos con el desarrollo continuo de **Salus**. Algunas de las funcionalidades que planeamos agregar son:
+
+- Integración con sistemas videollamadas para realizar teleconsultas.
+- Soporte para múltiples idiomas, para permitir la expansión internacional.
+- Herramientas avanzadas de análisis de datos para mejorar la toma de decisiones en la atención médica.
+
+
 <br><br>
 
 <div align="center">
@@ -100,24 +121,30 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
 
 <table align="center">
   <tr>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100"></td>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/73679190?v=4" width="100"></td>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/83506872?v=4" width="100"></td>
-    <td align="center"><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100"></td>
-    <td align="center"><img src="https://avatars.githubusercontent.com/u/130096987?v=4" width="100"></td>
   </tr>
   <tr>
+    <td align="center"><strong>Cynthia S.</strong></td>
     <td align="center"><strong>Eduardo R.</strong></td>
     <td align="center"><strong>María C.</strong></td>
-    <td align="center"><strong>Franco A.</strong></td>
-    <td align="center"><strong>Cynthia S.</strong></td>
   </tr>
   <tr>
+    <td align="center">Team Leader</td>
     <td align="center">Front-End</td>
     <td align="center">UX/UI</td>
-    <td align="center">Back-End</td>
-    <td align="center">Team Leader</td>
+
   </tr>
   <tr>
+    <td align="center">
+      <a href="https://www.linkedin.com/in/cynthiasotelo/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/Cynthiavcp">
+        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
+      </a>
+    </td>
     <td align="center">
       <a href="https://www.linkedin.com/in/mrredu/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
@@ -134,37 +161,21 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
         <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
       </a>
     </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/franco-azame/">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
-      </a>
-      <a href="https://github.com/JSuggu">
-        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://www.linkedin.com/in/cynthiasotelo/">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
-      </a>
-      <a href="https://github.com/Cynthiavcp">
-        <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
-      </a>
-    </td>
   </tr>
   <tr>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/93456862?v=4" width="100"></td>
     <td align="center"><img src="https://avatars.githubusercontent.com/u/139728494?v=4" width="100"></td>
-    <td align="center"><img src="https://avatars.githubusercontent.com/u/174650105?v=4" width="100"></td>
+    <td align="center"><img src="https://avatars.githubusercontent.com/u/86541267?v=4" width="100"></td>
   </tr>
   <tr>
     <td align="center"><strong>Walter M.</strong></td>
     <td align="center"><strong>Fernando V.</strong></td>
-    <td align="center"><strong>Juan I.</strong></td>
+    <td align="center"><strong>Franco A.</strong></td>
   </tr>
   <tr>
     <td align="center">Back-End</td>
     <td align="center">Back-End</td>
-    <td align="center"></td>
+    <td align="center">Back-End</td>
   </tr>
   <tr>
     <td align="center">
@@ -181,11 +192,11 @@ Si tiene algún comentario, sugerencia o problema, [abra un issue](https://githu
       </a>
       <a href="https://github.com/fervifane12"><img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub"></a>
     </td>
-    <td align="center">
-      <a href="#">
+        <td align="center">
+      <a href="https://www.linkedin.com/in/franco-azame/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn">
       </a>
-      <a href="https://github.com/juani1987">
+      <a href="https://github.com/JSuggu">
         <img src="https://img.shields.io/badge/GitHub-171515?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub">
       </a>
     </td>
