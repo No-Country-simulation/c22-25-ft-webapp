@@ -12,11 +12,12 @@ export default async function ProfessionalsPage() {
   const mappedProfessionals = professionals.map(professional => ({
     dni: professional?.dni,
     name: professional?.firstName,
+    lastName: professional?.lastName,
     email: professional?.email,
     role: professional?.roles[0]?.name,
     age: getAge(professional?.birthday),
     specialtyArea: professional?.specialtyArea[0]?.name,
-    status: professional?.enabled === true ? 'Activo' : 'Inactivo',
+    status: professional?.enabled,
   }))
 
   return (

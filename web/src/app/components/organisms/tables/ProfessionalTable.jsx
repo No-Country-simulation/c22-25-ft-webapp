@@ -27,6 +27,7 @@ import {
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { EditProfessional } from '../forms/EditProfessional'
+import { useProfessional } from '@/hooks/useProfessionals'
 
 const columns = [
   { name: 'Cédula', uid: 'dni', sortable: true },
@@ -46,8 +47,8 @@ const statusOptions = [
 ]
 
 const statusColorMap = {
-  Activo: 'success',
-  Inactivo: 'danger',
+  true: 'success',
+  false: 'danger',
   // vacaciones: 'warning',
 }
 
@@ -125,12 +126,13 @@ export const ProfessionalTable = ({ users }) => {
     })
   }, [sortDescriptor, items])
 
-  const [userSelected, setUserSelected] = useState(null)
-
-  const handleRowSelection = (user, modal) => {
-    setUserSelected(user)
-    modal.onOpen()
-  }
+  const {
+    register,
+    errors,
+    onSubmit,
+    professionalSelected,
+    handleRowSelection,
+  } = useProfessional()
 
   const renderCell = useCallback((user, columnKey) => {
     const cellValue = user[columnKey]
@@ -163,7 +165,7 @@ export const ProfessionalTable = ({ users }) => {
             size="sm"
             variant="flat"
           >
-            {cellValue}
+            {cellValue === true ? 'Activo' : 'Inactivo'}
           </Chip>
         )
       case 'actions':
@@ -431,14 +433,18 @@ export const ProfessionalTable = ({ users }) => {
                 Información de profesional
               </ModalHeader>
               <ModalBody>
-                <EditProfessional user={userSelected} />
+                <EditProfessional
+                  register={register}
+                  errors={errors}
+                  onSubmit={onSubmit}
+                />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button color="primary" onPress={onClose}>
-                  Guardar
+                <Button color="primary" onPress={onSubmit}>
+                  Editar
                 </Button>
               </ModalFooter>
             </>
@@ -460,7 +466,7 @@ export const ProfessionalTable = ({ users }) => {
               </ModalHeader>
               <ModalBody>
                 Estás seguro de eliminar al profesional
-                <pre>{JSON.stringify(userSelected, null, 2)}</pre>
+                <pre>{JSON.stringify(professionalSelected, null, 2)}</pre>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
