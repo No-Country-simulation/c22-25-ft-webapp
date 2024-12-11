@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   PanelRight,
   LogOut,
+  // UserPen,
 } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -28,6 +29,11 @@ const mainNavItems = [
     label: 'Pacientes',
     href: '/patients',
   },
+  // {
+  //   icon: <UserPen className="h-5 w-5" />,
+  //   label: 'Perfil',
+  //   href: '/profile',
+  // },
 ]
 
 export const Sidebar = () => {
@@ -187,8 +193,10 @@ export const Sidebar = () => {
           <Avatar
             src="/isotipo.svg"
             className="w-8 h-8"
-            alt="User avatar"
+            alt={`${session?.user?.firstName} avatar`}
             radius="sm"
+            as={Link}
+            href="/profile"
           />
           {!isCollapsed && (
             <>
