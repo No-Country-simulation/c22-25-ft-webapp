@@ -6,6 +6,8 @@ import { PatientInformation } from '@/components/molecules/PatientInformation'
 import { getPatientByDNI } from '@/services/patients'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '#/src/app/api/auth/[...nextauth]/route'
+import { Button } from '@nextui-org/react'
+import { PlusCircleIcon } from 'lucide-react'
 
 export default async function PatientPage({ params: { dni } }) {
   const session = await getServerSession(authOptions)
@@ -108,8 +110,19 @@ export default async function PatientPage({ params: { dni } }) {
 
         {/* Segunda columna */}
         <div className="flex flex-col gap-6 w-full">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-cloud-300">Consultas</h2>
+            <Button
+              type="button"
+              className="flex gap-2 bg-cloud-300 text-white"
+            >
+              <PlusCircleIcon />
+              Nueva consulta
+            </Button>
+          </div>
+
           {upcomingConsults.length > 0 && (
-            <Consults title="Consultas" consults={upcomingConsults} />
+            <Consults title="Próximas consultas" consults={upcomingConsults} />
           )}
           {pastConsults.length > 0 && (
             <Consults title="Consultas pasadas" consults={pastConsults} />

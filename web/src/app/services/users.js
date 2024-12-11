@@ -4,7 +4,7 @@ export const getUserByDni = async ({ token, dni, rol }) => {
   if (rol === 'doctor') {
     URL = `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/${dni}`
   } else {
-    URL = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/user/${dni}`
+    URL = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/${dni}`
   }
 
   try {

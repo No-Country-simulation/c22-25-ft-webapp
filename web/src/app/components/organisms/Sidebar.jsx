@@ -7,6 +7,7 @@ import {
   PanelRight,
   LogOut,
   // UserPen,
+  CalendarPlus2,
 } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
@@ -41,8 +42,13 @@ export const Sidebar = () => {
       label: 'Pacientes',
       href: '/patients',
     },
+    {
+      icon: <CalendarPlus2 className="h-5 w-5" />,
+      label: 'Consultas',
+      href: '/consults',
+    },
   ]
-  
+
   return (
     <aside
       className={`

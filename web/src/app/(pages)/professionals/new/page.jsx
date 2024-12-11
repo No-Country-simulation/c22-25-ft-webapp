@@ -1,11 +1,11 @@
 'use client'
-// import useAuthToken from '@/hooks/useAuth'
+import useAuthToken from '@/hooks/useAuth'
 import { Section } from '@/components/atoms/Section'
 import { Button, Input } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
 
 export default function NewProfessionalPage() {
-  // const { token } = useAuthToken()
+  const { token } = useAuthToken()
   const {
     register,
     reset,
@@ -26,35 +26,35 @@ export default function NewProfessionalPage() {
       // password: data.password,
       birthday: formatDate(data.birthdate),
       email: data.email,
-      roles: [{ name: 'Profesional' }],
+      roles: [{ name: data.role === 'Profesional' ? 'doctor' : 'admin' }],
       specialtyArea: [{ name: data.specialty }],
     }
     console.table(payload)
-    // try {
-    //   const response = await fetch(
-    //     `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/add`,
-    //     {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //       body: JSON.stringify(payload),
-    //     }
-    //   )
-    //   const result = await response.json()
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/add`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      )
+      const result = await response.json()
 
-    //   if (response.ok) {
-    //     console.log(result)
-    //     reset()
-    //   }
+      if (response.ok) {
+        console.log(result)
+        reset()
+      }
 
-    //   if (!response.ok) {
-    //     console.log(result)
-    //   }
-    // } catch (error) {
-    //   console.error(error)
-    // }
+      if (!response.ok) {
+        console.log(result)
+      }
+    } catch (error) {
+      console.error(error)
+    }
   })
   return (
     <Section>

@@ -20,6 +20,7 @@ import {
 } from '@nextui-org/react'
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import useAuthToken from '@/hooks/useAuth'
 
 const columns = [
   { name: 'DNI', uid: 'dni', sortable: true },
@@ -50,6 +51,7 @@ const INITIAL_VISIBLE_COLUMNS = [
 ]
 
 export const PatientsTable = ({ users }) => {
+  const { role } = useAuthToken()
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(
@@ -139,9 +141,12 @@ export const PatientsTable = ({ users }) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu>
-                <DropdownItem as={Link} href={`/patients/${user.dni}`}>
-                  Ver
-                </DropdownItem>
+                {role === 'doctor' && (
+                  <DropdownItem as={Link} href={`/patients/${user.dni}`}>
+                    Ver
+                  </DropdownItem>
+                )}
+
                 <DropdownItem>Editar</DropdownItem>
                 <DropdownItem>Eliminar</DropdownItem>
               </DropdownMenu>
