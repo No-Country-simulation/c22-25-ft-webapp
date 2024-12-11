@@ -1,17 +1,60 @@
 'use client'
+// import useAuthToken from '@/hooks/useAuth'
 import { Section } from '@/components/atoms/Section'
 import { Button, Input } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
 
 export default function NewProfessionalPage() {
+  // const { token } = useAuthToken()
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = handleSubmit(data => {
-    console.log(data)
+
+  const formatDate = dateString => {
+    const [year, month, day] = dateString.split('-')
+    return `${day}-${month}-${year}`
+  }
+
+  const onSubmit = handleSubmit(async data => {
+    const payload = {
+      dni: Number(data.dni),
+      firstName: data.name,
+      lastName: data.lastname,
+      // password: data.password,
+      birthday: formatDate(data.birthdate),
+      email: data.email,
+      roles: [{ name: 'Profesional' }],
+      specialtyArea: [{ name: data.specialty }],
+    }
+    console.table(payload)
+    // try {
+    //   const response = await fetch(
+    //     `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/add`,
+    //     {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //       body: JSON.stringify(payload),
+    //     }
+    //   )
+    //   const result = await response.json()
+
+    //   if (response.ok) {
+    //     console.log(result)
+    //     reset()
+    //   }
+
+    //   if (!response.ok) {
+    //     console.log(result)
+    //   }
+    // } catch (error) {
+    //   console.error(error)
+    // }
   })
   return (
     <Section>
@@ -69,6 +112,34 @@ export default function NewProfessionalPage() {
           isInvalid={!!errors.email}
           errorMessage={errors.email && errors.email.message}
         />
+        <div className="grid md:grid-cols-2 gap-4">
+          <Input
+            type="text"
+            variant="bordered"
+            label="Cédula"
+            {...register('dni', {
+              required: 'La cédula es obligatoria',
+              minLength: {
+                value: 3,
+                message: 'La cédula debe tener al menos 4 caracteres',
+              },
+            })}
+            isInvalid={!!errors.dni}
+            errorMessage={errors.dni && errors.dni.message}
+            isRequired
+          />
+          <Input
+            type="date"
+            variant="bordered"
+            label="Fecha de nacimiento"
+            isRequired
+            {...register('birthdate', {
+              required: 'La fecha de nacimiento es obligatoria',
+            })}
+            isInvalid={!!errors.birthdate}
+            errorMessage={errors.birthdate && errors.birthdate.message}
+          />
+        </div>
         <Input
           type="text"
           variant="bordered"
@@ -83,21 +154,6 @@ export default function NewProfessionalPage() {
           })}
           isInvalid={!!errors.specialty}
           errorMessage={errors.specialty && errors.specialty.message}
-        />
-        <Input
-          type="text"
-          variant="bordered"
-          label="Cédula"
-          isRequired
-          {...register('dni', {
-            required: 'La cédula es obligatoria',
-            minLength: {
-              value: 3,
-              message: 'La cédula debe tener al menos 4 caracteres',
-            },
-          })}
-          isInvalid={!!errors.dni}
-          errorMessage={errors.dni && errors.dni.message}
         />
 
         <div className="flex gap-4 mt-4 p-2 justify-end">

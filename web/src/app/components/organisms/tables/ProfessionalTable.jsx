@@ -130,6 +130,8 @@ export const ProfessionalTable = ({ users }) => {
     register,
     errors,
     onSubmit,
+    watch,
+    control,
     professionalSelected,
     handleRowSelection,
   } = useProfessional()
@@ -437,6 +439,8 @@ export const ProfessionalTable = ({ users }) => {
                   register={register}
                   errors={errors}
                   onSubmit={onSubmit}
+                  watch={watch}
+                  control={control}
                 />
               </ModalBody>
               <ModalFooter>

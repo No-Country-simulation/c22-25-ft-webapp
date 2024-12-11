@@ -1,8 +1,20 @@
 'use client'
 import propTypes from 'prop-types'
 import { Input, Select, SelectItem, Switch } from '@nextui-org/react'
+import { Controller } from 'react-hook-form'
 
-export const EditProfessional = ({ register, errors, onSubmit }) => {
+const roles = [
+  { name: 'Profesional', value: 'Profesional' },
+  { name: 'Administrador', value: 'Administrador' },
+]
+
+export const EditProfessional = ({
+  register,
+  errors,
+  onSubmit,
+  watch,
+  control,
+}) => {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-6 w-full">
       <div className="flex gap-4">
@@ -52,46 +64,30 @@ export const EditProfessional = ({ register, errors, onSubmit }) => {
         variant="bordered"
       />
       <div className="flex w-full gap-4">
-        {/* <Input
-          label="Rol"
-          placeholder="Ejemplo"
-          {...register('role')}
-          isInvalid={errors?.role}
-          errorMessage={errors?.role?.message}
-          variant="bordered"
-          className="w-full"
-        /> */}
-        <Select
-          className="flex-1 w-1/2"
-          label="Rol"
-          placeholder="Selecciona un rol"
-          variant="bordered"
-
-          // isInvalid={errors?.role}
-          // errorMessage={errors?.role?.message}
-        >
-          <SelectItem>Administrador</SelectItem>
-          <SelectItem>Profesional</SelectItem>
-        </Select>
-        <div className="w-1/2 flex items-center">
-          <Switch
-            color="danger"
-            // checked={professional.status}
-            // onChange={handleStatus}
-          >
-            {/* {isActive ? 'Activo' : 'Inactivo'} */}
-            Ya va
+        <Controller
+          control={control}
+          name="role"
+          render={({ field: { onChange, value } }) => (
+            <Select
+              label="Selecciona un rol"
+              value={value}
+              onChange={onChange}
+              variant="bordered"
+              defaultSelectedKeys={[value]}
+            >
+              {roles.map(({ name, value }) => (
+                <SelectItem key={value} value={value}>
+                  {name}
+                </SelectItem>
+              ))}
+            </Select>
+          )}
+        />
+        <div className="w-full flex items-center">
+          <Switch {...register('status')} className="w-full">
+            {watch('status') ? 'Activo' : 'Inactivo'}
           </Switch>
         </div>
-        {/* <Input
-          label="Status"
-          placeholder="Ejemplo"
-          {...register('status')}
-          isInvalid={errors?.status}
-          errorMessage={errors?.status?.message}
-          variant="bordered"
-          className="w-full"
-        /> */}
       </div>
     </form>
   )
@@ -101,4 +97,6 @@ EditProfessional.propTypes = {
   register: propTypes.func,
   errors: propTypes.object,
   onSubmit: propTypes.func,
+  watch: propTypes.func,
+  control: propTypes.object,
 }
