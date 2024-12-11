@@ -100,7 +100,7 @@ export default async function PatientPage({ params: { dni } }) {
       >
         {/* Primera columna */}
         <div className="flex flex-col gap-6 w-full">
-          <PatientInformation patientInfo={patientInfo.patient} />
+          <PatientInformation patientInfo={patientInfo?.patient} />
           <BasicInformation
           // dni={dni}
           />

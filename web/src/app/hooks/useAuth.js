@@ -8,8 +8,9 @@ const useAuthToken = () => {
 
   // Retorna el token si está autenticado
   const token = isAuthenticated ? session?.accessToken : null
+  const role = isAuthenticated ? session?.user?.roles[0]?.name : null
 
-  return { token, isLoading, isAuthenticated }
+  return { token, role, isLoading, isAuthenticated }
 }
 
 export default useAuthToken

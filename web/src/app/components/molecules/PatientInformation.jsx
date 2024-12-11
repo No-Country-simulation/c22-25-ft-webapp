@@ -10,30 +10,30 @@ export const PatientInformation = ({ patientInfo }) => {
     <div className="w-full flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <span className="text-cloud-300 text-sm font-bold uppercase">
-          {patientInfo.firstName} {patientInfo.lastName}
+          {patientInfo?.firstName} {patientInfo?.lastName}
         </span>
         <Chip
           className="capitalize"
-          color={genderColorMap[patientInfo.gender]}
+          color={genderColorMap[patientInfo?.gender]}
           size="sm"
           variant="flat"
         >
-          {patientInfo.gender}
+          {patientInfo?.gender}
         </Chip>
         <span className="text-cloud-300 text-sm font-bold uppercase">
-          {getAge(patientInfo.birthday)} años
+          {getAge(patientInfo?.birthday)} años
         </span>
         <span className="text-cloud-300 text-sm font-bold uppercase">
-          DNI: {patientInfo.dni}
+          DNI: {patientInfo?.dni}
         </span>
         <span className="text-cloud-300 text-sm font-bold uppercase">
-          Teléfono: {patientInfo.cellphone}
+          Teléfono: {patientInfo?.cellphone}
         </span>
         <span className="text-cloud-300 text-sm font-bold uppercase">
-          Correo: {patientInfo.email}
+          Correo: {patientInfo?.email}
         </span>
       </div>
-      <p>{patientInfo.address}</p>
+      <p>{patientInfo?.address}</p>
     </div>
   )
 }
