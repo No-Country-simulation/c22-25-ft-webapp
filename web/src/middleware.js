@@ -25,15 +25,15 @@ export async function middleware(request) {
     const userRole = token.roles[0].name // Asumiendo que 'rol' es un string como 'Administrador', 'Desarrollador', etc.
     // const userStatus = token.status -> En caso que el usuario sea deshabilitado; pero esto no está implementado
 
-    // Permitir acceso a todos los paths para Administrador y Desarrollador
-    if (userRole === 'Administrador' || userRole === 'Desarrollador') {
-      return NextResponse.next()
-    }
+    // Permitir acceso a todos los paths para X y X
+    // if (userRole === 'X' || userRole === 'Y') {
+    //   return NextResponse.next()
+    // }
 
-    // Restringir acceso a /management y /users para Médico
+    // Restringir acceso a /professionals
     if (
       userRole === 'doctor' &&
-      request.nextUrl.pathname.startsWith('/users')
+      request.nextUrl.pathname.startsWith('/professionals')
       // || request.nextUrl.pathname.startsWith('/otroPathDeAdministradores')
     ) {
       return NextResponse.redirect(new URL('/dashboard', request.url)) // Redirigir a la página de inicio
