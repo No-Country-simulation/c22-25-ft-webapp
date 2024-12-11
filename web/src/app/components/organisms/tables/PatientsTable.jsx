@@ -139,7 +139,9 @@ export const PatientsTable = ({ users }) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu>
-                <DropdownItem>Ver</DropdownItem>
+                <DropdownItem as={Link} href={`/patients/${user.dni}`}>
+                  Ver
+                </DropdownItem>
                 <DropdownItem>Editar</DropdownItem>
                 <DropdownItem>Eliminar</DropdownItem>
               </DropdownMenu>
