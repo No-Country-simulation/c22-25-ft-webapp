@@ -26,7 +26,9 @@ export default function NewProfessionalPage() {
       // password: data.password,
       birthday: formatDate(data.birthdate),
       email: data.email,
-      roles: [{ name: data.role === 'Profesional' ? 'doctor' : 'admin' }],
+      roles: [
+        // { name: 'doctor' }
+      ],
       specialtyArea: [{ name: data.specialty }],
     }
     console.table(payload)
