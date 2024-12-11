@@ -29,14 +29,14 @@ export function useProfessional() {
         status: professionalSelected?.status,
         age: professionalSelected?.age,
         email: professionalSelected?.email,
+        birthday: professionalSelected?.birthday,
       })
-      console.log(professionalSelected)
     }
   }, [professionalSelected])
 
   const onSubmit = handleSubmit(async data => {
     // Actualizar aquí
-    console.log(data)
+    console.log('Info enviada: ',data)
 
     try {
       const res = await fetch(
@@ -52,9 +52,9 @@ export function useProfessional() {
             firstName: data.name,
             lastName: data.lastName,
             email: data.email,
-            roles: [
-              { name: data.role === 'Administrador' ? 'admin' : 'doctor' },
-            ],
+            birthday: data.birthday,
+            enabled: data.status,
+            roles: [{ name: data.role === 'Administrador' ? 'admin' : 'doctor' }],
             specialtyArea: [{ name: data.specialtyArea }],
           }),
         }

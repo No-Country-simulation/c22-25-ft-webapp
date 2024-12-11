@@ -16,6 +16,7 @@ export default async function ProfessionalsPage() {
     email: professional?.email,
     role: professional?.roles[0]?.name,
     age: getAge(professional?.birthday),
+    birthday: professional?.birthday,
     specialtyArea: professional?.specialtyArea[0]?.name,
     status: professional?.enabled,
   }))

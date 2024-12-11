@@ -36,6 +36,7 @@ const columns = [
   { name: 'Rol', uid: 'role', sortable: true },
   { name: 'Especialidad', uid: 'specialtyArea' },
   { name: 'Correo', uid: 'email' },
+  { name: 'Fecha de nacimiento', uid: 'birthday' },
   { name: 'Status', uid: 'status', sortable: true },
   { name: 'Acciones', uid: 'actions' },
 ]
