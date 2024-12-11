@@ -9,31 +9,39 @@ export const PatientInformation = ({ patientInfo }) => {
   return (
     <div className="w-full flex flex-col gap-4">
       <div className="flex flex-col gap-1">
-        <span className="text-cloud-300 text-sm font-bold uppercase">
-          {patientInfo?.firstName} {patientInfo?.lastName}
+        <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <span className="text-cloud-300 text-sm font-bold uppercase">
+            {patientInfo?.firstName} {patientInfo?.lastName}
+          </span>
+          <span className="text-cloud-300 text-sm font-bold">
+            DNI: {patientInfo?.dni}
+          </span>
+        </div>
+
+        <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <span className="text-cloud-300 text-sm font-bold">
+            {getAge(patientInfo?.birthday)} años
+          </span>
+          <Chip
+            className="capitalize"
+            color={genderColorMap[patientInfo?.gender]}
+            size="sm"
+            variant="flat"
+          >
+            {patientInfo?.gender}
+          </Chip>
+        </div>
+
+        <span className="text-cloud-300 text-sm font-bold">
+          TELÉFONO: {patientInfo?.cellphone}
         </span>
-        <Chip
-          className="capitalize"
-          color={genderColorMap[patientInfo?.gender]}
-          size="sm"
-          variant="flat"
-        >
-          {patientInfo?.gender}
-        </Chip>
-        <span className="text-cloud-300 text-sm font-bold uppercase">
-          {getAge(patientInfo?.birthday)} años
+        <span className="text-cloud-300 text-sm font-bold">
+          CORREO: {patientInfo?.email}
         </span>
-        <span className="text-cloud-300 text-sm font-bold uppercase">
-          DNI: {patientInfo?.dni}
-        </span>
-        <span className="text-cloud-300 text-sm font-bold uppercase">
-          Teléfono: {patientInfo?.cellphone}
-        </span>
-        <span className="text-cloud-300 text-sm font-bold uppercase">
-          Correo: {patientInfo?.email}
+        <span className="text-cloud-300 text-sm font-bold">
+          DOMICILIO: {patientInfo?.address}
         </span>
       </div>
-      <p>{patientInfo?.address}</p>
     </div>
   )
 }
