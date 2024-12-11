@@ -41,14 +41,14 @@ const columns = [
 
 const statusOptions = [
   { name: 'Activo', uid: 'activo' },
-  { name: 'Pausado', uid: 'pausado' },
-  { name: 'Vacaciones', uid: 'vacaciones' },
+  { name: 'Inactivo', uid: 'inactivo' },
+  // { name: 'Vacaciones', uid: 'vacaciones' },
 ]
 
 const statusColorMap = {
-  activo: 'success',
-  pausado: 'danger',
-  vacaciones: 'warning',
+  Activo: 'success',
+  Inactivo: 'danger',
+  // vacaciones: 'warning',
 }
 
 const INITIAL_VISIBLE_COLUMNS = [
