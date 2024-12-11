@@ -2,7 +2,14 @@ import { NextResponse } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
 export const config = {
-  matcher: ['/', '/professionals/:path*', '/patients/:path*'],
+  matcher: [
+    '/',
+    '/login',
+    '/register',
+    '/professionals/:path*',
+    '/patients/:path*',
+    '/profile/:path*',
+  ],
 }
 
 export async function middleware(request) {
@@ -18,6 +25,13 @@ export async function middleware(request) {
   // Si la ruta es protegida y no hay token, redirigir a login
   if (isProtectedRoute && !token) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  if (
+    (token && request.nextUrl.pathname.startsWith('/login')) ||
+    request.nextUrl.pathname.startsWith('/register')
+  ) {
+    return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
   // Lógica de acceso según el rol del usuario
