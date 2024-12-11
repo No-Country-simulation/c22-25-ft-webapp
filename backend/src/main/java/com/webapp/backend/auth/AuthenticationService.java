@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -45,14 +46,15 @@ public class AuthenticationService {
                 .dni(request.getDni())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
+                .birthday(LocalDate.now())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
-                .enabled(false) //Cambiar esto a 'true' si no se necesita probar la verificacion por email, junto con el cambio de abajo.
+                .enabled(true) //Cambiar esto a 'true' si no se necesita probar la verificacion por email, junto con el cambio de abajo.
                 .role(List.of(role))
                 .build();
 
-        sendValidationEmail(user); //Comentar esta linea junto con el cambio de arriba para saltearse la verificacion por email.
+        // sendValidationEmail(user); //Comentar esta linea junto con el cambio de arriba para saltearse la verificacion por email.
         return userRepository.save(user);
 
     }

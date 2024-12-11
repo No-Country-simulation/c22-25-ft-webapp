@@ -1,3 +1,4 @@
+'use client'
 import propTypes from 'prop-types'
 import { format } from '@formkit/tempo'
 import {
