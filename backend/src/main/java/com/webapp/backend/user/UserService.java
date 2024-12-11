@@ -75,7 +75,7 @@ public class UserService {
                 .password(passwordEncoder.encode(String.valueOf(userData.getDni())))
                 .email(userData.getEmail())
                 .birthday(userData.getBirthday())
-                .enabled(true)
+                .enabled(true) //Cambiar a false o quitar antes de subir a produccion.
                 .role(roles)
                 .specialtyArea(specialtyAreas)
                 .build();
@@ -83,6 +83,13 @@ public class UserService {
         User savedUser = userRepository.save(newUser);
 
         return new UserDTO(savedUser);
+    }
+
+    public void activeAccount(Integer dni){
+        User userDb = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
+        userDb.setEnabled(true);
+
+        userRepository.save(userDb);
     }
 
     @Transactional
