@@ -1,6 +1,14 @@
 'use client'
 import { Button, Link, Avatar, Divider, Tooltip } from '@nextui-org/react'
-import { UserCheck, Users, LayoutDashboard, PanelRight } from 'lucide-react'
+import {
+  UserCheck,
+  Users,
+  LayoutDashboard,
+  PanelRight,
+  LogOut,
+  // UserPen,
+} from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -21,13 +29,18 @@ const mainNavItems = [
     label: 'Pacientes',
     href: '/patients',
   },
+  // {
+  //   icon: <UserPen className="h-5 w-5" />,
+  //   label: 'Perfil',
+  //   href: '/profile',
+  // },
 ]
 
 export const Sidebar = () => {
   const pathName = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(true)
   const openSidebar = () => setIsCollapsed(!isCollapsed)
-
+  const { data: session } = useSession()
   return (
     <aside
       className={`
@@ -180,14 +193,33 @@ export const Sidebar = () => {
           <Avatar
             src="/isotipo.svg"
             className="w-8 h-8"
-            alt="User avatar"
+            alt={`${session?.user?.firstName} avatar`}
             radius="sm"
+            as={Link}
+            href="/profile"
           />
           {!isCollapsed && (
-            <div>
-              <div className="text-sm">username</div>
-              <div className="text-xs text-gray-400">correo@gmail.com</div>
-            </div>
+            <>
+              <div>
+                <div className="text-sm">
+                  {session?.user?.firstName || 'Nombres'}{' '}
+                  {`${session?.user?.lastName?.charAt(0).toUpperCase()}.` ||
+                    'A.'}
+                </div>
+                <div className="text-xs text-gray-400">
+                  {session?.user?.email || 'correo@example.com'}
+                </div>
+              </div>
+              <Button
+                isIconOnly
+                aria-label="Cerrar sesión"
+                color="danger"
+                className="ml-auto"
+                onClick={() => signOut({ callbackUrl: '/' })}
+              >
+                <LogOut />
+              </Button>
+            </>
           )}
         </div>
       </div>

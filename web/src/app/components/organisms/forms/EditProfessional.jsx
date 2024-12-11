@@ -11,8 +11,8 @@ export const EditProfessional = ({ user }) => {
     defaultValues: {
       name: user.name,
       role: user.role,
-      team: user.team,
-      license: user.license,
+      specialtyArea: user.specialtyArea,
+      dni: user.dni,
       status: user.status,
       age: user.age,
       email: user.email,
@@ -40,18 +40,18 @@ export const EditProfessional = ({ user }) => {
         errorMessage={errors.role?.message}
       />
       <Input
-        label="Equipo"
+        label="Especialidad"
         placeholder="Ejemplo"
-        {...register('team')}
-        isInvalid={errors.team}
-        errorMessage={errors.team?.message}
+        {...register('specialtyArea')}
+        isInvalid={errors.specialtyArea}
+        errorMessage={errors.specialtyArea?.message}
       />
       <Input
-        label="Licencia"
+        label="Cédula"
         placeholder="Ejemplo"
-        {...register('license')}
-        isInvalid={errors.license}
-        errorMessage={errors.license?.message}
+        {...register('dni')}
+        isInvalid={errors.dni}
+        errorMessage={errors.dni?.message}
       />
       <Input
         label="Status"
@@ -60,14 +60,6 @@ export const EditProfessional = ({ user }) => {
         isInvalid={errors.status}
         errorMessage={errors.status?.message}
       />
-      <Input
-        label="Edad"
-        placeholder="Ejemplo"
-        {...register('age')}
-        isInvalid={errors.age}
-        errorMessage={errors.age?.message}
-      />
-      {/* <Input label="Avatar" placeholder="Ejemplo" /> */}
       <Input
         label="Correo"
         placeholder="Ejemplo"

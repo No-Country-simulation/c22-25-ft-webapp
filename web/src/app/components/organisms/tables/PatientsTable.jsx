@@ -20,37 +20,34 @@ import {
 } from '@nextui-org/react'
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
-// import { columns, users, statusOptions } from "./data";
-// import { capitalize } from "./utils";
 
 const columns = [
-  { name: 'ID', uid: 'id', sortable: true },
-  { name: 'NAME', uid: 'name', sortable: true },
-  { name: 'AGE', uid: 'age', sortable: true },
-  { name: 'ROLE', uid: 'role', sortable: true },
-  { name: 'TEAM', uid: 'team' },
-  { name: 'EMAIL', uid: 'email' },
-  { name: 'STATUS', uid: 'status', sortable: true },
-  { name: 'ACTIONS', uid: 'actions' },
-]
-
-const statusOptions = [
-  { name: 'Active', uid: 'active' },
-  { name: 'Paused', uid: 'paused' },
-  { name: 'Vacation', uid: 'vacation' },
+  { name: 'DNI', uid: 'dni', sortable: true },
+  { name: 'Paciente', uid: 'patient', sortable: true },
+  { name: 'Edad', uid: 'age', sortable: true },
+  { name: 'Correo', uid: 'email' },
+  { name: 'Celular', uid: 'cellphone' },
+  { name: 'Género', uid: 'gender' },
+  { name: 'Dirección', uid: 'address' },
+  { name: 'Acciones', uid: 'actions' },
 ]
 
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-const statusColorMap = {
-  active: 'success',
-  paused: 'danger',
-  vacation: 'warning',
+const genderColorMap = {
+  F: 'primary',
+  M: 'danger',
 }
 
-const INITIAL_VISIBLE_COLUMNS = ['name', 'role', 'status', 'actions']
+const INITIAL_VISIBLE_COLUMNS = [
+  'patient',
+  'cellphone',
+  'age',
+  'gender',
+  'actions',
+]
 
 export const PatientsTable = ({ users }) => {
   const [filterValue, setFilterValue] = useState('')
@@ -58,7 +55,6 @@ export const PatientsTable = ({ users }) => {
   const [visibleColumns, setVisibleColumns] = useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
   )
-  const [statusFilter, setStatusFilter] = useState('all')
   const [rowsPerPage, setRowsPerPage] = useState(5)
   const [sortDescriptor, setSortDescriptor] = useState({
     column: 'age',
@@ -84,17 +80,9 @@ export const PatientsTable = ({ users }) => {
         user.name.toLowerCase().includes(filterValue.toLowerCase())
       )
     }
-    if (
-      statusFilter !== 'all' &&
-      Array.from(statusFilter).length !== statusOptions.length
-    ) {
-      filteredUsers = filteredUsers.filter(user =>
-        Array.from(statusFilter).includes(user.status)
-      )
-    }
 
     return filteredUsers
-  }, [users, filterValue, statusFilter])
+  }, [users, filterValue])
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage)
 
@@ -119,30 +107,22 @@ export const PatientsTable = ({ users }) => {
     const cellValue = user[columnKey]
 
     switch (columnKey) {
-      case 'name':
+      case 'patient':
         return (
           <User
             avatarProps={{ radius: 'lg', src: user.avatar }}
             description={user.email}
-            name={cellValue}
+            // name={cellValue}
+            name={user.name}
           >
             {user.email}
           </User>
         )
-      case 'role':
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        )
-      case 'status':
+      case 'gender':
         return (
           <Chip
             className="capitalize"
-            color={statusColorMap[user.status]}
+            color={genderColorMap[user.gender]}
             size="sm"
             variant="flat"
           >
@@ -159,7 +139,9 @@ export const PatientsTable = ({ users }) => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu>
-                <DropdownItem>Ver</DropdownItem>
+                <DropdownItem as={Link} href={`/patients/${user.dni}`}>
+                  Ver
+                </DropdownItem>
                 <DropdownItem>Editar</DropdownItem>
                 <DropdownItem>Eliminar</DropdownItem>
               </DropdownMenu>
@@ -222,30 +204,6 @@ export const PatientsTable = ({ users }) => {
                   endContent={<ChevronDown className="text-small" />}
                   variant="flat"
                 >
-                  Status
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                disallowEmptySelection
-                aria-label="Table Columns"
-                closeOnSelect={false}
-                selectedKeys={statusFilter}
-                selectionMode="multiple"
-                onSelectionChange={setStatusFilter}
-              >
-                {statusOptions.map(status => (
-                  <DropdownItem key={status.uid} className="capitalize">
-                    {capitalize(status.name)}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
-                <Button
-                  endContent={<ChevronDown className="text-small" />}
-                  variant="flat"
-                >
                   Columnas
                 </Button>
               </DropdownTrigger>
@@ -294,7 +252,6 @@ export const PatientsTable = ({ users }) => {
     )
   }, [
     filterValue,
-    statusFilter,
     visibleColumns,
     onRowsPerPageChange,
     users.length,
@@ -374,7 +331,7 @@ export const PatientsTable = ({ users }) => {
         items={sortedItems}
       >
         {item => (
-          <TableRow key={item.id}>
+          <TableRow key={item.dni}>
             {columnKey => <TableCell>{renderCell(item, columnKey)}</TableCell>}
           </TableRow>
         )}
