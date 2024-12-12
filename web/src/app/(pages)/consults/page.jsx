@@ -14,7 +14,7 @@ import { getAge } from '@/utils/utils'
 import { getAllConsults } from '@/services/consults'
 
 const statusMap = {
-  active: { label: 'Activa', color: 'success' },
+  active: { label: 'Terminada', color: 'success' },
   pending: { label: 'Pendiente', color: 'warning' },
   cancelled: { label: 'Cancelada', color: 'danger' },
 }

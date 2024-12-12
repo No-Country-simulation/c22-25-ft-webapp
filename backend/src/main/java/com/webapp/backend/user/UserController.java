@@ -130,15 +130,15 @@ public class UserController {
         return ResponseEntity.status(204).body("Doctor deleted");
     }
 
-    @GetMapping("/doctor/{doctorDni}/patients")
-    public ResponseEntity<List<PatientDTO>> getAllPatientsForDoctor(@PathVariable(name = "doctorDni") Integer doctorDni){
-        List<PatientDTO> result = patientService.getAllPatientsForDoctor(doctorDni);
+    @GetMapping("/doctor/patients")
+    public ResponseEntity<List<PatientDTO>> getAllPatientsForDoctor(){
+        List<PatientDTO> result = patientService.getAllPatientsForDoctor();
         return ResponseEntity.status(200).body(result);
     }
 
-    @GetMapping("/doctor/{doctorDni}/patients/{patientDni}")
-    public ResponseEntity<PatientWithDxsDTO> getPatientWithDx(@PathVariable(name = "doctorDni") Integer doctorDni, @PathVariable(name = "patientDni") Integer patientDni){
-        PatientWithDxsDTO result = patientService.getPatientWithDx(doctorDni, patientDni);
+    @GetMapping("/doctor/patients/{patientDni}")
+    public ResponseEntity<PatientWithDxsDTO> getPatientWithDx(@PathVariable(name = "patientDni") Integer patientDni){
+        PatientWithDxsDTO result = patientService.getPatientWithDx( patientDni);
         return ResponseEntity.status(200).body(result);
     }
 

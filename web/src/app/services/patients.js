@@ -1,4 +1,4 @@
-export const getPatientByDNI = async ({ token, doctorDni, patientDni }) => {
+export const getPatientByDNI = async ({ token, patientDni }) => {
   if (!token) {
     console.error('No se proporcionó un token de autorización.')
     return null
@@ -6,7 +6,7 @@ export const getPatientByDNI = async ({ token, doctorDni, patientDni }) => {
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/${doctorDni}/patients/${patientDni}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/patients/${patientDni}`,
       {
         method: 'GET',
         headers: {
@@ -32,7 +32,7 @@ export const getPatientByDNI = async ({ token, doctorDni, patientDni }) => {
   }
 }
 
-export const getAllPatients = async ({ token, doctorDni, rol }) => {
+export const getAllPatients = async ({ token, rol }) => {
   if (!token) {
     console.error('No se proporcionó un token de autorización.')
     return []
@@ -40,7 +40,7 @@ export const getAllPatients = async ({ token, doctorDni, rol }) => {
 
   let URL
   if (rol === 'doctor') {
-    URL = `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/${doctorDni}/patients`
+    URL = `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/patients`
   } else {
     URL = `${process.env.NEXT_PUBLIC_API_URL}/api/admin/patients`
   }
