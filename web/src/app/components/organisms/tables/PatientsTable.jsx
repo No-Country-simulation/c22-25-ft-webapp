@@ -21,6 +21,7 @@ import {
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { capitalize } from '@/utils/utils'
+import useAuth from '@/hooks/useAuth'
 
 const columns = [
   { name: 'DNI', uid: 'dni', sortable: true },
@@ -47,6 +48,7 @@ const INITIAL_VISIBLE_COLUMNS = [
 ]
 
 export const PatientsTable = ({ users }) => {
+  const { role } = useAuth()
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(
@@ -219,14 +221,16 @@ export const PatientsTable = ({ users }) => {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            <Button
-              startContent={<PlusCircle />}
-              className="bg-cloud-300 text-white"
-              href="/patients/new"
-              as={Link}
-            >
-              Nuevo
-            </Button>
+            {role === 'doctor' && (
+              <Button
+                startContent={<PlusCircle />}
+                className="bg-cloud-300 text-white"
+                href="/patients/new"
+                as={Link}
+              >
+                Nuevo
+              </Button>
+            )}
           </div>
         </div>
         <div className="flex justify-between items-center">
