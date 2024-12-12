@@ -2,34 +2,9 @@ import { Section } from '@/components/atoms/Section'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../api/auth/[...nextauth]/route'
 import { format } from '@formkit/tempo'
-import { Card, CardBody, CardHeader, Chip, Divider } from '@nextui-org/react'
-import { getAge } from '../../utils/utils'
-
-const getAllConsults = async ({ token, dni }) => {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/${dni}/records`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-
-    if (!res.ok) {
-      const errorText = await res.text()
-      throw new Error(errorText)
-    }
-
-    const data = await res.json()
-    return data
-  } catch (error) {
-    console.error('Error fetching consults:', error)
-    return []
-  }
-}
+import { Card, CardBody, CardFooter, CardHeader, Chip, Divider } from '@nextui-org/react'
+import { getAge } from '@/utils/utils'
+import { getAllConsults } from '@/services/consults'
 
 const statusMap = {
   active: { label: 'Activa', color: 'success' },
@@ -41,11 +16,14 @@ export default async function ConsultsPage() {
   const session = await getServerSession(authOptions)
   const token = session?.accessToken
   const dni = session?.user?.dni
-  const consults = await getAllConsults({ token, dni })
+  const role = session?.user?.roles[0]?.name
+  const consults = await getAllConsults({ token, dni, role })
 
   const consultsSorted = consults.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   )
+
+  console.log('consultsSorted', consultsSorted)
 
   return (
     <Section>
@@ -75,6 +53,17 @@ export default async function ConsultsPage() {
                 <p>Teléfono: {consult.patient.cellphone}</p>
                 <p>Correo: {consult.patient.email}</p>
               </CardBody>
+              {consult.user && (
+                <>
+                  <Divider />
+                  <CardFooter>
+                    <p>
+                      Medico:{' '}
+                      {`${consult.user.firstName} ${consult.user.lastName}`}
+                    </p>
+                  </CardFooter>
+                </>
+              )}
             </Card>
           </li>
         ))}

@@ -2,7 +2,7 @@ export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
 export const getAge = birthday => {
   // Convertir la fecha de cumpleaños de formato DD/MM/YYYY a un objeto Date
-  const [day, month, year] = birthday.split('-').map(Number)
+  const [day, month, year] = birthday?.split('-').map(Number)
   const birthDate = new Date(year, month - 1, day) // Los meses en JavaScript son 0-indexados
 
   const today = new Date()
