@@ -221,16 +221,14 @@ export const PatientsTable = ({ users }) => {
                 ))}
               </DropdownMenu>
             </Dropdown>
-            {role === 'doctor' && (
-              <Button
-                startContent={<PlusCircle />}
-                className="bg-cloud-300 text-white"
-                href="/patients/new"
-                as={Link}
-              >
-                Nuevo
-              </Button>
-            )}
+            <Button
+              startContent={<PlusCircle />}
+              className="bg-cloud-300 text-white"
+              href="/patients/new"
+              as={Link}
+            >
+              Nuevo
+            </Button>
           </div>
         </div>
         <div className="flex justify-between items-center">
