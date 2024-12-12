@@ -1,76 +1,101 @@
+'use client'
 import propTypes from 'prop-types'
-import { Input } from '@nextui-org/react'
-import { useForm } from 'react-hook-form'
+import { Input, Select, SelectItem, Switch } from '@nextui-org/react'
+import { Controller } from 'react-hook-form'
 
-export const EditProfessional = ({ user }) => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({
-    defaultValues: {
-      name: user.name,
-      role: user.role,
-      specialtyArea: user.specialtyArea,
-      dni: user.dni,
-      status: user.status,
-      age: user.age,
-      email: user.email,
-    },
-  })
+const roles = [
+  { name: 'Profesional', value: 'doctor' },
+  { name: 'Administrador', value: 'admin' },
+]
 
-  const onSubmit = handleSubmit(data => {
-    console.log(data)
-  })
-
+export const EditProfessional = ({
+  register,
+  errors,
+  onSubmit,
+  watch,
+  control,
+}) => {
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-6 w-full">
+      <div className="flex gap-4">
+        <Input
+          label="Nombre"
+          placeholder="Ejemplo"
+          {...register('name')}
+          isInvalid={errors?.name}
+          errorMessage={errors?.name?.message}
+          className="w-full"
+          variant="bordered"
+        />
+        <Input
+          label="Apellido"
+          placeholder="Ejemplo"
+          {...register('lastName')}
+          isInvalid={errors?.lastName}
+          errorMessage={errors?.lastName?.message}
+          className="w-full"
+          variant="bordered"
+        />
+      </div>
       <Input
-        label="Nombre"
+        label="Cédula"
         placeholder="Ejemplo"
-        {...register('name')}
-        isInvalid={errors.name}
-        errorMessage={errors.name?.message}
-      />
-      <Input
-        label="Rol"
-        placeholder="Ejemplo"
-        {...register('role')}
-        isInvalid={errors.role}
-        errorMessage={errors.role?.message}
+        readOnly
+        {...register('dni')}
+        isInvalid={errors?.dni}
+        errorMessage={errors?.dni?.message}
+        variant="bordered"
       />
       <Input
         label="Especialidad"
         placeholder="Ejemplo"
         {...register('specialtyArea')}
-        isInvalid={errors.specialtyArea}
-        errorMessage={errors.specialtyArea?.message}
-      />
-      <Input
-        label="Cédula"
-        placeholder="Ejemplo"
-        {...register('dni')}
-        isInvalid={errors.dni}
-        errorMessage={errors.dni?.message}
-      />
-      <Input
-        label="Status"
-        placeholder="Ejemplo"
-        {...register('status')}
-        isInvalid={errors.status}
-        errorMessage={errors.status?.message}
+        isInvalid={errors?.specialtyArea}
+        errorMessage={errors?.specialtyArea?.message}
+        variant="bordered"
       />
       <Input
         label="Correo"
         placeholder="Ejemplo"
         {...register('email')}
-        isInvalid={errors.email}
-        errorMessage={errors.email?.message}
+        readOnly
+        isInvalid={errors?.email}
+        errorMessage={errors?.email?.message}
+        variant="bordered"
       />
+      <div className="flex w-full gap-4">
+        <Controller
+          control={control}
+          name="role"
+          render={({ field: { onChange, rolValue } }) => (
+            <Select
+              label="Selecciona un rol"
+              value={rolValue}
+              onChange={onChange}
+              variant="bordered"
+            >
+              {roles.map(({ name, value }) => (
+                <SelectItem key={value} value={value}>
+                  {name}
+                </SelectItem>
+              ))}
+            </Select>
+          )}
+        />
+        <div className="w-full flex items-center">
+          <Switch {...register('status')} className="w-full">
+            {watch('status') ? 'Activo' : 'Inactivo'}
+          </Switch>
+        </div>
+      </div>
     </form>
   )
 }
 
 EditProfessional.propTypes = {
-  user: propTypes.object,
+  register: propTypes.func,
+  errors: propTypes.object,
+  onSubmit: propTypes.func,
+  watch: propTypes.func,
+  control: propTypes.object,
 }

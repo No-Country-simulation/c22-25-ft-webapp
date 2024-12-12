@@ -6,6 +6,7 @@ import { PatientInformation } from '@/components/molecules/PatientInformation'
 import { getPatientByDNI } from '@/services/patients'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '#/src/app/api/auth/[...nextauth]/route'
+import { NewConsult } from '@/components/molecules/NewConsult'
 
 export default async function PatientPage({ params: { dni } }) {
   const session = await getServerSession(authOptions)
@@ -100,7 +101,7 @@ export default async function PatientPage({ params: { dni } }) {
       >
         {/* Primera columna */}
         <div className="flex flex-col gap-6 w-full">
-          <PatientInformation patientInfo={patientInfo.patient} />
+          <PatientInformation patientInfo={patientInfo?.patient} />
           <BasicInformation
           // dni={dni}
           />
@@ -108,8 +109,10 @@ export default async function PatientPage({ params: { dni } }) {
 
         {/* Segunda columna */}
         <div className="flex flex-col gap-6 w-full">
+          <NewConsult patientDni={dni} />
+
           {upcomingConsults.length > 0 && (
-            <Consults title="Consultas" consults={upcomingConsults} />
+            <Consults title="Próximas consultas" consults={upcomingConsults} />
           )}
           {pastConsults.length > 0 && (
             <Consults title="Consultas pasadas" consults={pastConsults} />

@@ -1,4 +1,5 @@
 'use client'
+import { formatDateToBackend } from '@/utils/utils'
 import { Section } from '@/components/atoms/Section'
 import {
   Accordion,
@@ -11,51 +12,52 @@ import {
   Checkbox,
 } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
-
-// const patient = {
-//   name: 'John',
-//   lastname: 'Doe',
-//   birthday: '1990-01-01',
-//   email: 'qL8nI@example.com',
-//   cedula: '123456789',
-//   gender: 'male',
-//   address: '123 Main St',
-//   phone: '123-456-7890',
-//   medicalHistory: {
-//     personalHistory: 'none',
-//     familyHistory: 'none',
-//     allergies: 'none',
-//   },
-//   consult: {
-//     date: '2023-01-01',
-//     time: '10:00',
-//     reason: 'none',
-//     notes: 'none',
-//   },
-//   diagnostic: {
-//     physicalExamination: '',
-//     diagnosis: ''
-//   },
-//   treatmentPlan: {
-//     description: '',
-//     medicalProcedures: '',
-//     evolution: ''
-//   },
-//   consent: {
-//     consent: false,
-//     additionalInformation: ''
-//   }
-// }
+import useAuth from '@/hooks/useAuth'
 
 export default function NewPatientPage() {
+  const { token } = useAuth()
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = handleSubmit(data => {
-    console.log(data)
+  const onSubmit = handleSubmit( async data => {
+    // /doctor/patients/add
+    const payload = {
+      dni: Number(data.dni),
+      firstName: data.name,
+      lastName: data.lastname,
+      cellphone: data.phone,
+      email: data.email,
+      birthday: formatDateToBackend(data.birthday),
+      gender: data.gender,
+      address: data.address,
+    }
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/doctor/patients/add`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      )
+
+      if (response.ok) {
+        reset()
+      }
+
+      const result = await response.json()
+
+      console.log(response, result)
+    } catch (error) {
+      console.error(error)
+    }
   })
   return (
     <Section>
@@ -120,15 +122,15 @@ export default function NewPatientPage() {
                 variant="bordered"
                 label="Cédula"
                 isRequired
-                {...register('cedula', {
+                {...register('dni', {
                   required: 'La cédula es obligatoria',
                   minLength: {
                     value: 3,
                     message: 'La cédula debe tener al menos 3 caracteres',
                   },
                 })}
-                isInvalid={!!errors.cedula}
-                errorMessage={errors.cedula && errors.cedula.message}
+                isInvalid={!!errors.dni}
+                errorMessage={errors.dni && errors.dni.message}
               />
               <Input
                 type="email"
@@ -169,11 +171,11 @@ export default function NewPatientPage() {
                 isInvalid={!!errors.gender}
                 errorMessage={errors.gender && errors.gender.message}
               >
-                <Radio value="hombre" {...register('gender')}>
-                  Hombre
+                <Radio value="masculino" {...register('gender')}>
+                  Masculino
                 </Radio>
-                <Radio value="mujer" {...register('gender')}>
-                  Mujer
+                <Radio value="femenino" {...register('gender')}>
+                  Femenino
                 </Radio>
                 <Radio value="otro" {...register('gender')}>
                   Otro
@@ -196,7 +198,7 @@ export default function NewPatientPage() {
               />
             </div>
           </AccordionItem>
-          <AccordionItem
+          {/* <AccordionItem
             key="2"
             aria-label="Historial médico"
             title={
@@ -406,7 +408,7 @@ export default function NewPatientPage() {
                 {...register('consent.additionalInformation')}
               />
             </div>
-          </AccordionItem>
+          </AccordionItem> */}
         </Accordion>
         <div className="flex gap-4 mt-4 p-2 justify-end">
           <Button
