@@ -5,6 +5,8 @@ import com.webapp.backend.components.specialtyArea.SpecialtyAreaRepository;
 import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
 import lombok.AllArgsConstructor;
+
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -87,7 +89,7 @@ public class UserService {
 
     public void activeAccount(Integer dni){
         User userDb = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));
-        userDb.setEnabled(true);
+        userDb.setEnabled(!userDb.isEnabled());
 
         userRepository.save(userDb);
     }
