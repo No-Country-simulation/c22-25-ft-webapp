@@ -6,6 +6,7 @@ import {
   AboutUsSection,
   ContactUsSection,
   TestimonialsSection,
+  FooterLanding,
 } from '@/components/landing-page'
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
       <AboutUsSection />
       <ContactUsSection />
       <TestimonialsSection />
+      <FooterLanding />
     </>
   )
 }

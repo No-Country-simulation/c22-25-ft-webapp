@@ -20,6 +20,7 @@ import {
 } from '@nextui-org/react'
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
+import { capitalize } from '@/utils/utils'
 
 const columns = [
   { name: 'DNI', uid: 'dni', sortable: true },
@@ -31,10 +32,6 @@ const columns = [
   { name: 'Dirección', uid: 'address' },
   { name: 'Acciones', uid: 'actions' },
 ]
-
-export function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
 
 const genderColorMap = {
   F: 'primary',

@@ -7,40 +7,48 @@ import {
   PanelRight,
   LogOut,
   // UserPen,
+  CalendarPlus2,
 } from 'lucide-react'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-
-const mainNavItems = [
-  {
-    icon: <LayoutDashboard className="h-5 w-5" />,
-    label: 'Dashboard',
-    href: '/dashboard',
-  },
-  {
-    icon: <UserCheck className="h-5 w-5" />,
-    label: 'Profesionales',
-    href: '/professionals',
-  },
-  {
-    icon: <Users className="h-5 w-5" />,
-    label: 'Pacientes',
-    href: '/patients',
-  },
-  // {
-  //   icon: <UserPen className="h-5 w-5" />,
-  //   label: 'Perfil',
-  //   href: '/profile',
-  // },
-]
+import useAuth from '@/hooks/useAuth'
 
 export const Sidebar = () => {
+  const { role } = useAuth()
   const pathName = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(true)
   const openSidebar = () => setIsCollapsed(!isCollapsed)
   const { data: session } = useSession()
+
+  const mainNavItems = [
+    {
+      icon: <LayoutDashboard className="h-5 w-5" />,
+      label: 'Dashboard',
+      href: '/dashboard',
+    },
+    ...(role !== 'doctor'
+      ? [
+          {
+            icon: <UserCheck className="h-5 w-5" />,
+            label: 'Profesionales',
+            href: '/professionals',
+          },
+        ]
+      : []),
+    {
+      icon: <Users className="h-5 w-5" />,
+      label: 'Pacientes',
+      href: '/patients',
+    },
+    {
+      icon: <CalendarPlus2 className="h-5 w-5" />,
+      label: 'Consultas',
+      href: '/consults',
+    },
+  ]
+
   return (
     <aside
       className={`
