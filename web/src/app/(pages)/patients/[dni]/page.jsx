@@ -47,8 +47,6 @@ export default async function PatientPage({ params: { dni } }) {
   //   ]
   // }
 
-  const patientConsults = patientInfo.clinicalRecordList
-
   return (
     <Section>
       <h1 className="text-2xl md:text-3xl font-bold mb-8 text-cloud-300">
@@ -74,7 +72,7 @@ export default async function PatientPage({ params: { dni } }) {
             </h3>
 
             <div className="flex flex-col gap-2">
-              {patientConsults.map(consult => (
+              {patientInfo?.clinicalRecordList?.map(consult => (
                 <CardConsult key={consult.recordId} consult={consult} />
               ))}
             </div>
