@@ -17,3 +17,8 @@ export const getAge = birthday => {
 
   return age
 }
+
+export const formatDateToBackend = dateString => {
+  const [year, month, day] = dateString.split('-')
+  return `${day}-${month}-${year}`
+}

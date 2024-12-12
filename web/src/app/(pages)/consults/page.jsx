@@ -2,7 +2,14 @@ import { Section } from '@/components/atoms/Section'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../../api/auth/[...nextauth]/route'
 import { format } from '@formkit/tempo'
-import { Card, CardBody, CardFooter, CardHeader, Chip, Divider } from '@nextui-org/react'
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Chip,
+  Divider,
+} from '@nextui-org/react'
 import { getAge } from '@/utils/utils'
 import { getAllConsults } from '@/services/consults'
 
@@ -22,8 +29,6 @@ export default async function ConsultsPage() {
   const consultsSorted = consults.sort(
     (a, b) => new Date(a.date) - new Date(b.date)
   )
-
-  console.log('consultsSorted', consultsSorted)
 
   return (
     <Section>

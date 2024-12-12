@@ -3,6 +3,7 @@ import useAuth from '@/hooks/useAuth'
 import { Section } from '@/components/atoms/Section'
 import { Button, Input } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
+import { formatDateToBackend } from '@/utils/utils'
 
 export default function NewProfessionalPage() {
   const { token } = useAuth()
@@ -13,18 +14,13 @@ export default function NewProfessionalPage() {
     formState: { errors },
   } = useForm()
 
-  const formatDate = dateString => {
-    const [year, month, day] = dateString.split('-')
-    return `${day}-${month}-${year}`
-  }
-
   const onSubmit = handleSubmit(async data => {
     const payload = {
       dni: Number(data.dni),
       firstName: data.name,
       lastName: data.lastname,
       // password: data.password,
-      birthday: formatDate(data.birthdate),
+      birthday: formatDateToBackend(data.birthdate),
       email: data.email,
       roles: [
         // { name: 'doctor' }
