@@ -13,6 +13,7 @@ import { PlusCircleIcon } from 'lucide-react'
 import { CreateConsultForm } from '@/components/organisms/forms/CreateConsultForm'
 import { useForm } from 'react-hook-form'
 import useAuth from '@/hooks/useAuth'
+import { toast } from 'sonner'
 
 export const NewConsult = ({ patientDni }) => {
   const { token, dni } = useAuth()
@@ -48,8 +49,9 @@ export const NewConsult = ({ patientDni }) => {
 
       const data = await res.json()
       // Setear este valor en el estado
-      console.log(data)
+      // console.log(data)
 
+      toast.success('Consulta creada exitosamente')
       reset()
       modalToCreateConsult.onClose()
     } catch (error) {
