@@ -31,7 +31,6 @@ export default function NewProfessionalPage() {
       ],
       specialtyArea: [{ name: data.specialty }],
     }
-    console.table(payload)
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/add`,
@@ -44,16 +43,13 @@ export default function NewProfessionalPage() {
           body: JSON.stringify(payload),
         }
       )
-      const result = await response.json()
+      // const result = await response.json()
 
       if (response.ok) {
-        console.log(result)
         reset()
       }
 
-      if (!response.ok) {
-        console.log(result)
-      }
+      // console.log(result)
     } catch (error) {
       console.error(error)
     }
@@ -138,6 +134,7 @@ export default function NewProfessionalPage() {
             {...register('birthdate', {
               required: 'La fecha de nacimiento es obligatoria',
             })}
+            max={new Date().toISOString().split('T')[0]}
             isInvalid={!!errors.birthdate}
             errorMessage={errors.birthdate && errors.birthdate.message}
           />

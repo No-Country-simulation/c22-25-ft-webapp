@@ -26,7 +26,6 @@ export const NewConsult = ({ patientDni }) => {
 
   const onSubmit = handleSubmit(async data => {
     const payload = { date: `${data.date}T${data.time}:00`, status: 'pending' }
-    console.log(JSON.stringify(payload))
 
     try {
       const res = await fetch(
@@ -54,7 +53,7 @@ export const NewConsult = ({ patientDni }) => {
       reset()
       modalToCreateConsult.onClose()
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   })
 
