@@ -35,6 +35,7 @@ export const LoginForm = () => {
       }
 
       reset()
+      setError(null)
       router.push('/dashboard')
     } catch (error) {
       console.error('Error while logging in: ', error)

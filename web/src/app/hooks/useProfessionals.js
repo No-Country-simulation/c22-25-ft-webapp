@@ -1,22 +1,31 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import useAuthToken from './useAuth'
-
+import useAuth from './useAuth'
+import {
+  updateProfessional,
+  deleteProfessional,
+} from '@/services/professionals'
 // export function useProfessionals() {
 //  const [, ] = useState()
 
 //  return {}
 // }
 
-export function useProfessional() {
-  const { token } = useAuthToken()
+export function useProfessional({
+  professionals,
+  modalToEditProfessional,
+  modalToDeleteProfessional,
+}) {
+  const { token } = useAuth()
+  const { register, errors, handleSubmit, reset, watch, control } = useForm()
+  const [professionalsList, setProfessionalsList] = useState(
+    professionals || []
+  )
   const [professionalSelected, setProfessionalSelected] = useState(null)
   const handleRowSelection = (professional, modal) => {
     setProfessionalSelected(professional)
     modal.onOpen()
   }
-
-  const { register, errors, handleSubmit, reset, watch, control } = useForm()
 
   useEffect(() => {
     if (professionalSelected) {
@@ -34,49 +43,60 @@ export function useProfessional() {
     }
   }, [professionalSelected])
 
+  // Edit professionals
   const onSubmit = handleSubmit(async data => {
-    // Actualizar aquí
-    console.log('Info enviada: ',data)
-
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/${data.dni}/update`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            dni: data.dni,
-            firstName: data.name,
-            lastName: data.lastName,
-            email: data.email,
-            birthday: data.birthday,
-            enabled: data.status,
-            roles: [{ name: data.role === 'Administrador' ? 'admin' : 'doctor' }],
-            specialtyArea: [{ name: data.specialtyArea }],
-          }),
-        }
-      )
-
-      if (!res.ok) {
-        const errorText = await res.text()
-        console.error('Error response:', res.status, errorText)
-        throw new Error(`Failed to update professional: ${res.status}`)
+      const professionalData = {
+        dni: data.dni,
+        firstName: data.name,
+        lastName: data.lastName,
+        email: data.email,
+        birthday: data.birthday,
+        enabled: data.status,
+        roles: [{ name: data.role }],
+        specialtyArea: [{ name: data.specialtyArea }],
       }
 
-      if (res.status === 204) return null
+      // Llama a la función updateProfessional
+      const result = await updateProfessional({
+        token,
+        professional: professionalData,
+      })
 
-      const result = await res.json()
-      return result
+      if (result) {
+        setProfessionalsList(prev => {
+          return prev.map(professional => {
+            if (professional.dni === data.dni) {
+              return { ...professional, ...data }
+            }
+            return professional
+          })
+        })
+        modalToEditProfessional.onClose()
+      }
     } catch (error) {
       console.error(error)
       throw new Error('Failed to update professional')
     }
   })
 
+  const handleDelete = async () => {
+    try {
+      await deleteProfessional({ token, dni: professionalSelected.dni })
+      setProfessionalsList(prev =>
+        prev.filter(prof => prof.dni !== professionalSelected.dni)
+      )
+      modalToDeleteProfessional.onClose()
+    } catch (error) {
+      console.error(error)
+      throw new Error('Failed to delete professional')
+    }
+  }
+
   return {
+    professionals: professionalsList,
+    handleDelete,
+    //
     register,
     errors,
     onSubmit,

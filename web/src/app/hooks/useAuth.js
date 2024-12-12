@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react'
 
-const useAuthToken = () => {
+const useAuth = () => {
   const { data: session, status } = useSession()
 
   const isLoading = status === 'loading'
@@ -14,4 +14,4 @@ const useAuthToken = () => {
   return { token, role, dni, isLoading, isAuthenticated }
 }
 
-export default useAuthToken
+export default useAuth

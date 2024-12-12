@@ -13,10 +13,10 @@ import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import useAuthToken from '@/hooks/useAuth'
+import useAuth from '@/hooks/useAuth'
 
 export const Sidebar = () => {
-  const { role } = useAuthToken()
+  const { role } = useAuth()
   const pathName = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(true)
   const openSidebar = () => setIsCollapsed(!isCollapsed)

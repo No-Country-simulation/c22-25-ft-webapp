@@ -4,8 +4,8 @@ import { Input, Select, SelectItem, Switch } from '@nextui-org/react'
 import { Controller } from 'react-hook-form'
 
 const roles = [
-  { name: 'Profesional', value: 'Profesional' },
-  { name: 'Administrador', value: 'Administrador' },
+  { name: 'Profesional', value: 'doctor' },
+  { name: 'Administrador', value: 'admin' },
 ]
 
 export const EditProfessional = ({
@@ -67,13 +67,12 @@ export const EditProfessional = ({
         <Controller
           control={control}
           name="role"
-          render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, rolValue } }) => (
             <Select
               label="Selecciona un rol"
-              value={value}
+              value={rolValue}
               onChange={onChange}
               variant="bordered"
-              defaultSelectedKeys={[value]}
             >
               {roles.map(({ name, value }) => (
                 <SelectItem key={value} value={value}>

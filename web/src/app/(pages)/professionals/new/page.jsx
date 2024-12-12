@@ -1,11 +1,11 @@
 'use client'
-import useAuthToken from '@/hooks/useAuth'
+import useAuth from '@/hooks/useAuth'
 import { Section } from '@/components/atoms/Section'
 import { Button, Input } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
 
 export default function NewProfessionalPage() {
-  const { token } = useAuthToken()
+  const { token } = useAuth()
   const {
     register,
     reset,

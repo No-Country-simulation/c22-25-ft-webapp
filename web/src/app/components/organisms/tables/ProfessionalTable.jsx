@@ -65,6 +65,24 @@ export const ProfessionalTable = ({ users }) => {
   const modalToEditProfessional = useDisclosure()
   const modalToDeleteProfessional = useDisclosure()
   // const {isOpen, onOpen, onOpenChange} = useDisclosure(); // Example of how to use useDisclosure
+  const {
+    professionals,
+    handleDelete,
+    //
+    register,
+    errors,
+    onSubmit,
+    watch,
+    control,
+    //
+    professionalSelected,
+    handleRowSelection,
+  } = useProfessional({
+    professionals: users,
+    modalToEditProfessional,
+    modalToDeleteProfessional,
+  })
+  // // // // // // //
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(
@@ -89,7 +107,7 @@ export const ProfessionalTable = ({ users }) => {
   }, [visibleColumns])
 
   const filteredItems = useMemo(() => {
-    let filteredUsers = [...users]
+    let filteredUsers = [...professionals]
 
     if (hasSearchFilter) {
       filteredUsers = filteredUsers.filter(user =>
@@ -106,7 +124,7 @@ export const ProfessionalTable = ({ users }) => {
     }
 
     return filteredUsers
-  }, [users, filterValue, statusFilter])
+  }, [professionals, filterValue, statusFilter])
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage)
 
@@ -127,16 +145,6 @@ export const ProfessionalTable = ({ users }) => {
     })
   }, [sortDescriptor, items])
 
-  const {
-    register,
-    errors,
-    onSubmit,
-    watch,
-    control,
-    professionalSelected,
-    handleRowSelection,
-  } = useProfessional()
-
   const renderCell = useCallback((user, columnKey) => {
     const cellValue = user[columnKey]
 
@@ -147,7 +155,7 @@ export const ProfessionalTable = ({ users }) => {
             avatarProps={{ radius: 'lg', src: user.avatar }}
             description={user.email}
             // name={cellValue}
-            name={user.name}
+            name={`${user.name} ${user.lastName}`}
           >
             {user.email}
           </User>
@@ -312,7 +320,7 @@ export const ProfessionalTable = ({ users }) => {
         </div>
         <div className="flex justify-between items-center">
           <span className="text-default-400 text-small">
-            Total {users.length} profesionales
+            Total {professionals.length} profesionales
           </span>
           <label className="flex items-center text-default-400 text-small">
             Filas por página:
@@ -333,7 +341,7 @@ export const ProfessionalTable = ({ users }) => {
     statusFilter,
     visibleColumns,
     onRowsPerPageChange,
-    users.length,
+    professionals.length,
     onSearchChange,
     hasSearchFilter,
   ])
@@ -433,7 +441,7 @@ export const ProfessionalTable = ({ users }) => {
           {onClose => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Información de profesional
+                Información del profesional
               </ModalHeader>
               <ModalBody>
                 <EditProfessional
@@ -462,29 +470,36 @@ export const ProfessionalTable = ({ users }) => {
         onOpenChange={modalToDeleteProfessional.onOpenChange}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
+        classNames={{
+          backdrop: 'bg-red-500/30 backdrop-opacity-30',
+        }}
       >
         <ModalContent>
           {onClose => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Información de profesional
+                Información del profesional
               </ModalHeader>
               <ModalBody>
-                Estás seguro de eliminar al profesional
-                <pre>{JSON.stringify(professionalSelected, null, 2)}</pre>
+                ¿Estás seguro de eliminar al profesional?
+                <div className="flex flex-col gap-2">
+                  <span>{`Nombre: ${professionalSelected?.name} ${professionalSelected?.lastName}`}</span>
+                  <span>{`DNI: ${professionalSelected?.dni}`}</span>
+                  <span>{`Email: ${professionalSelected?.email}`}</span>
+                  <span>{`Fecha de nacimiento: ${professionalSelected?.birthday}`}</span>
+                  <span>{`Rol: ${professionalSelected?.role}`}</span>
+                  <span>{`Especialidad: ${professionalSelected?.specialtyArea}`}</span>
+                  <span>{`Estado: ${professionalSelected?.status === true ? 'Activo' : 'Inactivo'}`}</span>
+                </div>
+                <p className="text-red-500 text-center">
+                  ¡Esta acción es irreversible!
+                </p>
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
                   Cerrar
                 </Button>
-                <Button
-                  color="danger"
-                  onPress={() => {
-                    // Lógica acá
-                    alert('Profesional eliminado')
-                    onClose()
-                  }}
-                >
+                <Button color="danger" onPress={handleDelete}>
                   Eliminar
                 </Button>
               </ModalFooter>

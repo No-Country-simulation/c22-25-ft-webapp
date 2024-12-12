@@ -12,10 +12,10 @@ import {
 import { PlusCircleIcon } from 'lucide-react'
 import { CreateConsultForm } from '@/components/organisms/forms/CreateConsultForm'
 import { useForm } from 'react-hook-form'
-import useAuthToken from '@/hooks/useAuth'
+import useAuth from '@/hooks/useAuth'
 
 export const NewConsult = ({ patientDni }) => {
-  const { token, dni } = useAuthToken()
+  const { token, dni } = useAuth()
   const modalToCreateConsult = useDisclosure()
   const {
     register,
