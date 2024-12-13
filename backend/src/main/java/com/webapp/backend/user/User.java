@@ -34,7 +34,7 @@ import static jakarta.persistence.FetchType.EAGER;
 @NoArgsConstructor
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-public class User implements UserDetails, Principal {
+public class User implements UserDetails, Principal{
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

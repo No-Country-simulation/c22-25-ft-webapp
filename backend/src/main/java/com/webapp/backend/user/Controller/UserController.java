@@ -1,16 +1,16 @@
-package com.webapp.backend.user;
+package com.webapp.backend.user.Controller;
 
-import com.webapp.backend.components.clinicalRecord.ClinicalRecordDTO;
 import com.webapp.backend.components.clinicalRecord.ClinicalRecordDTOForAdmin;
-import com.webapp.backend.components.clinicalRecord.ClinicalRecordDTOForDoctor;
 import com.webapp.backend.components.clinicalRecord.ClinicalRecordService;
-import com.webapp.backend.components.consultationRecord.ConsultationRecordDTO;
 import com.webapp.backend.components.consultationRecord.ConsultationRecordService;
 import com.webapp.backend.components.patient.PatientDTO;
 import com.webapp.backend.components.patient.PatientService;
-import com.webapp.backend.components.patient.PatientWithDxsDTO;
 import com.webapp.backend.components.specialtyArea.SpecialtyAreaDTO;
 import com.webapp.backend.components.specialtyArea.SpecialtyAreaService;
+import com.webapp.backend.user.PasswordDTO;
+import com.webapp.backend.user.UserDTO;
+import com.webapp.backend.user.UserService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("")
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -27,7 +27,6 @@ public class UserController {
     private final SpecialtyAreaService specialtyAreaService;
     private final ClinicalRecordService clinicalRecordService;
     private final ConsultationRecordService consultationRecordService;
-
 
     /***** RUTAS GENERALES *****/
     @PutMapping("/password/users/{userDni}/update")
@@ -50,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/admin/users/add")
-    public ResponseEntity<UserDTO> saveUser(@RequestBody @Valid UserDTO newUserData){
+    public ResponseEntity<UserDTO> saveUser(@RequestBody @Valid UserDTO newUserData) throws MessagingException {
         UserDTO result = userService.saveUser(newUserData);
         return ResponseEntity.status(201).body(result);
     }
@@ -111,7 +110,9 @@ public class UserController {
 
 
 
+
     /***** RUTAS PARA DOCTORES *****/
+    /*
     @GetMapping("/doctor/{doctorDni}")
     public ResponseEntity<UserDTO> getDoctor(@PathVariable(name = "doctorDni") Integer doctorDni){
         UserDTO result =  userService.getDoctor(doctorDni);
@@ -202,4 +203,5 @@ public class UserController {
         return ResponseEntity.status(204).body("Consultation Record delete");
     }
 
+     */
 }

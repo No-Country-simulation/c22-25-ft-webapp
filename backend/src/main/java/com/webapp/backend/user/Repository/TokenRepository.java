@@ -1,5 +1,7 @@
-package com.webapp.backend.user;
+package com.webapp.backend.user.Repository;
 
+
+import com.webapp.backend.user.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

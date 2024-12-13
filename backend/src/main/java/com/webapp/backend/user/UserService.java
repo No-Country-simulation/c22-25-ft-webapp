@@ -2,8 +2,12 @@ package com.webapp.backend.user;
 
 import com.webapp.backend.components.specialtyArea.SpecialtyArea;
 import com.webapp.backend.components.specialtyArea.SpecialtyAreaRepository;
+import com.webapp.backend.email.EmailService;
 import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
+import com.webapp.backend.user.Repository.VerificationTokenRepository;
+import com.webapp.backend.user.Repository.UserRepository;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +25,9 @@ public class UserService {
     private final RoleRepository roleRepository;
     private final SpecialtyAreaRepository specialtyAreaRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
+    private final VerificationTokenRepository verificationTokenRepository;
+    //private final VerificationToken verificationToken;
 
     @Transactional
     public void updatePassword(PasswordDTO passwordData, Integer doctorDni){
@@ -45,7 +52,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO saveUser(UserDTO userData){
+    public UserDTO saveUser(UserDTO userData) throws MessagingException {
         List<Role> roles = new ArrayList<>();
         if(!userData.getRoles().isEmpty()){
             userData.getRoles().forEach(role -> {
@@ -75,15 +82,37 @@ public class UserService {
                 .password(passwordEncoder.encode(String.valueOf(userData.getDni())))
                 .email(userData.getEmail())
                 .birthday(userData.getBirthday())
-                .enabled(true) //Cambiar a false o quitar antes de subir a produccion.
+                .enabled(false) //Cambiar a false o quitar antes de subir a produccion.
                 .role(roles)
                 .specialtyArea(specialtyAreas)
                 .build();
 
         User savedUser = userRepository.save(newUser);
 
+        /*
+        // Generate verification token
+        String verificationToken = UUID.randomUUID().toString();
+        VerificationToken token = new VerificationToken(verificationToken, savedUser, LocalDateTime.now().plusDays(1));
+        verificationTokenRepository.save(token); // Save token in the database
+
+        // Send verification email
+        emailService.sendVerificationEmail(savedUser, verificationToken);
+
+        return new UserDTO(savedUser);
+
+         */
         return new UserDTO(savedUser);
     }
+
+    /*
+    @Transactional
+    public void verifyUser(String token) {
+        User user = authenticationService.validateVerificationToken(token);
+        user.setEnabled(true);
+        userRepository.save(user);
+    }
+
+     */
 
     public void activeAccount(Integer dni){
         User userDb = userRepository.findByDni(dni).orElseThrow(() -> new RuntimeException("User not found"));

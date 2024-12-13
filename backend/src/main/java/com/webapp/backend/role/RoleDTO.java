@@ -7,6 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class RoleDTO {
+
     Integer id;
     @NotEmpty(message = "name is mandatory")
     String name;
@@ -15,4 +16,5 @@ public class RoleDTO {
         this.id = role.getRoleId();
         this.name = role.getName();
     }
+
 }

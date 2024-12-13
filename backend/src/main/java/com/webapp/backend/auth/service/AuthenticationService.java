@@ -1,19 +1,21 @@
-package com.webapp.backend.auth;
+package com.webapp.backend.auth.service;
 
+import com.webapp.backend.auth.Dto.AuthenticationRequest;
+import com.webapp.backend.auth.Dto.AuthenticationResponse;
+import com.webapp.backend.auth.Dto.RegistrationRequest;
 import com.webapp.backend.email.EmailService;
-import com.webapp.backend.email.EmailTemplateName;
 import com.webapp.backend.role.Role;
 import com.webapp.backend.role.RoleRepository;
 import com.webapp.backend.security.JwtService;
-import com.webapp.backend.user.*;
+import com.webapp.backend.user.Token;
+import com.webapp.backend.user.User;
+import com.webapp.backend.user.Repository.TokenRepository;
+import com.webapp.backend.user.Repository.UserRepository;
+import com.webapp.backend.user.UserDTO;
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +38,8 @@ public class AuthenticationService {
     private final EmailService emailService;
     private final TokenRepository tokenRepository;
 
-    @Value("${application.mailing.frontend.activation-url}")
-    private String activationUrl;
+    //@Value("${application.mailing.frontend.activation-url}")
+    //private String activationUrl;
 
     public User register(RegistrationRequest request) throws MessagingException {
         Role role = roleRepository.findByName("admin").orElseThrow(() -> new IllegalStateException("ROLE 'admin' was not initiated"));
@@ -54,8 +56,27 @@ public class AuthenticationService {
                 .role(List.of(role))
                 .build();
 
-        sendValidationEmail(user); //Comentar esta linea junto con el cambio de arriba para saltearse la verificacion por email.
-        return userRepository.save(user);
+
+        User savedUser = userRepository.save(user);
+
+        // Generate and save a 4-digit token
+        String token = String.format("%04d", new Random().nextInt(10000)); // Generates a number from 0000 to 9999
+        Token verificationToken = Token.builder()
+                .token(token)
+                .user(savedUser)
+                .createdAt(LocalDateTime.now())
+                .expiresAt(LocalDateTime.now().plusHours(24))
+                .build();
+
+        tokenRepository.save(verificationToken);
+
+        // Send verification email
+        emailService.sendVerificationEmail(savedUser, token);
+
+        return savedUser;
+
+        // sendValidationEmail(user); //Comentar esta linea junto con el cambio de arriba para saltearse la verificacion por email.
+        //return userRepository.save(user);
 
     }
 
@@ -82,6 +103,7 @@ public class AuthenticationService {
                 .build();
     }
 
+    /*
     //@Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
@@ -101,6 +123,8 @@ public class AuthenticationService {
         tokenRepository.save(savedToken);
     }
 
+     */
+
     private String generateAndSaveActivationToken(User user) {
         // Generate a token
         String generatedToken = generateActivationCode(6);
@@ -115,6 +139,7 @@ public class AuthenticationService {
         return generatedToken;
     }
 
+    /*
     private void sendValidationEmail(User user) throws MessagingException {
         var newToken = generateAndSaveActivationToken(user);
 
@@ -127,6 +152,8 @@ public class AuthenticationService {
                 "Account activation"
         );
     }
+
+     */
 
     private String generateActivationCode(int length) {
         String characters = "0123456789";

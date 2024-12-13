@@ -1,5 +1,4 @@
 package com.webapp.backend.handler;
-
 import com.webapp.backend.exception.ActivationTokenException;
 import com.webapp.backend.exception.OperationNotPermittedException;
 import jakarta.mail.MessagingException;
@@ -11,8 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static com.webapp.backend.handler.BusinessErrorCodes.*;
 import static org.springframework.http.HttpStatus.*;
@@ -124,4 +122,5 @@ public class GlobalExceptionHandler {
                                 .build()
                 );
     }
+
 }

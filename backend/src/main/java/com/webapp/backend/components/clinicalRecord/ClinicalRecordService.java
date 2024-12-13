@@ -3,13 +3,8 @@ package com.webapp.backend.components.clinicalRecord;
 import com.webapp.backend.components.patient.Patient;
 import com.webapp.backend.components.patient.PatientRepository;
 import com.webapp.backend.user.User;
-import com.webapp.backend.user.UserRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.webapp.backend.user.Repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Transient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
