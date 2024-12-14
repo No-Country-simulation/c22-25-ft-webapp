@@ -21,6 +21,7 @@ import {
 import { PlusCircle, EllipsisVertical, Search, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { capitalize } from '@/utils/utils'
+import useAuth from '@/hooks/useAuth'
 
 const columns = [
   { name: 'DNI', uid: 'dni', sortable: true },
@@ -47,6 +48,7 @@ const INITIAL_VISIBLE_COLUMNS = [
 ]
 
 export const PatientsTable = ({ users }) => {
+  const { role } = useAuth()
   const [filterValue, setFilterValue] = useState('')
   const [selectedKeys, setSelectedKeys] = useState(new Set([]))
   const [visibleColumns, setVisibleColumns] = useState(

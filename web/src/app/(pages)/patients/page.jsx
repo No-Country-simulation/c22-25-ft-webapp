@@ -9,8 +9,7 @@ export default async function PatientsPage() {
   const session = await getServerSession(authOptions)
   const token = session?.accessToken
   const rol = session?.user?.roles[0]?.name
-  const doctorDni = session?.user?.dni
-  const patients = await getAllPatients({ token, doctorDni, rol })
+  const patients = await getAllPatients({ token, rol })
 
   const mappedPatients = patients.map(patient => ({
     dni: patient?.dni,

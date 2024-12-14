@@ -1,12 +1,12 @@
 import propTypes from 'prop-types'
 import { Section } from '@/components/atoms/Section'
 import { BasicInformation } from '@/components/molecules/BasicInformation'
-import { Consults } from '@/components/molecules/Consults'
 import { PatientInformation } from '@/components/molecules/PatientInformation'
 import { getPatientByDNI } from '@/services/patients'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '#/src/app/api/auth/[...nextauth]/route'
 import { NewConsult } from '@/components/molecules/NewConsult'
+import { CardConsult } from '@/components/molecules/ui/CardConsult'
 
 export default async function PatientPage({ params: { dni } }) {
   const session = await getServerSession(authOptions)
@@ -21,13 +21,7 @@ export default async function PatientPage({ params: { dni } }) {
   // {
   //   patient: {
   //     dni: <string>,
-  //     firstName: <string>,
-  //     lastName: <string>,
-  //     gender: <string>,
-  //     birthday: <string>,
-  //     address: <string>,
-  //     cellphone: <number>,
-  //     email: '<string>'
+  //     ......
   //   },
   //   clinicalRecordList: [
   //     {
@@ -53,52 +47,13 @@ export default async function PatientPage({ params: { dni } }) {
   //   ]
   // }
 
-  const consults = [
-    {
-      id: 1,
-      reason: 'Dolor de estomago',
-      date: '2025-06-06',
-    },
-    {
-      id: 2,
-      reason: 'Dolor de cabeza',
-      date: '2024-12-20',
-    },
-    {
-      id: 3,
-      reason: 'Dolor de cabeza',
-      date: '2024-06-06',
-      description:
-        'Consulta realizada para evaluar un dolor persistente en la cabeza. Se diagnosticó tensión y se recomendaron técnicas de relajación y tratamiento para aliviar los síntomas experimentados.',
-    },
-    {
-      id: 4,
-      reason: 'Dolor de cabeza',
-      date: '2024-12-10',
-    },
-  ]
-
-  const today = new Date()
-
-  // Dividir las consultas
-  const pastConsults = consults.filter(
-    consult => new Date(consult.date) < today
-  )
-  const upcomingConsults = consults.filter(
-    consult => new Date(consult.date) >= today
-  )
-
   return (
     <Section>
       <h1 className="text-2xl md:text-3xl font-bold mb-8 text-cloud-300">
         Paciente
       </h1>
 
-      <div
-        className={
-          'flex flex-col lg:grid lg:grid-cols-2 gap-6 w-full overflow-hidden'
-        }
-      >
+      <div className={'flex flex-col lg:grid lg:grid-cols-2 gap-6 w-full'}>
         {/* Primera columna */}
         <div className="flex flex-col gap-6 w-full">
           <PatientInformation patientInfo={patientInfo?.patient} />
@@ -111,12 +66,17 @@ export default async function PatientPage({ params: { dni } }) {
         <div className="flex flex-col gap-6 w-full">
           <NewConsult patientDni={dni} />
 
-          {upcomingConsults.length > 0 && (
-            <Consults title="Próximas consultas" consults={upcomingConsults} />
-          )}
-          {pastConsults.length > 0 && (
-            <Consults title="Consultas pasadas" consults={pastConsults} />
-          )}
+          <div className="w-full flex flex-col gap-2">
+            <h3 className="text-cloud-300 text-sm font-bold uppercase">
+              Consultas
+            </h3>
+
+            <div className="flex flex-col gap-2">
+              {patientInfo?.clinicalRecordList?.map(consult => (
+                <CardConsult key={consult.recordId} consult={consult} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Section>

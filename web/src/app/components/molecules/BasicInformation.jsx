@@ -78,7 +78,7 @@ const documentacionConsentimientos = [
 
 export const BasicInformation = () => {
   return (
-    <Accordion defaultExpandedKeys={['2']} selectionMode="multiple">
+    <Accordion selectionMode="multiple">
       {/* <AccordionItem
         key="1"
         aria-label="Información básica"
