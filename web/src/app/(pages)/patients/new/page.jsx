@@ -8,13 +8,16 @@ import {
   Input,
   RadioGroup,
   Radio,
-  Textarea,
-  Checkbox,
+  // Textarea,
+  // Checkbox,
 } from '@nextui-org/react'
 import { useForm } from 'react-hook-form'
 import useAuth from '@/hooks/useAuth'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function NewPatientPage() {
+  const router = useRouter()
   const { token } = useAuth()
   const {
     register,
@@ -22,7 +25,7 @@ export default function NewPatientPage() {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = handleSubmit( async data => {
+  const onSubmit = handleSubmit(async data => {
     // /doctor/patients/add
     const payload = {
       dni: Number(data.dni),
@@ -50,11 +53,10 @@ export default function NewPatientPage() {
 
       if (response.ok) {
         reset()
+        router.push('/patients')
       }
 
-      const result = await response.json()
-
-      console.log(response, result)
+      toast.success('Paciente registrado exitosamente')
     } catch (error) {
       console.error(error)
     }
@@ -198,217 +200,6 @@ export default function NewPatientPage() {
               />
             </div>
           </AccordionItem>
-          {/* <AccordionItem
-            key="2"
-            aria-label="Historial médico"
-            title={
-              <h2 className="text-cloud-300 text-sm font-bold uppercase">
-                Historial médico
-              </h2>
-            }
-          >
-            <div className="flex flex-col gap-4 pb-4">
-              <Textarea
-                label="Antecedentes Personales"
-                // placeholder="- - -"
-                variant="bordered"
-                {...register('medicalHistory.personalHistory')}
-              />
-              <Textarea
-                label="Antecedentes Familiares"
-                // placeholder="- - -"
-                variant="bordered"
-                {...register('medicalHistory.familyHistory')}
-              />
-              <Textarea
-                label="Alergias"
-                // placeholder="- - -"
-                variant="bordered"
-                {...register('medicalHistory.allergies')}
-              />
-            </div>
-          </AccordionItem>
-          <AccordionItem
-            key="3"
-            aria-label="Motivo de consulta"
-            title={
-              <h2 className="text-cloud-300 text-sm font-bold uppercase">
-                Motivo de consulta
-              </h2>
-            }
-          >
-            <div className="flex flex-col gap-4 pb-4">
-              <Input
-                type="date"
-                variant="bordered"
-                label="Fecha de la consulta"
-                isRequired
-                {...register('consult.date', {
-                  required: 'La fecha de la consulta es obligatoria',
-                })}
-                isInvalid={!!errors.consult?.date}
-                errorMessage={
-                  errors.consult?.date && errors.consult.date.message
-                }
-              />
-              <Input
-                type="time"
-                variant="bordered"
-                label="Hora de la consulta"
-                isRequired
-                {...register('consult.time', {
-                  required: 'La hora de la consulta es obligatoria',
-                })}
-                isInvalid={!!errors.consult?.time}
-                errorMessage={
-                  errors.consult?.time && errors.consult.time.message
-                }
-              />
-              <Textarea
-                label="Razón de la consulta"
-                // placeholder="- - -"
-                variant="bordered"
-                isRequired
-                {...register('consult.reason', {
-                  required: 'La razón de la consulta es obligatoria',
-                })}
-                isInvalid={!!errors.consult?.reason}
-                errorMessage={
-                  errors.consult?.reason && errors.consult.reason.message
-                }
-              />
-              <Textarea
-                label="Enfermedad actual"
-                // placeholder="- - -"
-                variant="bordered"
-                isRequired
-                {...register('consult.currentDisease', {
-                  required: 'La enfermedad actual es obligatoria',
-                })}
-                isInvalid={!!errors.consult?.currentDisease}
-                errorMessage={
-                  errors.consult?.currentDisease &&
-                  errors.consult.currentDisease.message
-                }
-              />
-            </div>
-          </AccordionItem>
-          <AccordionItem
-            key="4"
-            aria-label="Evaluación y Diagnóstico"
-            title={
-              <h2 className="text-cloud-300 text-sm font-bold uppercase">
-                Evaluación y Diagnóstico
-              </h2>
-            }
-          >
-            <div className="flex flex-col gap-4 pb-4">
-              <Textarea
-                label="Examen físico"
-                variant="bordered"
-                isRequired
-                {...register('diagnostic.physicalExamination', {
-                  required: 'El examen físico es obligatorio',
-                })}
-                isInvalid={!!errors.diagnostic?.physicalExamination}
-                errorMessage={
-                  errors.diagnostic?.physicalExamination &&
-                  errors.diagnostic.physicalExamination.message
-                }
-              />
-              <Textarea
-                label="Diagnóstico"
-                variant="bordered"
-                isRequired
-                {...register('diagnostic.diagnosis', {
-                  required: 'El diagnóstico es obligatorio',
-                })}
-                isInvalid={!!errors.diagnostic?.diagnosis}
-                errorMessage={
-                  errors.diagnostic?.diagnosis &&
-                  errors.diagnostic.diagnosis.message
-                }
-              />
-            </div>
-          </AccordionItem>
-          <AccordionItem
-            key="5"
-            aria-label="Plan de Tratamiento y Seguimiento"
-            title={
-              <h2 className="text-cloud-300 text-sm font-bold uppercase">
-                Plan de Tratamiento y Seguimiento
-              </h2>
-            }
-          >
-            <div className="flex flex-col gap-4 pb-4">
-              <Textarea
-                label="Descripción del tratamiento"
-                variant="bordered"
-                isRequired
-                {...register('treatmentPlan.description', {
-                  required: 'La descripción del tratamiento es obligatoria',
-                })}
-                isInvalid={!!errors.treatmentPlan?.description}
-                errorMessage={
-                  errors.treatmentPlan?.description &&
-                  errors.treatmentPlan.description.message
-                }
-              />
-              <Textarea
-                label="Procedimientos medicos"
-                variant="bordered"
-                isRequired
-                {...register('treatmentPlan.medicalProcedures', {
-                  required: 'Los procedimientos medicos son obligatorios',
-                })}
-                isInvalid={!!errors.treatmentPlan?.medicalProcedures}
-                errorMessage={
-                  errors.treatmentPlan?.medicalProcedures &&
-                  errors.treatmentPlan.medicalProcedures.message
-                }
-              />
-              <Textarea
-                label="Evolución"
-                variant="bordered"
-                isRequired
-                {...register('treatmentPlan.evolution', {
-                  required: 'La evolución es obligatoria',
-                })}
-                isInvalid={!!errors.treatmentPlan?.evolution}
-                errorMessage={
-                  errors.treatmentPlan?.evolution &&
-                  errors.treatmentPlan.evolution.message
-                }
-              />
-            </div>
-          </AccordionItem>
-          <AccordionItem
-            key="6"
-            aria-label="Documentación y Consentimientos"
-            title={
-              <h2 className="text-cloud-300 text-sm font-bold uppercase">
-                Documentación y Consentimientos
-              </h2>
-            }
-          >
-            <div className="flex flex-col gap-4 pb-4">
-              <Checkbox
-                variant="bordered"
-                isRequired
-                {...register('consent.consent', {
-                  required: 'El consentimiento es obligatorio',
-                })}
-                isInvalid={!!errors.consent?.consent}
-              >
-                El paciente dió el consentimiento para recolectar sus datos
-              </Checkbox>
-              <Textarea
-                label="Información adicional"
-                variant="bordered"
-                {...register('consent.additionalInformation')}
-              />
-            </div>
-          </AccordionItem> */}
         </Accordion>
         <div className="flex gap-4 mt-4 p-2 justify-end">
           <Button

@@ -20,14 +20,16 @@ public class PatientService {
         return dbPatients.stream().map(PatientDTO::new).toList();
     }
 
-    public List<PatientDTO> getAllPatientsForDoctor(Integer doctorDni){
-        List<Patient> dbPatients = patientRepository.findByClinicalRecordUserDni(doctorDni);
+    public List<PatientDTO> getAllPatientsForDoctor(){
+        // List<Patient> dbPatients = patientRepository.findByClinicalRecordUserDni(doctorDni);
+        List<Patient> dbPatients = patientRepository.findAll();
         return dbPatients.stream().map(PatientDTO::new).toList();
     }
 
-    public PatientWithDxsDTO getPatientWithDx(Integer doctorDni, Integer patientDni){
+    public PatientWithDxsDTO getPatientWithDx(Integer patientDni){
         List<ClinicalRecord> clinicalRecords = clinicalRecordRepository.findAll().stream().filter(record -> {
-            return doctorDni.equals(record.getUser().getDni()) && patientDni.equals(record.getPatient().getDni());
+            // return doctorDni.equals(record.getUser().getDni()) && patientDni.equals(record.getPatient().getDni());
+            return patientDni.equals(record.getPatient().getDni());
         }).toList();
 
         Patient dbPatient = patientRepository.findByDni(patientDni).orElseThrow(() -> new RuntimeException("Patient not found"));

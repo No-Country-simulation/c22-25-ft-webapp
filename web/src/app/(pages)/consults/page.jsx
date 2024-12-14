@@ -14,9 +14,13 @@ import { getAge } from '@/utils/utils'
 import { getAllConsults } from '@/services/consults'
 
 const statusMap = {
-  active: { label: 'Activa', color: 'success' },
+  active: { label: 'Terminada', color: 'success' },
   pending: { label: 'Pendiente', color: 'warning' },
   cancelled: { label: 'Cancelada', color: 'danger' },
+}
+
+const sortedByDate = array => {
+  return array.sort((a, b) => new Date(a.date) - new Date(b.date))
 }
 
 export default async function ConsultsPage() {
@@ -26,9 +30,16 @@ export default async function ConsultsPage() {
   const role = session?.user?.roles[0]?.name
   const consults = await getAllConsults({ token, dni, role })
 
-  const consultsSorted = consults.sort(
-    (a, b) => new Date(a.date) - new Date(b.date)
-  )
+  const consultsSortedAndFiltered = consults => {
+    const consultsByDate = sortedByDate(consults)
+    const filteredByDate = consultsByDate.filter(
+      consult => new Date(consult.date) > Date.now()
+    )
+
+    return filteredByDate
+  }
+
+  const consultsSorted = consultsSortedAndFiltered(consults)
 
   return (
     <Section>
