@@ -29,7 +29,7 @@ _**Salus**_ es una plataforma integral que simplifica la gestión de consultas m
 
 ## 📝 **Características**
 
-- **👁‍🗨 Gestionar consultas médicas:** Como [[entidad médica]] podrás observar todas las consultas que ocurren en tu [[entidad médica]],
+- **👁‍🗨 Gestionar consultas médicas:** Como entidad médica podrás observar todas las consultas que ocurren en tu entidad médica,
 - **🏆 Gestionar pacientes:** Como profesional de la salud, tendrás acceso a herramientas para administrar las consultas médicas de tus pacientes. Esto incluye: 
     <ul>
     <li>Revisión del historial médico: Consulta rápida de todos los antecedentes médicos, tratamientos y diagnósticos previos.</li>
@@ -203,11 +203,14 @@ Estamos comprometidos con el desarrollo continuo de **Salus**. Algunas de las fu
   </tr>
 </table>
 
-<!-- TODO: Texto de ejemplo -->
-<!-- Esto solo podrá ser visible cuando el repositorio esté en "Público" -->
-<!-- <a href="https://github.com/No-Country-simulation/c22-25-ft-webapp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=No-Country-simulation/c22-25-ft-webapp" />
-</a> -->
+
+<h3 align="center">Contribuyentes</h3>
+
+<div align="center">
+  <a align="center" href="https://github.com/No-Country-simulation/c22-25-ft-webapp/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=No-Country-simulation/c22-25-ft-webapp" />
+  </a> 
+</div>
 
 <br><br>
 
