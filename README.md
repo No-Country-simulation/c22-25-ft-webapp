@@ -58,8 +58,22 @@ Explora las principales funcionalidades de <em>Salus</em> en este vídeo: <br>
 ## 🖼️ **Imágenes**
 
 <figure>
-  <img src="./wiki/media/placeholder-image.png" alt="Placeholder image" style="width:100%">
-  <figcaption>Página de pacientes <strong>(PlaceholderImage - Cambiar)</strong></figcaption>
+  <img src="./wiki/media/1.png" alt="Landing page de SALUS" style="width:100%">
+  <figcaption>Página de aterrizaje</figcaption>
+</figure>
+
+<hr>
+
+<figure>
+  <img src="./wiki/media/4.png" alt="Página de gestión de consultas como profesional" style="width:100%">
+  <figcaption>Listado de consultas como profesional</figcaption>
+</figure>
+
+<hr>
+
+<figure>
+  <img src="./wiki/media/3.png" alt="Gestión de profesionales" style="width:100%">
+  <figcaption>Gestión de profesionales</figcaption>
 </figure>
 
 ## 🔨 **Tecnologías**
